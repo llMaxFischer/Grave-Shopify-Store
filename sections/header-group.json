@@ -1,0 +1,46 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "custom_css": [
+        ".align_left {text-align: center !important;}",
+        ".nav a.active, .header_bar a.active, .nav summary.active, {color:#fff !important; text-decoration:underline;}"
+      ],
+      "settings": {
+        "fixed_header": true,
+        "content_top_padding": 0,
+        "show_announcement": false,
+        "promo_home_page": true,
+        "promo_text": "",
+        "announcement_link": "",
+        "announcement_bg_color": "#1b1f23",
+        "announcement_text_color": "#6b6b6b",
+        "logo": "shopify://shop_images/Grave_Apparel_white_ARC_Logo.png",
+        "logo_width": 175,
+        "logo_top_padding": 5,
+        "main_linklist": "main-menu",
+        "dropdown_column_links": 10,
+        "dropdown_position": "below_parent",
+        "menu_alignment": "center",
+        "menu_top_padding": 0,
+        "search_enabled": true,
+        "show_locale_selector": false,
+        "show_currency_selector": true
+      }
+    }
+  },
+  "order": [
+    "header"
+  ]
+}

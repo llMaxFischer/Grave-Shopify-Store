@@ -1,0 +1,37 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "footer_linklist_1": "footer",
+        "footer_social_icons": true,
+        "show_locale_selector": true,
+        "show_currency_selector": true,
+        "show_follow_on_shop": true,
+        "footer_content_left": "",
+        "footer_content_right": "",
+        "footer_newsletter": true,
+        "display_first_name": false,
+        "display_last_name": false,
+        "richtext": "<p>Get exclusive deals and early access to new products!</p>",
+        "copyright_text": "",
+        "display_payment_methods": false,
+        "custom_html": "<style>\n.fancybox-bg {\n  background: #000 !important;\n  opacity: 0.25 !important;\n}\n\n.fancybox-content,\n.js-newsletter-popup,\n.newsletter-popup__content,\n.js-newsletter-popup .input-row {\n  overflow: visible !important;\n  box-sizing: border-box !important;\n}\n\n.js-newsletter-popup .input-row {\n  display: flex !important;\n  flex-direction: column !important;\n  padding-right: 3px !important;\n  width: calc(100% - 3px) !important;\n}\n\n.js-newsletter-popup .contact_email,\n.js-newsletter-popup .action_button.sign_up {\n  width: 100% !important;\n  box-sizing: border-box !important;\n  border-radius: 4px !important;\n  min-height: 55px !important;\n  padding-top: 15px !important;\n  padding-bottom: 15px !important;\n  height: auto !important;\n}\n\n.js-newsletter-popup .action_button.sign_up {\n  color: #fff !important;\n}\n</style>"
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

@@ -1,0 +1,118 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "wrapper": "div.global-wrapper__product",
+  "sections": {
+    "sidebar": {
+      "type": "product__sidebar",
+      "disabled": true,
+      "blocks": {
+        "menu": {
+          "type": "menu",
+          "settings": {
+            "custom_menu_linklist": ""
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "title": "Heading",
+            "text": "<p>Text area can be used for special announcements or general information.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "menu",
+        "text"
+      ],
+      "settings": {
+        "toggle": false
+      }
+    },
+    "main": {
+      "type": "product-template",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "description_words": "none"
+          }
+        },
+        "form": {
+          "type": "form",
+          "settings": {}
+        },
+        "divider": {
+          "type": "divider",
+          "settings": {}
+        },
+        "social": {
+          "type": "social",
+          "settings": {}
+        },
+        "product_links": {
+          "type": "product_links",
+          "settings": {
+            "display_collections": false,
+            "display_tags": true,
+            "display_type": false
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "description",
+        "form",
+        "divider",
+        "social",
+        "product_links"
+      ],
+      "settings": {
+        "product_breadcrumb": true,
+        "show_thumbnails": true,
+        "show_arrows": true,
+        "enable_lightbox": true,
+        "activate_zoom": false,
+        "slideshow_speed": 0,
+        "slideshow_transition": "slide",
+        "thumbnail_position": "bottom-thumbnails",
+        "enable_thumbnail_slider": true,
+        "media_position": "left",
+        "set_product_height": false,
+        "product_height": 500,
+        "video_looping": false
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "show_product_recommendations": true,
+        "product_recommendations_heading": "You may also like",
+        "show_divider": true,
+        "products_per_row": 3,
+        "recommended_products_limit": 3
+      }
+    }
+  },
+  "order": [
+    "sidebar",
+    "main",
+    "recommendations"
+  ]
+}

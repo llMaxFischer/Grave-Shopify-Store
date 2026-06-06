@@ -1,0 +1,48 @@
+<section class="section">
+  <div class="container main-wrapper">
+    <div
+      class="
+        one-whole
+        column
+        collection_nav
+      "
+    >
+      <h1>
+        {{- 'general.404.title' | t -}}
+      </h1>
+
+      <div class="feature_divider"></div>
+    </div>
+
+    <div
+      class="
+        one-whole
+        column
+        center
+      "
+    >
+      <p class="quote">
+        {{- 'general.404.subtext' | t -}}
+      </p>
+
+      <p class="extra_padding">
+        {{- 'general.404.continue_shopping_html' | t: continue_link: routes.all_products_collection_url -}}
+      </p>
+    </div>
+
+    <div
+      class="
+        three-eighths
+        columns
+        medium-down--one-whole
+        offset-by-five
+        is-hidden-offset-mobile-only
+      "
+    >
+      {%
+        render 'search-form',
+        context: '404',
+      %}
+    </div>
+  </div>
+</section>

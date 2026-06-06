@@ -1,0 +1,41 @@
+/* Social Media Icons - White with red hover */
+.social-icons a,
+.social-icons svg,
+.social-sharing a,
+.social-sharing svg,
+.product-social-sharing a,
+.product-social-sharing svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+.social-icons a:hover,
+.social-icons a:hover svg,
+.social-sharing a:hover,
+.social-sharing a:hover svg,
+.product-social-sharing a:hover,
+.product-social-sharing a:hover svg {
+  color: #9f1217 !important;
+  fill: #9f1217 !important;
+}
+/* Contact page spacing */
+.contact-section {
+  padding-top: 80px;
+}
+/* Button hover effects */
+button,
+.button,
+a.button,
+input[type="submit"],
+input[type="button"] {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover,
+.button:hover,
+a.button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px 4px #ff0000;
+}

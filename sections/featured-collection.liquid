@@ -1,0 +1,101 @@
+{% assign collection = collections[section.settings.frontpage_collection] %}
+
+<section class="section">
+  <div class="container">
+
+    {% if collection.products.size > 0 %}
+      {% for product in collection.products limit: section.settings.frontpage_products_limit %}
+        {%
+          render 'product-thumbnail',
+          product: product,
+          products_per_row: section.settings.products_per_row
+        %}
+      {% endfor %}
+    {% else %}
+      {% for i in (1..section.settings.frontpage_products_limit) %}
+        <div
+          class="
+            {%
+              render 'column-width',
+              value: section.settings.products_per_row
+            %}
+            column
+            {% if settings.mobile_products_per_row == '1' %}
+              medium-down--one-whole
+            {% else %}
+              medium-down--one-half
+            {% endif %}
+            thumbnail
+          "
+        >
+          <a class="thumbnail__link">
+            <div class="thumbnail__image">
+              {% capture num %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+              {{ 'collection-' | append: num | placeholder_svg_tag: 'placeholder-svg placeholder-svg--product' }}
+            </div>
+
+            <div
+              class="
+                thumbnail__content
+                thumbnail__content--{{ settings.collection_price_position }}
+                thumbnail__content--vendor-{{ settings.display_vendor_collection }}
+              "
+            >
+              <span class="thumbnail__title">
+                {{ 'homepage.onboarding.product_title' | t }}
+              </span>
+
+              <span class="thumbnail__price">
+                <span>$49.60</span>
+              </span>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "class": "shopify-section--featured-collection",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "frontpage_collection",
+      "label": "Collection"
+    },
+    {
+      "type": "header",
+      "content": "Products"
+    },
+    {
+      "type": "range",
+      "id": "products_per_row",
+      "label": "Products per row",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "frontpage_products_limit",
+      "label": "Limit products",
+      "min": 2,
+      "max": 50,
+      "step": 1,
+      "default": 12
+    }
+  ],
+  "presets": [{
+    "name": "Featured collection",
+    "category": "Collection"
+  }],
+  "enabled_on": {
+    "templates": ["index", "product", "page"]
+  }
+}
+{% endschema %}

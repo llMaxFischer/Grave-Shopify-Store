@@ -1,0 +1,87 @@
+{% doc %}
+  @prompt
+    Add custom CSS to reduce the top and bottom padding of the featured text section with ID "template--19130948419766__featured_text_g6CmPU" by approximately 20px on each side to reduce the overall section height.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-custom-css-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+  }
+
+  #template--19130948419766__featured_text_g6CmPU {
+    padding-top: calc(var(--section-padding-top, 0px) - {{ block.settings.top_padding_reduction }}px) !important;
+    padding-bottom: calc(var(--section-padding-bottom, 0px) - {{ block.settings.bottom_padding_reduction }}px) !important;
+  }
+
+  @media screen and (max-width: 749px) {
+    #template--19130948419766__featured_text_g6CmPU {
+      padding-top: calc(var(--section-padding-top, 0px) - {{ block.settings.mobile_top_padding_reduction }}px) !important;
+      padding-bottom: calc(var(--section-padding-bottom, 0px) - {{ block.settings.mobile_bottom_padding_reduction }}px) !important;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-custom-css-{{ ai_gen_id }}" {{ block.shopify_attributes }}></div>
+
+{% schema %}
+{
+  "name": "Featured text padding fix",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop padding"
+    },
+    {
+      "type": "range",
+      "id": "top_padding_reduction",
+      "label": "Top padding reduction",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding_reduction",
+      "label": "Bottom padding reduction",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Mobile padding"
+    },
+    {
+      "type": "range",
+      "id": "mobile_top_padding_reduction",
+      "label": "Top padding reduction",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mobile_bottom_padding_reduction",
+      "label": "Bottom padding reduction",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured text padding fix"
+    }
+  ]
+}
+{% endschema %}

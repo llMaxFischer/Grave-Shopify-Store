@@ -1,0 +1,67 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image-with-text-overlay": {
+      "type": "image-with-text-overlay-section",
+      "settings": {
+        "headline_animation": "",
+        "title": "Our Stories",
+        "subtitle": "",
+        "button_label": "",
+        "link": "",
+        "text_position": "center center",
+        "homepage_arrow": false,
+        "parallax_effect": true,
+        "parallax_image_height": 600
+      }
+    },
+    "main": {
+      "type": "blog-template",
+      "blocks": {
+        "1fb7db97-98d4-4d93-a570-79e8d8677cb8": {
+          "type": "search",
+          "settings": {}
+        },
+        "e3fe0056-40d7-4037-9bee-989517fd71a4": {
+          "type": "page",
+          "settings": {
+            "content_page": "trail-guide-2020"
+          }
+        },
+        "f6e6efad-2ba5-40db-849e-9f9adb2bce37": {
+          "type": "recent_posts",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "1fb7db97-98d4-4d93-a570-79e8d8677cb8",
+        "e3fe0056-40d7-4037-9bee-989517fd71a4",
+        "f6e6efad-2ba5-40db-849e-9f9adb2bce37"
+      ],
+      "settings": {
+        "show_blog_title": false,
+        "blog_breadcrumb": false,
+        "blog_tags": false,
+        "blog_author": false,
+        "blog_date": true,
+        "blog_comment_count": true,
+        "read_more_link": true,
+        "blog_posts_per_row": 1,
+        "blog_posts_per_page": 3,
+        "toggle": false
+      }
+    }
+  },
+  "order": [
+    "image-with-text-overlay",
+    "main"
+  ]
+}

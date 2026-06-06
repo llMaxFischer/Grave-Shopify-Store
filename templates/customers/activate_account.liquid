@@ -1,0 +1,91 @@
+<section class="section global-wrapper__customer">
+  <div class="container main-wrapper">
+    <div
+      class="
+        one-whole
+        column
+        collection_nav
+      "
+    >
+      <h1 class="center">
+        {{ 'customer.activate_account.title' | t }}
+      </h1>
+
+      <div class="feature_divider"></div>
+    </div>
+
+    <div
+      class="
+        one-half
+        column
+        medium-down--one-whole
+        offset-by-four
+        is-hidden-offset-mobile-only
+      "
+    >
+      <p>
+        <em>
+          {{ 'customer.activate_account.subtext' | t }}
+        </em>
+      </p>
+
+      {% form 'activate_customer_password' %}
+        {{ form.errors | default_errors }}
+
+        <div id="password">
+          <label for="customer_password">
+            {{ 'customer.activate_account.password' | t }}
+          </label>
+
+          <input
+            class="password"
+            id="customer_password"
+            type="password"
+            name="customer[password]"
+            size="16"
+          >
+        </div>
+
+        <div id="password_confirm">
+          <label for="customer_password_confirmation">
+            {{ 'customer.activate_account.password_confirm' | t }}
+          </label>
+
+          <input
+            class="password"
+            id="customer_password_confirmation"
+            type="password"
+            name="customer[password_confirmation]"
+            size="16"
+          >
+        </div>
+
+        <p class="action_bottom">
+          <input
+            class="
+              btn
+              action_button
+            "
+            type="submit"
+            value="{{ 'customer.activate_account.submit' | t }}"
+          >
+
+          <span class="note">
+            {{ 'customer.activate_account.or' | t }}
+          </span>
+
+          <input
+            class="
+              cancel
+              action_button
+            "
+            id="customer_decline"
+            type="submit"
+            name="decline"
+            value="{{ 'customer.activate_account.cancel' | t }}"
+          >
+        </p>
+      {% endform %}
+    </div>
+  </div>
+</section>

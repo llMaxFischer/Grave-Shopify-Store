@@ -1,0 +1,113 @@
+<section class="section">
+  <div class="container main-wrapper">
+    {% paginate collections by section.settings.pagination_limit %}
+      {%- assign collections_per_row = section.settings.collections_per_row -%}
+
+      {% if section.settings.display_collection_header_title and feature_image == blank %}
+        <div class="one-whole column">
+          <h1 class="center">{{ 'collections.general.title' | t }}</h1>
+          <div class="feature_divider"></div>
+        </div>
+      {% endif %}
+
+      <div class="one-whole column breadcrumb breadcrumb--text">
+        {% if section.settings.collection_breadcrumb %}
+          <a href="{{ routes.root_url }}" title="{{ shop.name | escape }}">{{ 'general.breadcrumbs.home' | t }}</a>
+          &nbsp;<span class="icon-arrow-right"></span>
+          <a href="{{ routes.collections_url }}" title="{{ 'collections.general.title' | t }}">{{ 'collections.general.title' | t }}</a>
+          {% if paginate.pages != 0 %}
+            &nbsp;<span class="icon-arrow-right"></span> {{ 'general.breadcrumbs.page' | t: current_page: paginate.current_page, pages: paginate.pages }}
+          {% endif %}
+        {% endif %}
+      </div>
+
+      {% for collection in collections %}
+        {% unless collection.handle == 'frontpage' %}
+          {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+
+          {% if collection.image %}
+            {% assign collection_image = collection.image %}
+          {% else %}
+            {% assign collection_image = collection.products.first.featured_media.preview_image %}
+          {% endif %}
+
+          {% if settings.align_height %}
+            {% assign collection_height = settings.collection_height | plus: 0 %}
+            {% assign product_aspect_ratio = collection_image.aspect_ratio | plus: 0 %}
+            {% assign product_set_width = product_aspect_ratio | times: collection_height %}
+
+            {% if product.featured_image.width >= product.featured_image.height %}
+              {%- assign align_height_value = 'width: 100%; height: auto;' -%}
+            {% else %}
+              {%- assign align_height_value = 'width: 100%;' -%}
+            {% endif %}
+          {% endif %}
+
+          <div class="{% render 'column-width', value: collections_per_row %} column {% if settings.mobile_products_per_row == '1' %}medium-down--one-whole{% else %}medium-down--one-half{% endif %} thumbnail">
+            <div class="relative product_image">
+              <div class="product_container">
+                <a href="{{ collection.url }}" title="{{ collection_title }}">
+                  <div class="image__container" style="{% if settings.align_height %} max-width: {{ product_set_width }}px; {% else %} max-width: {{ collection_image.width }}px; {% endif %}">
+                    {%
+                      render 'image-element',
+                      image: collection_image.src,
+                      alt: collection_image.alt,
+                    %}
+                  </div>
+
+                  <div class="info">
+                    <span class="title">{{ collection.title }}</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endunless %}
+      {% endfor %}
+
+      {% render 'pagination', paginate: paginate %}
+    {% endpaginate %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Collections",
+    "class": "shopify-section--collection-template",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "display_collection_header_title",
+        "label": "Show page title"
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_breadcrumb",
+        "label": "Show breadcrumb links",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Collections"
+      },
+      {
+        "type": "range",
+        "id": "collections_per_row",
+        "label": "Collections per row",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "pagination_limit",
+        "label": "Collections per page",
+        "min": 2,
+        "max": 50,
+        "step": 1,
+        "default": 48
+      }
+    ]
+  }
+{% endschema %}

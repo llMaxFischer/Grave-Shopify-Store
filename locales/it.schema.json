@@ -1,0 +1,255 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product": {
+      "blocks": {
+        "form": {
+          "show_gift_card_recipient_form": {
+            "label": "Mostra il modulo delle informazioni sul destinatario per i prodotti di carte regalo",
+            "info": "I prodotti di carte regalo possono essere inviati opzionalmente direttamente al destinatario insieme a un messaggio personale. [Ulteriori informazioni](https://help.shopify.com/it/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)"
+          }
+        },
+        "complementary_products": {
+          "name": "Prodotti complementari",
+          "settings": {
+            "paragraph": {
+              "content": "Aggiungi l'app Search & Discovery per selezionare i prodotti complementari. [Maggiori informazioni](https://shopify.dev/themes/product-merchandising/recommendations)"
+            },
+            "heading": {
+              "label": "Titolo"
+            },
+            "product_recommendation_limit": {
+              "label": "Massimo di prodotti da mostrare"
+            },
+            "products_per_slide": {
+              "label": "Numero di prodotti per pagina"
+            }
+          }
+        }
+      }
+    },
+    "age_gate": {
+      "name": "Pagina di controllo dell'età",
+      "minimum_age": {
+        "label": "Età minima richiesta per accedere alla pagina"
+      },
+      "presets": {
+        "name": "Pagina di controllo dell'età",
+        "category": "Layout"
+      }
+    }
+  },
+  "settings_schema": {
+    "age_gate": {
+      "name": "Controllo dell'età",
+      "enable_site_wide": {
+        "label": "Abilita a livello di sito"
+      },
+      "minimum_age": {
+        "label": "Età minima richiesta per accedere al sito"
+      },
+      "heading": {
+        "label": "Titolo"
+      },
+      "description": {
+        "label": "Descrizione"
+      },
+      "show_logo": {
+        "label": "Mostra logo",
+        "info": "Vai su [impostazioni del marchio](/admin/settings/branding) per modificare il logo."
+      }
+    }
+  },
+  "flex_pdp": {
+    "section": {
+      "high_variant": {
+        "name": "Prodotto: 250+ varianti",
+        "settings": {
+          "padding": {
+            "label": "Riempimento",
+            "options": {
+              "none": {
+                "label": "Nessuno"
+              },
+              "top": {
+                "label": "Superiore"
+              },
+              "bottom": {
+                "label": "Inferiore"
+              },
+              "both": {
+                "label": "Entrambi"
+              }
+            }
+          }
+        },
+        "presets": {
+          "high_variant": {
+            "name": "Prodotto (250+ Varianti)"
+          }
+        }
+      }
+    },
+    "blocks": {
+      "buy_buttons": {
+        "name": "Pulsanti di acquisto",
+        "settings": {
+          "show_dynamic_checkout": {
+            "label": "Mostra pulsante di checkout accelerato",
+            "info": "Ogni cliente vedrà il suo metodo di pagamento preferito tra quelli disponibili nel tuo negozio, come PayPal o Apple Pay. [Scopri di più](https://help.shopify.com/en/manual/online-store/dynamic-checkout)"
+          }
+        },
+        "presets": {
+          "buy_buttons": {
+            "name": "Pulsanti di acquisto"
+          }
+        }
+      },
+      "description": {
+        "name": "Descrizione"
+      },
+      "divider": {
+        "name": "Divisore"
+      },
+      "gift_recipient": {
+        "name": "Destinatario del regalo",
+        "settings": {
+          "content": "Renderizza il modulo del destinatario del regalo per il prodotto."
+        }
+      },
+      "installments": {
+        "name": "Pagamenti rateali",
+        "settings": {
+          "content": "Per visualizzare i pagamenti rateali, il tuo negozio deve supportare Pagamenti Rateali Shop Pay. [Scopri di più](https://help.shopify.com/en/manual/payments/shop-pay-installments)."
+        }
+      },
+      "inventory": {
+        "name": "Inventario",
+        "settings": {
+          "content": "Mostra lo stato dell'inventario per il prodotto basato sulla soglia di inventario, inclusi avvisi di scorte basse e inventario in arrivo.",
+          "inventory_threshold": {
+            "label": "Soglia di inventario basso"
+          }
+        }
+      },
+      "media_gallery": {
+        "name": "Galleria multimediale",
+        "settings": {
+          "image_aspect_ratio": {
+            "label": "Rapporto d'aspetto",
+            "options": {
+              "initial": {
+                "label": "Naturale"
+              },
+              "portrait": {
+                "label": "Verticale"
+              },
+              "square": {
+                "label": "Quadrato"
+              },
+              "landscape": {
+                "label": "Orizzontale"
+              }
+            }
+          },
+          "enable_video_looping": {
+            "label": "Riproduzione in loop del video"
+          },
+          "enable_video_autoplay": {
+            "label": "Riproduzione automatica del video",
+            "info": "I video con riproduzione automatica sono muti per l'accessibilità."
+          }
+        }
+      },
+      "media_grid": {
+        "name": "Griglia multimediale",
+        "settings": {
+          "image_aspect_ratio": {
+            "label": "Rapporto d'aspetto",
+            "options": {
+              "initial": {
+                "label": "Naturale"
+              },
+              "portrait": {
+                "label": "Verticale"
+              },
+              "square": {
+                "label": "Quadrato"
+              },
+              "landscape": {
+                "label": "Orizzontale"
+              }
+            }
+          },
+          "enable_video_looping": {
+            "label": "Riproduzione in loop del video"
+          },
+          "enable_video_autoplay": {
+            "label": "Riproduzione automatica del video",
+            "info": "I video con riproduzione automatica sono muti per l'accessibilità."
+          }
+        }
+      },
+      "pick_up": {
+        "name": "Disponibilità ritiro",
+        "settings": {
+          "content": "Mostra la disponibilità al dettaglio quando il ritiro locale è abilitato. [Scopri di più](https://help.shopify.com/en/manual/fulfillment/setup/delivery-methods/pickup-in-store)."
+        }
+      },
+      "policies": {
+        "name": "Politiche",
+        "settings": {
+          "content": "Mostra se le tasse sono incluse nel prezzo e collega alla tua politica di spedizione (se impostata). [Impara a configurare prezzi con tasse incluse](https://help.shopify.com/en/manual/taxes) e [impara ad aggiungere una politica di spedizione](https://help.shopify.com/en/manual/fulfillment/setup/shipping-profiles#create-a-shipping-policy)."
+        }
+      },
+      "price": {
+        "name": "Prezzo"
+      },
+      "quantity_picker": {
+        "name": "Selettore quantità",
+        "settings": {
+          "show_inventory_status": {
+            "label": "Mostra stato inventario"
+          },
+          "inventory_threshold": {
+            "label": "Soglia scorte basse"
+          }
+        }
+      },
+      "sku": {
+        "name": "SKU"
+      },
+      "title": {
+        "name": "Titolo"
+      },
+      "variant_picker": {
+        "name": "Selettore varianti",
+        "settings": {
+          "variant_selector_type": {
+            "label": "Stile",
+            "options": {
+              "radio": {
+                "label": "Pulsanti"
+              },
+              "select": {
+                "label": "Menu a tendina"
+              }
+            },
+            "info": "Mostra le opzioni del prodotto come pulsanti e campioni di colore o menu a tendina. [Impara come configurare i campioni di colore](https://help.shopify.com/en/manual/custom-data/metafields/category-metafields/using-category-metafields)."
+          }
+        }
+      },
+      "vendor": {
+        "name": "Fornitore"
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{% include 'include-content-page' %}
+
+{% schema %}
+  {
+    "name": "Page",
+    "class": "shopify-section--page featured-content",
+    "settings": [
+      {
+        "type": "page",
+        "id": "content_page",
+        "label": "Content page"
+      }
+    ],
+    "presets": [{
+      "name": "Page",
+      "category": "Text",
+      "settings": {
+      }
+    }],
+    "enabled_on": {
+      "templates": [
+        "index",
+        "product",
+        "page"
+      ]
+    }
+  }
+{% endschema %}

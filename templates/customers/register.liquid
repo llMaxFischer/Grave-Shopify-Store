@@ -1,0 +1,129 @@
+<section class="section global-wrapper__customer">
+  <div class="container main-wrapper">
+    <div
+      class="
+        one-whole
+        column
+        collection_nav
+      "
+    >
+      <h1 class="center">
+        {{ 'customer.register.title' | t }}
+      </h1>
+
+      <div class="feature_divider"></div>
+    </div>
+
+    <div
+      class="
+        three-eighths
+        columns
+        medium-down--one-whole
+        offset-by-five
+        is-hidden-offset-mobile-only
+      "
+    >
+      <div id="customer">
+        <div id="create-customer">
+          {% form 'create_customer' %}
+            {% if section.settings.richtext != blank %}
+              {{ section.settings.richtext }}
+            {% endif %}
+
+            {{ form.errors | default_errors }}
+
+            <div id="first_name">
+              <label for="first_name">
+                {{ 'customer.register.first_name' | t }}
+              </label>
+
+              <input
+                type="text"
+                name="customer[first_name]"
+                id="first_name"
+                class="large"
+                size="30"
+              >
+            </div>
+
+            <div id="last_name">
+              <label for="last_name">
+                {{ 'customer.register.last_name' | t }}
+              </label>
+
+              <input
+                class="large"
+                id="last_name"
+                type="text"
+                name="customer[last_name]"
+                size="30"
+              >
+            </div>
+
+            <div id="email">
+              <label for="email">
+                {{ 'customer.register.email' | t }}
+              </label>
+
+              <input
+                class="large"
+                id="email"
+                type="email"
+                name="customer[email]"
+                size="30"
+              >
+            </div>
+
+            <div id="password">
+              <label for="password">
+                {{ 'customer.register.password' | t }}
+              </label>
+
+              <input
+                class="
+                  large
+                  password
+                "
+                id="password"
+                type="password"
+                name="customer[password]"
+                size="30"
+              >
+            </div>
+
+            <div class="acceptsMarketing">
+              <input
+                id="customer[accepts_marketing]"
+                type="checkbox"
+                name="customer[accepts_marketing]"
+              >
+
+              <label for="customer[accepts_marketing]">
+                {{ section.settings.accepts_marketing_richtext }}
+              </label>
+            </div>
+
+            <div class="action_bottom">
+              <input
+                class="
+                  btn
+                  action_button
+                "
+                type="submit"
+                value="{{ 'customer.register.sign_up' | t }}"
+              >
+
+              <p class="right" style="padding-top: 8px;">
+                {{ 'customer.register.returning_customer_label' | t }}
+
+                <a href="{{ routes.account_login_url }}" id="customer_register_link">
+                  {{ 'customer.register.sign_in_html' | t }}
+                </a>
+              </p>
+            </div>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,267 @@
+{% if product.description contains "#tab1" %}
+  {% assign tabs = true %}
+{% else %}
+  {% assign tabs = false %}
+{% endif %}
+
+<section
+  data-html="content"
+  data-section-id="{{ section.id }}"
+  data-section-type="quickshop"
+  data-product-component
+>
+  <div class="product-quickshop__container" data-quickshop>
+    <a
+      class="fancybox-item fancybox-close"
+      href="javascript:;"
+      title="Close"
+      data-fancybox-close
+    >
+    </a>
+
+    {%
+      render 'product',
+      context: 'quickshop',
+      product: product,
+      variant: product.selected_or_first_available_variant,
+      onboarding: onboarding,
+      show_thumbnails: section.settings.show_thumbnails,
+      enable_lightbox: section.settings.enable_lightbox,
+      activate_zoom: section.settings.activate_zoom,
+      slideshow_speed: section.settings.slideshow_speed,
+      slideshow_transition: section.settings.slideshow_transition,
+      thumbnail_position: section.settings.thumbnail_position,
+      show_arrows: section.settings.show_arrows,
+      enable_thumbnail_slider: section.settings.enable_thumbnail_slider,
+      media_position: section.settings.media_position,
+      set_product_height: section.settings.set_product_height,
+      product_height: section.settings.product_height,
+      video_looping: section.settings.video_looping
+      tabs: tabs
+    %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Quickshop",
+    "class": "shopify-section--quick-shop",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product gallery"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_thumbnails",
+        "label": "Show thumbnails",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_arrows",
+        "label": "Show arrows",
+        "info": "Only applies to desktop",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "activate_zoom",
+        "label": "Magnify product images on hover",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "slideshow_speed",
+        "label": "Gallery speed",
+        "min": 0,
+        "max": 6,
+        "unit": "sec",
+        "default": 0,
+        "info": "Set to 0 to disable autoplay."
+      },
+      {
+        "type": "select",
+        "id": "slideshow_transition",
+        "label": "Gallery transition",
+        "options": [
+          {
+            "value": "slide",
+            "label": "Slide"
+          },
+          {
+            "value": "fade",
+            "label": "Fade"
+          }
+        ],
+        "default": "slide"
+      },
+      {
+        "type": "select",
+        "id": "thumbnail_position",
+        "label": "Thumbnails",
+        "default": "bottom-thumbnails",
+        "options": [
+          {
+            "value": "left-thumbnails",
+            "label": "Left"
+          },
+          {
+            "value": "right-thumbnails",
+            "label": "Right"
+          },
+          {
+            "value": "bottom-thumbnails",
+            "label": "Bottom"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_thumbnail_slider",
+        "label": "Enable thumbnail slider",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Media",
+        "info": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media)"
+      },
+      {
+        "type": "checkbox",
+        "id": "video_looping",
+        "label": "Enable video looping",
+        "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "@app"
+      },
+      {
+        "type": "title",
+        "name": "Title",
+        "limit": 1
+      },
+      {
+        "type": "vendor",
+        "name": "Vendor",
+        "limit": 1
+      },
+      {
+        "type": "sku",
+        "name": "SKU",
+        "limit": 1
+      },
+      {
+        "type": "description",
+        "name": "Description",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "show_product_link",
+            "label": "Show product link",
+            "default": true
+          },
+          {
+            "type": "select",
+            "id": "description_words",
+            "label": "Product description truncated words",
+            "options": [
+              {
+                "value": "none",
+                "label": "None"
+              },
+              {
+                "value": "10",
+                "label": "10"
+              },
+              {
+                "value": "15",
+                "label": "15"
+              },
+              {
+                "value": "20",
+                "label": "20"
+              },
+              {
+                "value": "25",
+                "label": "25"
+              },
+              {
+                "value": "30",
+                "label": "30"
+              },
+              {
+                "value": "35",
+                "label": "35"
+              },
+              {
+                "value": "40",
+                "label": "40"
+              }
+            ],
+            "default": "30"
+          }
+        ]
+      },
+      {
+        "type": "size_chart",
+        "name": "Size chart",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "page",
+            "id": "size_chart",
+            "label": "Size chart",
+            "info": "[Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115006910707-Using-the-Size-Chart-Sections-themes-)"
+          }
+        ]
+      },
+      {
+        "type": "price",
+        "name": "Price",
+        "limit": 1
+      },
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Text block</p>"
+          }
+        ]
+      },
+      {
+        "type": "divider",
+        "name": "Divider"
+      },
+      {
+        "type": "form",
+        "name": "Form",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Customize form features for the product in the products portion of the theme settings."
+          }
+        ]
+      },
+      {
+        "type": "rating",
+        "name": "Product rating",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "To display a rating, add a product rating app. [Learn more](https://apps.shopify.com/product-reviews)"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

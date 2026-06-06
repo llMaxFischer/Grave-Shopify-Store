@@ -1,0 +1,305 @@
+{% comment %}
+  @param toggle {Boolean}- Whether the list is toggle-able
+  @param filter_group_classes {String} - classes to add to the faceted search container
+  @param show_product_count {Boolean} - Whether to show the product count next to the filter
+  @param class_prefix {String}
+  @param filter_type {String}
+{% endcomment %}
+
+{% if section.blocks.size > 0 %}
+  <div
+    class="
+      sidebar
+      sidebar--{{ context }}
+      toggle-all--{{ section.settings.toggle }}
+    "
+    {% if context == 'product' %}
+      data-product-sidebar
+    {% endif %}
+  >
+    <div class="sidebar__content">
+      {% for block in section.blocks %}
+        <div {{ block.shopify_attributes }}>
+          {% comment %} Faceted search {% endcomment %}
+          {% if block.type == 'filter' %}
+            <div
+              class="{{ class_prefix }}-filters__container"
+              data-filter-modal
+              data-faceted-search-desktop
+            >
+              {% if context == 'collection' %}
+                {% for filter in collection.filters %}
+                  {%
+                    render 'faceted-filter-group',
+                    filter: filter,
+                    class_prefix: class_prefix,
+                    show_product_count: show_product_count,
+                    filter_group_classes: filter_group_classes,
+                    toggle: toggle,
+                    forloop: forloop,
+                  %}
+                {% endfor %}
+              {% elsif context == 'search' %}
+                {% for filter in search.filters %}
+                  {%
+                    render 'faceted-filter-group',
+                    filter: filter,
+                    class_prefix: class_prefix,
+                    show_product_count: show_product_count,
+                    filter_group_classes: filter_group_classes,
+                    toggle: toggle,
+                    forloop: forloop,
+                  %}
+                {% endfor %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if block.type == 'menu' %}
+            {% assign sidebar_menu = linklists[block.settings.custom_menu_linklist] %}
+
+            {% if sidebar_menu != blank %}
+              <h4
+                class="toggle"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <span tabindex="0">+</span>{{ sidebar_menu.title }}
+              </h4>
+
+              <ul class="blog_list toggle_list">
+                {% for link in sidebar_menu.links %}
+                  <li>
+                    <a {% if link.active or link.child_active %}class="active"{% endif %} href="{{ link.url }}">
+                      {{ link.title }}
+                    </a>
+
+                    {% if link.links != blank %}
+                      <span
+                        class="
+                          menu-toggle
+                          icon-arrow-down
+                          {% if link.active or link.child_active %}
+                            active
+                          {% endif %}
+                        "
+                        aria-haspopup="true"
+                        aria-expanded="{% if link.active or link.child_active %}true{% else %}false{% endif %}"
+                      >
+                      </span>
+
+                      <ul class="{% if link.active or link.child_active %}active{% endif %}">
+                        {% for sub_link in link.links %}
+                          <li class="sub-menu {% if sub_link.active or sub_link.child_active %}active{% endif %}">
+                            <a {% if sub_link.active %}class="active"{% endif %} href="{{ sub_link.url }}">
+                              {{ sub_link.title }}
+                            </a>
+
+                            {% if sub_link.links != blank %}
+                              <span
+                                class="
+                                  menu-toggle
+                                  icon-arrow-down
+                                  {% if sub_link.active or sub_link.child_active %}
+                                    active
+                                  {% endif %}
+                                "
+                                aria-haspopup="true"
+                                aria-expanded="{% if sub_link.active or sub_link.child_active %}true{% else %}false{% endif %}"
+                              >
+                              </span>
+
+                              <ul class="{% if sub_link.active or sub_link.child_active %}active{% endif %}">
+                                {% for sub_sub_link in sub_link.links %}
+                                  <li class="sub-menu">
+                                    <a {% if sub_sub_link.active %}class="active"{% endif %} href="{{ sub_sub_link.url }}">
+                                      {{ sub_sub_link.title }}
+                                    </a>
+                                  </li>
+                                {% endfor %}
+                              </ul>
+                            {% endif %}
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <h4
+                class="toggle"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <span tabindex="0">+</span>Menu title
+              </h4>
+
+              <ul
+                class="
+                  blog_list
+                  toggle_list
+                  content_block
+                "
+              >
+                <li>
+                  <p>{{ 'homepage.onboarding.no_content' | t }}</p>
+                </li>
+              </ul>
+            {% endif %}
+
+          {% elsif block.type == 'page' %}
+            {% if block.settings.content_page != blank %}
+              <h4
+                class="toggle"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <span tabindex="0">+</span>{{ pages[block.settings.content_page].title }}
+              </h4>
+
+              <ul
+                class="
+                  blog_list
+                  toggle_list
+                  content_block
+                "
+              >
+                <li>{{ pages[block.settings.content_page].content }}</li>
+              </ul>
+            {% else %}
+              <h4 class="toggle">
+                <span tabindex="0">+</span>Page title
+              </h4>
+
+              <ul
+                class="
+                  blog_list
+                  toggle_list
+                  content_block
+                "
+              >
+                <li>
+                  <p>{{ 'homepage.onboarding.no_content' | t }}</p>
+                </li>
+              </ul>
+            {% endif %}
+
+          {% elsif block.type == 'filter_by_type' %}
+            <h4
+              class="toggle"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span tabindex="0">+</span>{{ 'collections.sidebar.product_types' | t }}
+            </h4>
+
+            <ul class="blog_list toggle_list">
+              {% for product_type in shop.types %}
+                {% unless product_type == blank %}
+                  <li {% if product_type == collection.title %}class="active"{% endif %}>
+                    {{ product_type | link_to_type }}
+                  </li>
+                {% endunless %}
+              {% endfor %}
+            </ul>
+
+          {% elsif block.type == 'filter_by_collection' %}
+            <h4
+              class="toggle"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span tabindex="0">+</span>{{ 'collections.sidebar.collections' | t }}
+            </h4>
+
+            <ul class="blog_list toggle_list">
+              {% for col in collections %}
+                {% unless col.handle == 'frontpage' %}
+                  <li {% if col.handle == collection.handle %}class="active"{% endif %}>
+                    <a href="{{ col.url }}" title="{{ col.title | escape }}">
+                      {{ col.title }}
+                    </a>
+                  </li>
+                {% endunless %}
+              {% endfor %}
+            </ul>
+
+          {% elsif block.type == 'filter_by_vendor' %}
+            <h4
+              class="toggle"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span tabindex="0">+</span>{{ 'collections.sidebar.vendors' | t }}
+            </h4>
+
+            <ul class="blog_list toggle_list">
+              {% for product_vendor in shop.vendors %}
+                <li {% if product_vendor == collection.title %}class="active"{% endif %}>
+                  {{ product_vendor | link_to_vendor }}
+                </li>
+              {% endfor %}
+            </ul>
+
+          {% elsif block.type == 'text' %}
+            <h4
+              class="toggle"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span tabindex="0">+</span>{{ block.settings.title | escape }}
+            </h4>
+
+            <ul
+              class="
+                blog_list
+                toggle_list
+                content_block
+              "
+            >
+              <li>{{ block.settings.text }}</li>
+            </ul>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if context == 'product' %}
+    {% style %}
+      #shopify-section-{{ section.id }} {
+        width: 25%;
+      }
+
+      #shopify-section-{{ section.id }} + .shopify-section--product-template {
+        width: 75%;
+      }
+
+      @media only screen and (max-width: 798px) {
+        #shopify-section-{{ section.id }},
+        #shopify-section-{{ section.id }} + .shopify-section--product-template {
+          width: 100%;
+        }
+      }
+
+    {% endstyle %}
+  {% else %}
+    {% style %}
+      #shopify-section-{{ section.id }} .sidebar {
+        width: 25%;
+      }
+
+      #shopify-section-{{ section.id }} .has-sidebar-option {
+        width: 75%;
+      }
+
+      @media only screen and (max-width: 798px) {
+        #shopify-section-{{ section.id }} .sidebar,
+        #shopify-section-{{ section.id }} .has-sidebar-option {
+          width: 100%;
+        }
+      }
+    {% endstyle %}
+  {% endif %}
+{% endif %}

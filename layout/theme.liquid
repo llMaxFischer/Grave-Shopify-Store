@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html class="no-js no-touch" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="robots" content="index,follow">
+
+    {% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %}{% endif %}
+    <title>{% if template contains "index" %}{{ page_title }}{% else %}{{ page_title }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}{% endif %}{% unless page_title contains shop.name %} - {{ shop.name }}{% endunless %}{% endif %}</title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags | escape }}.{% endif %}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}.{% endif %}"/>
+    {% endif %}
+
+    {% render 'social-meta-info' %}
+
+    {% if collection.previous_product %}
+      <link rel="prev" href="{{ collection.previous_product }}">
+    {% endif %}
+
+    {% if collection.next_product %}
+      <link rel="next" href="{{ collection.next_product }}">
+    {% endif %}
+
+    <!-- Mobile Specific Metas -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.shop_bg_color }}">
+
+    <!-- Preconnect Domains -->
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.shopify.com" crossorigin>
+    <link rel="preconnect" href="https://monorail-edge.shopifysvc.com">
+
+    <!-- Preload Assets -->
+    <link rel="preload" href="{{ 'vendors.js' | asset_url }}" as="script">
+    <link rel="preload" href="{{ 'mmenu-styles.scss' | asset_url }}" as="style">
+    <link rel="preload" href="{{ 'fancybox.css' | asset_url }}" as="style">
+    <link rel="preload" href="{{ 'styles.css' | asset_url }}" as="style">
+    <link rel="preload" href="{{ 'jsSlideshow.js' | asset_url }}" as="script">
+    <link rel="preload" href="{{ 'app.js' | asset_url }}" as="script">
+
+    <!-- Stylesheet for mmenu plugin -->
+    {{ 'mmenu-styles.scss' | asset_url | stylesheet_tag }}
+
+    <!-- Stylesheet for Fancybox library -->
+    {{ 'fancybox.css' | asset_url | stylesheet_tag }}
+
+    <!-- Stylesheets for Parallax -->
+    {{ 'styles.css' | asset_url | stylesheet_tag }}
+
+    {% if settings.favicon != nil %}
+      <link rel="shortcut icon" type="image/x-icon" href="{{ settings.favicon | img_url: '180x180' }}">
+      <link rel="apple-touch-icon" href="{{ settings.favicon | img_url: '180x180' }}"/>
+      <link rel="apple-touch-icon" sizes="72x72" href="{{ settings.favicon | img_url: '72x72' }}"/>
+      <link rel="apple-touch-icon" sizes="114x114" href="{{ settings.favicon | img_url: '114x114' }}"/>
+      <link rel="apple-touch-icon" sizes="180x180" href="{{ settings.favicon | img_url: '180x180' }}"/>
+      <link rel="apple-touch-icon" sizes="228x228" href="{{ settings.favicon | img_url: '228x228' }}"/>
+    {% else %}
+      <link rel="shortcut icon" type="image/x-icon" href="{{ 'favicon.png' | asset_url }}">
+    {% endif %}
+
+    <link rel="canonical" href="{{ canonical_url }}"/>
+
+    <script>
+      document.documentElement.className=document.documentElement.className.replace(/\bno-js\b/,'js');
+      if(window.Shopify&&window.Shopify.designMode)document.documentElement.className+=' in-theme-editor';
+      if(('ontouchstart' in window)||window.DocumentTouch&&document instanceof DocumentTouch)document.documentElement.className=document.documentElement.className.replace(/\bno-touch\b/,'has-touch');
+    </script>
+
+    {% if template contains 'customer' %}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer></script>
+      <script src="{{ 'customer_area.js' | shopify_asset_url }}" defer></script>
+    {% endif %}
+
+    {% if settings.show_shipping_calculator %}
+      <script src="{{ '/services/javascripts/countries.js' }}" defer></script>
+    {% endif %}
+
+    {% comment %}Inject theme-object begin{% endcomment %}
+    <script>
+      window.PXUTheme = window.PXUTheme || {};
+      window.PXUTheme.version = '7.1.1';
+      window.PXUTheme.name = 'Parallax';
+    </script>
+    {% comment %}Inject theme-object end{% endcomment %}
+
+
+    <script>
+      {% render 'js-variables' %}
+    </script>
+
+    <script src="{{ 'vendors.js' | asset_url }}" defer></script>
+    <script src="{{ 'jsSlideshow.js' | asset_url }}" defer></script>
+    <script src="{{ 'app.js' | asset_url }}" defer></script>
+
+    {%- render 'head.import-map' -%}
+    {%- render 'head.is-land' -%}
+
+    {{ content_for_header }}
+
+    <style>
+      :root {
+        /* ------------------------------------------------------------
+          Typography
+        ------------------------------------------------------------ */
+
+        /* Body */
+        --element-text-font-family--body: {{ settings.regular__font.family }}, {{ settings.regular__font.fallback_families }};
+        --element-text-font-weight--body: {{ settings.regular__font.weight }};
+        --element-text-text-transform--body: {{ settings.regular_font_style }};
+        --element-text-font-size--rte-body: {{ settings.regular_font_size }}px;
+
+
+        /* Headings */
+        --element-text-font-family--heading: {{ settings.headline__font.family }}, {{ settings.headline__font.fallback_families }};
+        --element-text-font-weight--heading: {{ settings.headline__font.weight }};
+        --element-text-letter-spacing--heading: {{ settings.headline_letter_spacing }}px;
+        --element-text-text-transform--heading: {{ settings.headline_font_style }};
+        --element-text-font-size--heading-xl: {{ settings.headline_font_size }}px;
+
+        /* Buttons */
+        --element-button-font-family: {{ settings.regular__font.family }}, {{ settings.regular__font.fallback_families }};
+        --element-button-font-size: 13px;
+        --element-button-letter-spacing: 0px;
+        --element-button-radius: 0px;
+        --element-button-text-transform: uppercase;
+
+        /* ------------------------------------------------------------
+          Colors
+        ------------------------------------------------------------ */
+        --color-primary: {{ settings.regular_color }}; 
+        --color-secondary: white;
+        --root-color-primary: {{ settings.regular_color }}; 
+        --root-color-secondary: white;
+        --element-text-color: {{ settings.regular_color }};
+
+        --color-sale-tag-text: white;
+        --color-sale-tag: {{ settings.sale_banner_color }};
+
+        --layout-section-background: {{ settings.shop_bg_color }}
+      }
+
+      /* Override Shopify Payment Button styles */
+      .element-button--shopify-payment-wrapper .shopify-payment-button .shopify-payment-button__button--unbranded,
+      .element-button--shopify-payment-wrapper .shopify-payment-button .shopify-payment-button__button {
+        --element-text-line-height--body-md: 1;
+        --element-button-text-transform: {{ settings.button_font_style }};
+        text-transform: var(--element-button-text-transform);
+        color: {{ settings.btn_text_color }};
+        background-color: {{ settings.btn_color }};
+      }
+
+      .shopify-payment-button .shopify-payment-button__button--unbranded:hover:not([disabled]),
+      .shopify-payment-button .shopify-payment-button__button:hover:not([disabled]) {
+        background: {{ settings.btn_hover_color }}!important;
+        color: {{ settings.btn_text_color }}!important;
+      }
+
+      .add-to-cart-button{
+        --element-button-color-primary: {{ settings.btn_color }};
+        --element-text-line-height--body-md: 1;
+      }
+
+      .element-button--inverted.add-to-cart-button:hover {
+        background: var(--color-secondary);
+        color: var(--element-button-color-primary);
+      }
+
+      .add-to-cart-button .element-text{
+        --element-button-text-transform: {{ settings.button_font_style }};
+        --element-button-font-family: {{ settings.nav__font.family }}, {{ settings.nav__font.fallback_families }};
+        --element-button-font-size: {{ settings.button_font_size  }}px;
+        --element-button-font-weight: bold;
+        text-transform: var(--element-button-text-transform);
+        font-family: var(--element-button-font-family);
+        font-size: var(--element-button-font-size);
+        font-weight: var(--element-button-font-weight);
+      }
+
+      .product-title{
+        --element-text-color: {{ settings.headline_color }};
+        text-transform: var(--element-text-text-transform--heading);
+        text-align: initial;
+      }
+
+      /* Reset styles for quantity selector input */
+      .element-quantity-selector__input[type=text] {
+        margin: 0;
+        border: none;
+        font-family: inherit;
+        background: transparent;
+      }
+
+      .element-quantity-selector__button:hover{
+        background-color: transparent;
+      }
+
+      .vendor{
+        --element-text-color: {{ settings.link_color }};
+      }
+
+      .sale-price{
+        --element-text-color: {{ settings.sale_color }};
+      }
+
+      .compare-at-price{
+        --element-text-color: {{ settings.was_price_color }};
+      }
+
+      .variant-option-value-name-selected{
+        --element-text-font-weight: bold;
+      }
+
+      .variant-option-value-name{
+        --element-text-font-weight: bold;
+      }
+
+      .element-badge--sale .element-text{
+        color: var(--color-sale-tag-text);
+      }
+
+      .media-gallery__nav:hover{
+        background-color:white;
+      }
+
+      .overlay-lightbox__overlay {
+        z-index: 11000;
+      }
+
+      .overlay-drawer{
+        z-index: 11000;
+      }
+
+      label.visually-hidden {
+        position: absolute !important;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+        border: 0;
+      }
+    </style>
+
+    <noscript>
+      <style>
+
+        .slides > li:first-child { display: block; }
+        .image__fallback {
+          width: 100vw;
+          display: block !important;
+          max-width: 100vw !important;
+          margin-bottom: 0;
+        }
+
+        .no-js-only {
+          display: inherit !important;
+        }
+
+        .icon-cart.cart-button {
+          display: none;
+        }
+
+        .lazyload,
+        .cart_page_image img {
+          opacity: 1;
+          -webkit-filter: blur(0);
+          filter: blur(0);
+        }
+
+        .image-element__wrap {
+          display: none;
+        }
+
+        .banner__text .container {
+          background-color: transparent;
+        }
+
+        .animate_right,
+        .animate_left,
+        .animate_up,
+        .animate_down {
+          opacity: 1;
+        }
+
+        .flexslider .slides>li {
+          display: block;
+        }
+
+        .product_section .product_form {
+          opacity: 1;
+        }
+
+        .multi_select,
+        form .select {
+          display: block !important;
+        }
+
+        .swatch-options {
+          display: none;
+        }
+
+        .parallax__wrap .banner__text {
+          position: absolute;
+          margin-left: auto;
+          margin-right: auto;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          top: 0;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+        }
+
+        .parallax__wrap .image__fallback {
+          max-height: 1000px;
+          -o-object-fit: cover;
+          object-fit: cover;
+        }
+      </style>
+    </noscript>
+{{ 'custom.css' | asset_url | stylesheet_tag }}
+
+  </head>
+
+  {% if template contains "index" %}
+    {% assign feature_image = true %}
+  {% elsif template contains "collection" %}
+    {% assign feature_image = true %}
+  {% elsif template contains "blog" %}
+    {% assign feature_image = true %}
+  {% elsif template contains "article" %}
+    {% assign feature_image = true %}
+  {% elsif template contains "contact" %}
+    {% assign feature_image = true %}
+  {% elsif template contains "banner" %}
+    {% assign feature_image = true %}
+  {% else %}
+    {% assign feature_image = false %}
+  {% endif %}
+
+  <body
+    class="{{ template | replace: '.', '-' | handle }} {% if feature_image %}feature_image{% endif %}"
+    data-money-format="{% if settings.currency_format == 'money_with_currency_format' %}{{ shop.money_with_currency_format | strip_html }}{% else %}{{ shop.money_format | strip_html }}{% endif %}"
+    data-shop-url="{{ shop.url }}"
+    data-current-lang="{{ request.locale.iso_code }}"
+  >
+    {% sections 'header-group' %}
+
+    <div style="--background-color: {{ settings.shop_bg_color }}">
+      {%
+        render 'age-gate',
+        id: 'page',
+        sections: content_for_layout,
+      %}
+    </div>
+
+    <div id="content_wrapper">
+      {% comment %}Inject icon-star-symbol begin{% endcomment %}
+      <svg
+        class="icon-star-reference"
+        aria-hidden="true"
+        focusable="false"
+        role="presentation"
+        xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="3 3 17 17" fill="none"
+      >
+        <symbol id="icon-star">
+          <rect class="icon-star-background" width="20" height="20" fill="currentColor"/>
+          <path d="M10 3L12.163 7.60778L17 8.35121L13.5 11.9359L14.326 17L10 14.6078L5.674 17L6.5 11.9359L3 8.35121L7.837 7.60778L10 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </symbol>
+        <clipPath id="icon-star-clip">
+          <path d="M10 3L12.163 7.60778L17 8.35121L13.5 11.9359L14.326 17L10 14.6078L5.674 17L6.5 11.9359L3 8.35121L7.837 7.60778L10 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </clipPath>
+      </svg>
+      {% comment %}Inject icon-star-symbol end{% endcomment %}
+
+
+      <div class="global-wrapper">
+        {% if settings.mobile_search_location == 'below-header' %}
+          <div class="mobile-search-bar">
+            {%
+              render 'search-form',
+              context: 'mobile-search-bar',
+              show_overlay: true,
+            %}
+          </div>
+        {% endif %}
+
+        <div class="site-overlay" data-site-overlay></div>
+
+        {{ content_for_layout }}
+      </div>
+
+      {% if settings.show_shipping_calculator and template contains 'cart' %}
+        {% render 'cart-shipping-calculator' %}
+      {% endif %}
+
+      {% sections 'footer-group' %}
+
+      <div id="search" class="animated">
+        <section class="section">
+          <div
+            class="
+              one-half
+              column
+              medium-down--one-whole
+              offset-by-four
+              is-hidden-offset-mobile-only
+            "
+          >
+            {%
+              render 'search-form',
+              context: 'header',
+            %}
+          </div>
+        </section>
+      </div>
+    </div>
+
+    {% if settings.mobile_search_location == 'mobile-menu' %}
+      <div class="mobile-search" data-mobile-search>
+        {%
+          render 'search-form',
+          context: 'mobile-search',
+        %}
+      </div>
+    {% endif %}
+
+    {% if settings.newsletter_popup %}
+      {% render 'newsletter-popup' %}
+    {% endif %}
+
+    {% if settings.disqus_enabled %}
+      {% if template contains "blog" or template contains "article" or template contains "index" %}
+        <script id="dsq-count-scr" src="//{{ settings.disqus_shortname }}.disqus.com/count.js" async></script>
+      {% endif %}
+    {% endif %}
+
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        // Parallax plugin initialized if there is a parallax banner added to the page
+        if ($('.parallax-banner').length > 0) {
+          new universalParallax().init({
+            speed: window.PXUTheme.media_queries.tablet.matches ? 10 : 4
+          })
+        }
+      });
+    </script>
+
+    <script>
+      (function () {
+        function handleFirstTab(e) {
+          if (e.keyCode === 9) { // the "I am a keyboard user" key
+            document.body.classList.add('user-is-tabbing');
+            window.removeEventListener('keydown', handleFirstTab);
+          }
+        }
+        window.addEventListener('keydown', handleFirstTab);
+      })();
+    </script>
+    <script>(function(n, v) {/* eslint-disable-next-line max-len */if (window.Shopify && window.Shopify.theme && navigator && navigator.sendBeacon && window.Shopify.designMode) {if (sessionStorage.getItem('oots_beacon')) return;navigator.sendBeacon('https://app.outofthesandbox.com/beacon', new URLSearchParams({shop_domain: window.Shopify.shop.toLowerCase(),shop_id: '{{ shop.id }}',shop_email: '{{ shop.email }}',theme_name: n.toLowerCase(),theme_version: v.toLowerCase(),theme_store_id: window.Shopify.theme.theme_store_id,theme_id: window.Shopify.theme.id,theme_role: window.Shopify.theme.role,}));sessionStorage.setItem('oots_beacon', '');}}('parallax','7.1.1'))</script>
+  </body>  
+</html>
