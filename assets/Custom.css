@@ -22,6 +22,15 @@
 .contact-section {
   padding-top: 80px;
 }
+/* Hide cart drawer unless mmenu properly opens it */
+#cart {
+  display: none !important;
+}
+
+#cart.mm-menu.mm-opened {
+  display: flex !important;
+}
+
 /* Button hover effects */
 button,
 .button,
