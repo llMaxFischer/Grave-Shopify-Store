@@ -112,19 +112,19 @@ input[type="button"]:hover {
   width: auto !important;
   max-width: calc(100% - 24px);
   padding: 12px 20px !important;
-  background: linear-gradient(180deg, #9e1c1c 0%, #7b1616 100%);
-  color: #ffffff !important;
-  border: 1px solid rgba(255, 40, 40, 0.45);
-  border-radius: 999px;
+  background: #3cd36a !important;
+  color: #181818 !important;
+  border: none !important;
+  border-radius: 8px;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.55), 0 0 12px rgba(255,40,40,0.25);
+  text-transform: capitalize;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.55);
   opacity: 0;
   visibility: hidden;
   z-index: 20;
-  transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.3s ease, border-color 0.25s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.3s ease;
 }
 
 .quick_shop.quick_shop--button::before,
@@ -134,6 +134,8 @@ input[type="button"]:hover {
 
 .quick_shop.quick_shop--button .icon-search {
   font-size: 14px;
+  color: #181818 !important;
+  fill: #181818 !important;
 }
 
 .thumbnail:hover .quick_shop.quick_shop--button,
@@ -145,9 +147,10 @@ input[type="button"]:hover {
 }
 
 .quick_shop.quick_shop--button:hover {
-  border-color: rgba(255,80,80,0.8);
-  box-shadow: 0 14px 28px rgba(0,0,0,0.65), 0 0 22px rgba(255, 0, 30, 0.5), 0 0 55px rgba(255, 0, 30, 0.38), 0 0 90px rgba(255, 0, 30, 0.25);
-  color: #ffffff !important;
+  transform: translateX(-50%) translateY(0) scale(1.08);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.65);
+  background-color: #3cd36a !important;
+  color: #181818 !important;
 }
 
 @media (max-width: 767px) {
@@ -999,13 +1002,18 @@ ul.header__navigation.menu li {
 /* Nav link hover scale */
 ul.header__navigation.menu li a:hover {
   transform: scale(1.15) !important;
-  color: #540c1f !important;
+  color: #3cd36a !important;
+}
+
+/* Override theme's higher-specificity hover on feature_image pages */
+.feature_image .header .nav a:hover {
+  color: #3cd36a !important;
 }
 
 /* Active link - red, no underline */
 ul.header__navigation.menu li a.active,
 ul.header__navigation.menu li a.top-link.active {
-  color: #540c1f !important;
+  color: #3cd36a !important;
   text-decoration: none !important;
 }
 
@@ -1048,9 +1056,79 @@ ul.header__secondary-navigation.menu.right {
   display: inline-flex !important;
   align-items: center !important;
   transform: translateY(-16px) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
 }
 
-/* Parallax image shift up */
-.parallax__wrap .parallax {
-  margin-top: -40px !important;
+.banner__inner-text .button:hover,
+.banner__inner-text a.button:hover,
+.banner__inner-text .action_button:hover {
+  transform: translateY(-16px) scale(1.08) !important;
+  box-shadow: 0 0 20px 6px #3dd13d !important;
+  background-color: #3cd36a !important;
+}
+
+/* Parallax zoom on scroll (replaces JS upward drift) */
+.parallax__container .parallax {
+  top: 0 !important;
+}
+
+@keyframes hero-zoom {
+  from { transform: translateZ(0) scale(1); }
+  to   { transform: translateZ(0) scale(1.1); }
+}
+
+.parallax__container .parallax {
+  animation: hero-zoom linear;
+  animation-timeline: scroll(root);
+  animation-range: 0vh 100vh;
+}
+
+/* =========================================
+   PRODUCT PAGE IMAGE SIZING
+   ========================================= */
+
+.product-gallery__main .image-element__wrap {
+  max-width: min(100%, 400px) !important;
+  margin: 0 auto !important;
+}
+
+.product-gallery__main .image-element__wrap img {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.product-gallery__main,
+.product-gallery__image {
+  overflow: hidden !important;
+}
+
+.thumbnail .image__container {
+  overflow: hidden !important;
+}
+
+/* =========================================
+   ABOUT PAGE IMAGES
+   ========================================= */
+
+.page .container.main-wrapper img[src*="Grave_About_Me_Image_2"],
+.page .container.main-wrapper img[src*="about-v4"] {
+  transition: transform 0.5s ease !important;
+  cursor: pointer !important;
+}
+
+.page .container.main-wrapper img[src*="Grave_About_Me_Image_2"]:hover,
+.page .container.main-wrapper img[src*="about-v4"]:hover {
+  transform: scale(1.05) !important;
+}
+
+.page .container.main-wrapper div[style*="margin: 0 auto"] {
+  width: 92% !important;
+}
+
+.shopify-section--collection-list .thumbnail a:hover .thumbnail__title {
+  color: #3cd36a !important;
+}
+
+.shopify-section--collection-list .thumbnail a:hover {
+  color: #3cd36a !important;
 }

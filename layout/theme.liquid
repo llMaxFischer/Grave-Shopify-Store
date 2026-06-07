@@ -339,9 +339,19 @@
 {{ 'grave-custom.css' | asset_url | stylesheet_tag }}
 
   <style>
-    body { background: #151515 !important; }
+    html, body, .global-wrapper, .main-wrapper { background: #121212 !important; }
+    div.header_bar, #header { background: #121212 !important; }
     .banner__inner-text { padding-top: 167px !important; }
+    .banner__inner-text .headline {
+      font-size: 72px !important;
+      margin-bottom: 5px !important;
+    }
     .banner__inner-text .subtitle { margin-top: 30px !important; }
+    .banner__inner-text .subtitle,
+    .banner__inner-text .subtitle p {
+      font-size: 22px !important;
+      font-weight: normal !important;
+    }
     .banner__inner-text .action_button {
       display: inline-flex !important;
       flex-direction: column !important;
@@ -349,6 +359,75 @@
       align-items: center !important;
       padding-top: 8px !important;
       padding-bottom: 17px !important;
+      transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+    }
+    .banner__inner-text .action_button:hover {
+      transform: translateY(-16px) scale(1.08) !important;
+      box-shadow: 0 0 18px 4px #3dd13d !important;
+      background-color: #3cd36a !important;
+    }
+    /* Override theme's higher-specificity hover on pages with feature_image */
+    .feature_image .header .nav a:hover {
+      color: #3cd36a !important;
+    }
+    /* Override theme's section-specific white active color on hover */
+    #shopify-section-sections--19655295205558__header .nav a.active:hover,
+    #shopify-section-sections--19655295205558__header .nav a.active:focus {
+      color: #3cd36a !important;
+    }
+    /* Cart count number matches link hover green */
+    .nav a.icon-cart:hover span {
+      color: #3cd36a !important;
+    }
+    /* Parallax: neutralize JS upward drift, replace with scroll-driven zoom */
+    .parallax__container .parallax {
+      top: 0 !important;
+    }
+
+    @keyframes hero-zoom {
+      from { transform: translateZ(0) scale(1); }
+      to   { transform: translateZ(0) scale(1.25); }
+    }
+
+    .parallax__container .parallax {
+      animation: hero-zoom linear;
+      animation-timeline: scroll(root);
+      animation-range: 0vh 100vh;
+    }
+    /* Quick shop buttons — match green hero button style, no glow */
+    .quick_shop.quick_shop--button {
+      left: 24px !important;
+      right: 24px !important;
+      width: auto !important;
+      bottom: 14px !important;
+      transform: translateY(10px) !important;
+      background: #3cd36a !important;
+      color: #181818 !important;
+      border: none !important;
+      border-radius: 8px;
+      text-transform: capitalize;
+      white-space: nowrap;
+      padding: 6px 20px !important;
+      font-size: 17px !important;
+      font-weight: 700 !important;
+      background: rgba(60, 211, 106, 0.75) !important;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.55);
+      transition: opacity 0.25s ease, transform 0.5s ease, box-shadow 0.3s ease !important;
+    }
+    .quick_shop.quick_shop--button .icon-search {
+      display: none !important;
+    }
+    .quick_shop.quick_shop--button:hover {
+      transform: translateY(0) scale(1.08) !important;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.65);
+      background-color: #3cd36a !important;
+      color: #181818 !important;
+      border-color: transparent !important;
+    }
+    .thumbnail:hover .quick_shop.quick_shop--button,
+    .product-thumbnail:hover .quick_shop.quick_shop--button,
+    .image__container:hover .quick_shop.quick_shop--button {
+      transform: translateY(0) !important;
     }
   </style>
 

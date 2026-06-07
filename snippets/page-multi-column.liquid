@@ -1,3 +1,4 @@
+{% assign content = content | replace: 'https://cdn.shopify.com/s/files/1/0705/8872/7478/files/Grave_About_Me_Image_2.png?v=1761431917',     'https://cdn.shopify.com/s/files/1/0705/8872/7478/t/5/assets/about-v4.png?v=1780864576' %}
 {% assign cols = content | split: '<!-- split -->' %}
 {% if cols.size == 2 %}
   <div
@@ -94,3 +95,12 @@
     {{ content }}
   </div>
 {% endif %}
+
+<script>
+(function() {
+  var imgs = document.querySelectorAll('.container.main-wrapper img[src*="Grave_About_Me_Image_2"]');
+  if (imgs.length) {
+    imgs[0].src = 'https://cdn.shopify.com/s/files/1/0705/8872/7478/t/5/assets/about-v4.png?v=1780864576';
+  }
+})();
+</script>
