@@ -117,3 +117,34 @@ window.PXUTheme.jsSlideshow = {
     }
   }
 }
+
+/* grave-banner-zoom: gentle parallax zoom for lower banners (hero handled in theme.liquid) */
+(function() {
+  function initGraveBannerZoom() {
+    var banners = document.querySelectorAll('.parallax__wrap .parallax');
+    if (banners.length < 2) return;
+    var viewportHeight = window.innerHeight;
+    window.addEventListener('resize', function() { viewportHeight = window.innerHeight; });
+    function buildUpdater(parallax, maxScale) {
+      return function() {
+        var rect = parallax.getBoundingClientRect();
+        var centerY = rect.top + rect.height / 2;
+        var distanceFromCenter = Math.abs(centerY - viewportHeight / 2);
+        var maxDistance = viewportHeight * 1.5;
+        var progress = Math.min(distanceFromCenter / maxDistance, 1);
+        var scale = 1 + (maxScale - 1) * progress;
+        parallax.style.transform = 'scale(' + scale + ')';
+      };
+    }
+    for (var i = 1; i < banners.length; i++) {
+      var update = buildUpdater(banners[i], 1.2);
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGraveBannerZoom);
+  } else {
+    initGraveBannerZoom();
+  }
+})();
