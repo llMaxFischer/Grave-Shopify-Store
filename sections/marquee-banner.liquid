@@ -1,0 +1,67 @@
+<style>
+  .shopify-section--marquee-banner {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .shopify-section--image-with-text-overlay-section {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .marquee-banner__wrapper {
+    width: 100%;
+    overflow: hidden;
+    background: #000000;
+    line-height: 0;
+  }
+
+  .marquee-banner__track {
+    display: flex;
+    width: 200vw;
+    animation: marqueeScroll 40s linear infinite;
+  }
+
+  .marquee-banner__item {
+    flex: 0 0 100vw;
+    overflow: visible;
+  }
+
+  .marquee-banner__item img {
+    display: block;
+    width: calc(100vw + 1px);
+    height: auto;
+    margin-right: -1px;
+  }
+
+  @keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100vw); }
+  }
+</style>
+
+<div class="marquee-banner__wrapper">
+  <div class="marquee-banner__track">
+    <div class="marquee-banner__item">
+      <img src="{{ 'stay-haunted-banner.svg' | asset_url }}" alt="Stay Haunted" loading="eager">
+    </div>
+    <div class="marquee-banner__item">
+      <img src="{{ 'stay-haunted-banner.svg' | asset_url }}" alt="Stay Haunted" loading="eager">
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Marquee Banner",
+    "class": "shopify-section--marquee-banner",
+    "settings": [],
+    "presets": [{
+      "name": "Marquee Banner",
+      "category": "Content"
+    }],
+    "enabled_on": {
+      "templates": ["index"]
+    }
+  }
+{% endschema %}

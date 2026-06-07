@@ -243,6 +243,13 @@
         clip: rect(1px, 1px, 1px, 1px);
         border: 0;
       }
+
+      @font-face {
+        font-family: 'Candelabra';
+        src: url('{{ "Candelabra.otf" | asset_url }}') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+      }
     </style>
 
     <noscript>
@@ -329,7 +336,7 @@
         }
       </style>
     </noscript>
-{{ 'custom.css' | asset_url | stylesheet_tag }}
+{{ 'Custom.css' | asset_url | stylesheet_tag }}
 
   </head>
 
@@ -469,5 +476,25 @@
       })();
     </script>
     <script>(function(n, v) {/* eslint-disable-next-line max-len */if (window.Shopify && window.Shopify.theme && navigator && navigator.sendBeacon && window.Shopify.designMode) {if (sessionStorage.getItem('oots_beacon')) return;navigator.sendBeacon('https://app.outofthesandbox.com/beacon', new URLSearchParams({shop_domain: window.Shopify.shop.toLowerCase(),shop_id: '{{ shop.id }}',shop_email: '{{ shop.email }}',theme_name: n.toLowerCase(),theme_version: v.toLowerCase(),theme_store_id: window.Shopify.theme.theme_store_id,theme_id: window.Shopify.theme.id,theme_role: window.Shopify.theme.role,}));sessionStorage.setItem('oots_beacon', '');}}('parallax','7.1.1'))</script>
+    <script>
+      (function() {
+        var parallax = document.querySelector('.parallax__wrap .parallax');
+        if (parallax) {
+          var maxScale = 1.7;
+          var viewportHeight = window.innerHeight;
+          function updateParallaxZoom() {
+            var rect = parallax.getBoundingClientRect();
+            var centerY = rect.top + rect.height / 2;
+            var distanceFromCenter = Math.abs(centerY - viewportHeight / 2);
+            var maxDistance = viewportHeight * 1.5;
+            var progress = Math.min(distanceFromCenter / maxDistance, 1);
+            var scale = 1 + (maxScale - 1) * progress;
+            parallax.style.transform = 'scale(' + scale + ')';
+          }
+          window.addEventListener('scroll', updateParallaxZoom);
+          updateParallaxZoom();
+        }
+      })();
+    </script>
   </body>  
 </html>
