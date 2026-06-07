@@ -336,7 +336,21 @@
         }
       </style>
     </noscript>
-{{ 'Custom.css' | asset_url | stylesheet_tag }}
+{{ 'grave-custom.css' | asset_url | stylesheet_tag }}
+
+  <style>
+    body { background: #151515 !important; }
+    .banner__inner-text { padding-top: 167px !important; }
+    .banner__inner-text .subtitle { margin-top: 30px !important; }
+    .banner__inner-text .action_button {
+      display: inline-flex !important;
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+      align-items: center !important;
+      padding-top: 8px !important;
+      padding-bottom: 17px !important;
+    }
+  </style>
 
   </head>
 

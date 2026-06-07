@@ -1,3 +1,4 @@
+/* v20260606 */
 /* Social Media Icons - White with red hover */
 .social-icons a,
 .social-icons svg,
@@ -939,7 +940,10 @@ input[type="button"]:hover {
 
 /* Section spacing - 80px gutters */
 .header > .section {
-  padding: 8px 80px !important;
+  padding: 1px 80px !important;
+  max-width: none !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 /* Make header a proper flex layout */
@@ -949,6 +953,8 @@ input[type="button"]:hover {
   justify-content: space-between !important;
   flex-wrap: nowrap !important;
   width: 100% !important;
+  max-width: none !important;
+  gap: 0 !important;
 }
 
 /* Logo - natural size, left */
@@ -959,6 +965,7 @@ input[type="button"]:hover {
   display: flex !important;
   justify-content: flex-start !important;
   margin: 0 !important;
+  padding-left: 0 !important;
 }
 
 /* Nav area - fill remaining space */
@@ -967,6 +974,7 @@ input[type="button"]:hover {
   width: auto !important;
   display: flex !important;
   align-items: center !important;
+  padding-right: 0 !important;
 }
 
 /* Nav links - centered */
@@ -1019,6 +1027,11 @@ ul.header__secondary-navigation.menu.right {
   margin-top: -22px !important;
 }
 
+/* Hero subtitle + button group - moved down 30px */
+.banner__inner-text .subtitle {
+  margin-top: 30px !important;
+}
+
 /* Hero button */
 .banner__inner-text .button,
 .banner__inner-text a.button,
@@ -1034,7 +1047,7 @@ ul.header__secondary-navigation.menu.right {
   line-height: 1 !important;
   display: inline-flex !important;
   align-items: center !important;
-  transform: translateY(-4px) !important;
+  transform: translateY(-16px) !important;
 }
 
 /* Parallax image shift up */
