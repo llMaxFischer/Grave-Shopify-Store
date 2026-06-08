@@ -22,7 +22,7 @@
         "title": "Welcome, from the Grave!",
         "subtitle": "<p>Dark Fantasy Inspired Apparel</p>",
         "button_label": "Shop Now",
-        "link": "",
+        "link": "/collections/all",
         "text_position": "center center",
         "homepage_arrow": false,
         "parallax_effect": true,

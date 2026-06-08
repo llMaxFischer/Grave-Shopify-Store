@@ -149,28 +149,4 @@ window.PXUTheme.jsSlideshow = {
   }
 })();
 
-/* coffin-scroll-indicator: scroll-down hint at bottom of hero */
-(function() {
-  function initCoffinScroll() {
-    var hero = document.querySelector('.parallax-banner #banner-template--19655300055222__1637000454b16be487')
-            || document.getElementById('banner-template--19655300055222__1637000454b16be487');
-    if (!hero) return;
-    if (hero.querySelector('.coffin-scroll-indicator')) return;
-    var img = document.createElement('img');
-    img.className = 'coffin-scroll-indicator';
-    img.src = 'https://cdn.shopify.com/s/files/1/0705/8872/7478/t/5/assets/coffin-scroll-icon.png?v=1780882121';
-    img.alt = 'Scroll down';
-    img.setAttribute('aria-label', 'Scroll down');
-    img.addEventListener('click', function() {
-      var rect = hero.getBoundingClientRect();
-      var target = window.pageYOffset + rect.bottom;
-      window.scrollTo({ top: target, behavior: 'smooth' });
-    });
-    hero.appendChild(img);
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCoffinScroll);
-  } else {
-    initCoffinScroll();
-  }
-})();
+/* coffin removed — now rendered inline in image-with-text-overlay-section.liquid */

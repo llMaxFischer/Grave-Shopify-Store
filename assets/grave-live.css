@@ -1155,7 +1155,7 @@ ul.header__secondary-navigation.menu.right {
 
 /* Hero text block */
 .banner__inner-text {
-  padding-top: 95px !important;
+  padding-top: 150px !important;
 }
 /* Lower banners – override theme.liquid inline padding (217px too much) */
 #shopify-section-template--19655300055222__image_with_text_overlay_section_6U9TUm .banner__inner-text,
@@ -1235,39 +1235,32 @@ ul.header__secondary-navigation.menu.right {
   position: relative;
 }
 
-.coffin-scroll-indicator {
+.coffin-icon {
+  display: none;
   position: absolute;
   left: 50%;
-  bottom: 24px;
   transform: translateX(-50%);
   z-index: 30;
-  height: 60px;
-  width: auto;
-  cursor: pointer;
-  pointer-events: auto;
-  animation: coffin-bounce 1.6s ease-in-out infinite;
-  opacity: 0.95;
-  transition: opacity 0.2s ease;
+  width: 32px;
+  height: 32px;
+  animation: coffin-bounce-icon 1.6s ease-in-out infinite;
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.45));
+  cursor: pointer;
+  bottom: 88px;
 }
 
-.coffin-scroll-indicator:hover {
-  opacity: 1;
+#banner-template--19655300055222__1637000454b16be487 .parallax__wrap {
+  position: relative;
 }
 
-@keyframes coffin-bounce {
+#banner-template--19655300055222__1637000454b16be487 .coffin-icon {
+  display: block;
+}
+
+@keyframes coffin-bounce-icon {
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50%      { transform: translateX(-50%) translateY(10px); }
 }
-
-@media only screen and (max-width: 798px) {
-  .coffin-scroll-indicator { height: 42px; bottom: 16px; }
-}
-
-@media only screen and (max-width: 480px) {
-  .coffin-scroll-indicator { height: 36px; bottom: 12px; }
-}
-
 /* Tablet: keep a comfortable hero height (light side-crop via cover) */
 @media only screen and (max-width: 798px) {
   #banner-template--19655300055222__1637000454b16be487 .banner__wrap,
