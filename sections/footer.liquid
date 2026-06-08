@@ -95,6 +95,18 @@
             last_name: section.settings.display_last_name
           %}
         </div>
+
+        <div class="footer-reference__social">
+          <a href="{{ settings.facebook_link }}" target="_blank" title="Facebook">
+            <img src="{{ 'icon-facebook.svg' | asset_url }}" alt="Facebook" width="30" height="30">
+          </a>
+          <a href="{{ settings.instagram_link }}" target="_blank" title="Instagram">
+            <img src="{{ 'icon-instagram.svg' | asset_url }}" alt="Instagram" width="30" height="30">
+          </a>
+          <a href="#" target="_blank" title="TikTok">
+            <img src="{{ 'icon-tiktok.svg' | asset_url }}" alt="TikTok" width="30" height="30">
+          </a>
+        </div>
       </div>
 
       {{ section.settings.custom_html }}
@@ -395,6 +407,32 @@
 
 .footer-reference__copyright a:hover {
   color: #fff;
+}
+
+.footer-reference__social {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 18px;
+  margin-right: 14px;
+}
+
+.footer-reference__social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: opacity .22s ease;
+}
+
+.footer-reference__social a:hover {
+  opacity: .72;
+}
+
+.footer-reference__social img {
+  width: 30px;
+  height: 30px;
+  display: block;
 }
 
 @media (max-width: 1200px) {
