@@ -1,4 +1,13 @@
 /* v20260606 */
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('ProximaNova-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Social Media Icons - White with red hover */
 .social-icons a,
 .social-icons svg,
@@ -116,9 +125,10 @@ input[type="button"]:hover {
   color: #181818 !important;
   border: none !important;
   border-radius: 8px;
+  font-family: 'Proxima Nova', 'Candelabra', 'Acumin Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-weight: bold;
+  letter-spacing: 0.06em;
   text-transform: capitalize;
   box-shadow: 0 10px 24px rgba(0,0,0,0.55);
   opacity: 0;
@@ -1017,6 +1027,14 @@ ul.header__navigation.menu li a.top-link.active {
   text-decoration: none !important;
 }
 
+/* Remove focus/pressed outline on nav links */
+ul.header__navigation.menu li a:focus,
+ul.header__navigation.menu li a:focus-visible,
+ul.header__navigation.menu li a:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 /* Icons positioned right */
 ul.header__secondary-navigation.menu.right {
   flex: 0 0 auto !important;
@@ -1081,6 +1099,89 @@ ul.header__secondary-navigation.menu.right {
   animation: hero-zoom linear;
   animation-timeline: scroll(root);
   animation-range: 0vh 100vh;
+}
+
+/* Hero: expose the full image (1900x900) at full width, no crop on desktop/tablet */
+#banner-template--19655300055222__1637000454b16be487 .parallax__wrap,
+#banner-template--19655300055222__1637000454b16be487 .parallax__container .parallax {
+  height: calc(47.37vw - 110px) !important;
+  max-height: 790px !important;
+}
+
+#banner-template--19655300055222__1637000454b16be487 .parallax__container .parallax {
+  background-size: cover !important;
+  background-position: 50% 50% !important;
+}
+
+/* Coffin scroll-down indicator */
+#banner-template--19655300055222__1637000454b16be487 {
+  position: relative;
+}
+
+.coffin-scroll-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  z-index: 30;
+  height: 60px;
+  width: auto;
+  cursor: pointer;
+  pointer-events: auto;
+  animation: coffin-bounce 1.6s ease-in-out infinite;
+  opacity: 0.95;
+  transition: opacity 0.2s ease;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.45));
+}
+
+.coffin-scroll-indicator:hover {
+  opacity: 1;
+}
+
+@keyframes coffin-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(10px); }
+}
+
+@media only screen and (max-width: 798px) {
+  .coffin-scroll-indicator { height: 42px; bottom: 16px; }
+}
+
+@media only screen and (max-width: 480px) {
+  .coffin-scroll-indicator { height: 36px; bottom: 12px; }
+}
+
+/* Tablet: keep a comfortable hero height (light side-crop via cover) */
+@media only screen and (max-width: 798px) {
+  #banner-template--19655300055222__1637000454b16be487 .banner__wrap,
+  #banner-template--19655300055222__1637000454b16be487 .parallax__wrap,
+  #banner-template--19655300055222__1637000454b16be487 .parallax__container .parallax {
+    height: 56vw !important;
+    min-height: 360px !important;
+    max-height: 520px !important;
+  }
+}
+
+/* Phone: taller box so the hero reads well on narrow screens */
+@media only screen and (max-width: 480px) {
+  #banner-template--19655300055222__1637000454b16be487 .banner__wrap,
+  #banner-template--19655300055222__1637000454b16be487 .parallax__wrap,
+  #banner-template--19655300055222__1637000454b16be487 .parallax__container .parallax {
+    height: 85vw !important;
+    min-height: 320px !important;
+    max-height: 460px !important;
+  }
+}
+
+/* Hero text/button: reduce the large desktop top padding on smaller screens */
+@media only screen and (max-width: 798px) {
+  .banner__inner-text { padding-top: 90px !important; }
+  .banner__inner-text .headline { font-size: 48px !important; }
+}
+
+@media only screen and (max-width: 480px) {
+  .banner__inner-text { padding-top: 60px !important; }
+  .banner__inner-text .headline { font-size: 36px !important; }
 }
 
 /* =========================================
