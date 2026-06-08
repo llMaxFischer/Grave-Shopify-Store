@@ -96,13 +96,13 @@
         <div class="footer-reference__social">
           <div class="social-icons">
             {% if settings.facebook_link != blank %}
-              <a href="{{ settings.facebook_link }}" title="{{ shop.name }} on Facebook" class="ss-icon" rel="me" target="_blank">
-                <span class="icon-facebook"></span>
+              <a href="{{ settings.facebook_link }}" title="{{ shop.name }} on Facebook" target="_blank">
+                <img src="{{ 'facebook.svg' | asset_url }}" alt="Facebook" width="32" height="32">
               </a>
             {% endif %}
             {% if settings.instagram_link != blank %}
-              <a href="{{ settings.instagram_link }}" title="{{ shop.name }} on Instagram" class="ss-icon" rel="me" target="_blank">
-                <span class="icon-instagram"></span>
+              <a href="{{ settings.instagram_link }}" title="{{ shop.name }} on Instagram" target="_blank">
+                <img src="{{ 'instagram.svg' | asset_url }}" alt="Instagram" width="32" height="32">
               </a>
             {% endif %}
           </div>
@@ -325,7 +325,8 @@
 }
 
 .footer-reference__newsletter-form .contact_email {
-  width: 100%;
+  width: 600px;
+  max-width: 100%;
   height: 56px;
   min-height: 56px;
   border: 0;
@@ -347,7 +348,7 @@
 
 .footer-reference__newsletter-form .action_button.sign_up {
   position: absolute;
-  right: 8px;
+  right: 24px;
   top: 50%;
   transform: translateY(-50%);
   width: 38px;
@@ -388,7 +389,7 @@
 }
 
 .footer-reference__social {
-  margin-top: 28px;
+  margin-top: 32px;
 }
 
 .footer-reference__social .social-icons {
@@ -398,22 +399,22 @@
 }
 
 .footer-reference__social .social-icons a {
-  width: 46px;
-  height: 46px;
-  border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
   text-decoration: none;
-  font-size: 24px;
-  line-height: 1;
-  transition: opacity .22s ease, transform .22s ease;
+  transition: opacity .22s ease;
 }
 
 .footer-reference__social .social-icons a:hover {
-  opacity: .78;
-  transform: translateY(-1px);
+  opacity: .72;
+}
+
+.footer-reference__social .social-icons img {
+  width: 32px;
+  height: 32px;
+  display: block;
+  filter: brightness(0) invert(1);
 }
 
 .footer-reference__bottom {
