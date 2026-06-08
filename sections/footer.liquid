@@ -54,9 +54,12 @@
           >
         </a>
         <div class="footer-reference__tagline">Dark Fantasy Inspired Apparel</div>
+        <p class="footer-reference__copyright">
+          &copy; {{ "now" | date: "%Y" }} {{ shop.name | link_to: routes.root_url }}.
+          {{ section.settings.copyright_text | escape }}
+        </p>
+        <div class="footer-reference__divider"></div>
       </div>
-
-      <div class="footer-reference__divider"></div>
 
       <div class="footer-reference__menus">
         <ul class="footer-reference__menu footer-reference__menu--col1">
@@ -92,28 +95,6 @@
             last_name: section.settings.display_last_name
           %}
         </div>
-
-        <div class="footer-reference__social">
-          <div class="social-icons">
-            {% if settings.facebook_link != blank %}
-              <a href="{{ settings.facebook_link }}" title="{{ shop.name }} on Facebook" target="_blank">
-                <img src="{{ 'facebook.svg' | asset_url }}" alt="Facebook" width="32" height="32">
-              </a>
-            {% endif %}
-            {% if settings.instagram_link != blank %}
-              <a href="{{ settings.instagram_link }}" title="{{ shop.name }} on Instagram" target="_blank">
-                <img src="{{ 'instagram.svg' | asset_url }}" alt="Instagram" width="32" height="32">
-              </a>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-reference__bottom">
-        <p class="credits">
-          &copy; {{ "now" | date: "%Y" }} {{ shop.name | link_to: routes.root_url }}.
-          {{ section.settings.copyright_text | escape }}
-        </p>
       </div>
 
       {{ section.settings.custom_html }}
@@ -222,19 +203,24 @@
 
 .footer.footer--reference .section {
   padding: 78px 0 20px;
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
 }
 
 .footer-reference__container {
-  max-width: 1360px;
+  max-width: 1660px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 280px 1px 420px 390px;
-  column-gap: 46px;
+  grid-template-columns: 280px 420px 1fr;
+  column-gap: 22px;
   row-gap: 34px;
   align-items: start;
 }
 
 .footer-reference__brand {
+  position: relative;
+  min-height: 348px;
   padding-top: 72px;
 }
 
@@ -258,10 +244,12 @@
 }
 
 .footer-reference__divider {
+  position: absolute;
+  right: 0;
+  top: 4px;
   width: 1px;
   min-height: 348px;
   background: rgba(255,255,255,0.38);
-  margin-top: 4px;
 }
 
 .footer-reference__menus {
@@ -388,57 +376,24 @@
   color: #56565a !important;
 }
 
-.footer-reference__social {
-  margin-top: 32px;
-}
-
-.footer-reference__social .social-icons {
-  display: flex;
-  justify-content: flex-end;
-  gap: 14px;
-}
-
-.footer-reference__social .social-icons a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: opacity .22s ease;
-}
-
-.footer-reference__social .social-icons a:hover {
-  opacity: .72;
-}
-
-.footer-reference__social .social-icons img {
-  width: 32px;
-  height: 32px;
-  display: block;
-  filter: brightness(0) invert(1);
-}
-
-.footer-reference__bottom {
-  grid-column: 1 / -1;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 54px;
-  padding-top: 0;
-}
-
-.footer-reference__bottom .credits {
+.footer-reference__copyright {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
   margin: 0;
   color: rgba(255,255,255,0.72);
   font-size: 12px;
   line-height: 1.5;
+  white-space: nowrap;
 }
 
-.footer-reference__bottom .credits a {
+.footer-reference__copyright a {
   color: rgba(255,255,255,0.72);
   text-decoration: none;
 }
 
-.footer-reference__bottom .credits a:hover {
+.footer-reference__copyright a:hover {
   color: #fff;
 }
 
@@ -456,14 +411,6 @@
   .footer-reference__menus,
   .footer-reference__newsletter {
     padding-top: 0;
-  }
-
-  .footer-reference__social .social-icons {
-    justify-content: flex-start;
-  }
-
-  .footer-reference__bottom {
-    margin-top: 20px;
   }
 }
 
