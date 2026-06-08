@@ -46,32 +46,29 @@
         <a href="{{ routes.root_url }}" class="footer-reference__logo-link">
           <img
             class="footer-reference__logo"
-            src="https://i0zd90-iw.myshopify.com/cdn/shop/files/Grave_Apparel_white_ARC_Logo_400x.png?v=1760457622"
+            src="{{ 'Grave Footer Logo.svg' | asset_url }}"
             alt="{{ shop.name }}"
             loading="lazy"
-            width="400"
-            height="220"
+            width="240"
+            height="auto"
           >
         </a>
-        <div class="footer-reference__tagline">Dark Fantasy Inspired Apparel</div>
-        <p class="footer-reference__copyright">
-          &copy; {{ "now" | date: "%Y" }} {{ shop.name | link_to: routes.root_url }}.
-          {{ section.settings.copyright_text | escape }}
-        </p>
         <div class="footer-reference__divider"></div>
       </div>
 
       <div class="footer-reference__menus">
         <ul class="footer-reference__menu footer-reference__menu--col1">
-          {% for link in linklists['footer'].links %}
-            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-          {% endfor %}
+          <li><a href="/collections/all">All Products</a></li>
+          <li><a href="/collections/new-arrivals">New Arrivals</a></li>
+          <li><a href="/collections/best-sellers">Best Sellers</a></li>
+          <li><a href="/collections/20-off-sale-items">Sale</a></li>
         </ul>
 
         <ul class="footer-reference__menu footer-reference__menu--col2">
-          {% for link in linklists['footer-menu-3'].links %}
-            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-          {% endfor %}
+          <li><a href="/pages/about">About Us</a></li>
+          <li><a href="/pages/contact">Contact</a></li>
+          <li><a href="/pages/faq">FAQ</a></li>
+          <li><a href="/pages/shipping">Shipping &amp; Returns</a></li>
         </ul>
       </div>
 
@@ -110,6 +107,9 @@
       </div>
 
       {{ section.settings.custom_html }}
+      <p class="footer-reference__copyright">
+        &copy; {{ "now" | date: "%Y" }} {{ shop.name | link_to: routes.root_url }} All rights reserved.
+      </p>
     </div>
   </section>
 </div>
