@@ -43,7 +43,8 @@
     <div class="container footer-reference__container">
 
       <div class="footer-reference__brand">
-        <a href="{{ routes.root_url }}" class="footer-reference__logo-link">
+        <!-- n -->
+        <a href="{{ routes.root_url }}" class="footer-reference__logo-link" style="outline:none;box-shadow:none">
           <svg class="footer-reference__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1694.96 1417.37" width="240">
             <g class="coffin-art">
               <path d="M929.48,826.73l-2.81-5.36h-158.38l-2.81,5.36-73.14,139.7-1.57,2.99.57,3.33,74.6,436.3,1.42,8.31h160.23l1.42-8.31,74.6-436.3.57-3.33-1.57-2.99-73.14-139.7ZM919.16,1407.37h-143.36l-74.6-436.3,73.14-139.7h146.28l73.14,139.7-74.6,436.3Z"/>
@@ -266,6 +267,13 @@
 .footer-reference__logo-link {
   display: inline-block;
   text-decoration: none;
+}
+
+.footer-reference__logo-link:focus,
+.footer-reference__logo-link:focus-visible,
+.footer-reference__logo-link:active {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .footer-reference__logo {
