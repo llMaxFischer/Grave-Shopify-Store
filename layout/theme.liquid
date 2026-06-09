@@ -345,8 +345,15 @@
     .header, div.header_bar, div.sticky--active { background: #121212 !important; }
     /* Kill gap between page content and footer */
     .global-wrapper > .section:last-of-type { margin-bottom: 0 !important; }
-    /* Acumin Pro for about page body text */
-    .page p { font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
+    /* About page — widen container, bigger but not huge text */
+    .main-wrapper .one-whole.column > div[style*="width"] {
+      width: 100% !important;
+      max-width: 1760px !important;
+    }
+    .main-wrapper .one-whole.column p {
+      font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+      font-size: 28px !important;
+    }
     .banner__inner-text { padding-top: 217px !important; }
     .banner__inner-text .headline {
       font-size: 72px !important;
