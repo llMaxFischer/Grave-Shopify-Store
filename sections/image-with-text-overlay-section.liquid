@@ -159,6 +159,10 @@
     #banner-{{ section.id }} .coffin-icon {
       display: block;
     }
+  {% else %}
+    #shopify-section-{{ section.id }} .banner__inner-text {
+      padding-top: 60px !important;
+    }
   {% endif %}
 
   @media only screen and (max-width: 798px) {
