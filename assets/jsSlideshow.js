@@ -118,8 +118,17 @@ window.PXUTheme.jsSlideshow = {
   }
 }
 
-/* grave-banner-zoom: gentle parallax zoom for lower banners (hero handled in theme.liquid) */
+/* grave-banner-zoom: gentle parallax zoom for lower banners; strips conflicting CSS animation */
 (function() {
+  /* Inject a style tag to kill the hero-zoom CSS animation on non-hero banners.
+     This runs before DOMContentLoaded so it beats the cached CSS regardless of CDN state. */
+  var style = document.createElement('style');
+  style.textContent =
+    '#banner-template--19655300055222__image_with_text_overlay_section_6U9TUm .parallax__container .parallax,' +
+    '#banner-template--19655300055222__image_with_text_overlay_section_BKkqAp .parallax__container .parallax' +
+    '{ animation: none !important; }';
+  document.head.appendChild(style);
+
   function initGraveBannerZoom() {
     var banners = document.querySelectorAll('.parallax__wrap .parallax');
     if (banners.length < 2) return;

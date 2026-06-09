@@ -1,4 +1,4 @@
-/* v20260608c */
+/* v20260608d - scoped hero-zoom CSS animation to hero banner only; second banner gets JS parallax from jsSlideshow.js */
 
 @font-face {
   font-family: 'Proxima Nova';
@@ -1332,7 +1332,7 @@ ul.header__secondary-navigation.menu.right {
   to   { transform: translateZ(0) scale(1.1); }
 }
 
-.parallax__container .parallax {
+#banner-template--19655300055222__1637000454b16be487 .parallax__container .parallax {
   animation: hero-zoom linear;
   animation-timeline: scroll(root);
   animation-range: 0vh 100vh;
