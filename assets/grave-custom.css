@@ -1132,9 +1132,10 @@ ul.header__navigation.menu li a:hover {
   color: #3cd36a !important;
 }
 
-/* Active link - red, no underline */
+/* Active link - green, no underline */
 ul.header__navigation.menu li a.active,
-ul.header__navigation.menu li a.top-link.active {
+ul.header__navigation.menu li a.top-link.active,
+ul.header__navigation.menu li summary.active {
   color: #3cd36a !important;
   text-decoration: none !important;
 }

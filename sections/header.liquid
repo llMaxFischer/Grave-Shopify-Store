@@ -577,6 +577,20 @@
   {% endunless %}
 </style>
 
+  <style>
+    #shopify-section-{{ section.id }} .nav a.active,
+    #shopify-section-{{ section.id }} .nav a.active:hover,
+    #shopify-section-{{ section.id }} .nav a.active:focus,
+    #shopify-section-{{ section.id }} .nav summary.active,
+    #shopify-section-{{ section.id }} .nav summary.active:hover,
+    #shopify-section-{{ section.id }} .nav summary.active:focus,
+    #shopify-section-{{ section.id }} .nav a:hover,
+    #shopify-section-{{ section.id }} .nav summary:hover {
+      color: #3cd36a !important;
+      text-decoration: none !important;
+    }
+  </style>
+
 {% schema %}
   {
     "name": "Header",

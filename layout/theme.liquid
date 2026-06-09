@@ -367,14 +367,17 @@
       box-shadow: 0 0 18px 4px #3dd13d !important;
       background-color: #3cd36a !important;
     }
-    /* Override theme's higher-specificity hover on pages with feature_image */
-    .feature_image .header .nav a:hover {
+    /* Override theme's active/hover colors — green for all nav link states */
+    body .header .nav a.active,
+    body .header .nav a.active:hover,
+    body .header .nav a.active:focus,
+    body .header .nav summary.active,
+    body .header .nav summary.active:hover,
+    body .header .nav summary.active:focus,
+    body .header .nav a:hover,
+    body .header .nav summary:hover {
       color: #3cd36a !important;
-    }
-    /* Override theme's section-specific white active color on hover */
-    #shopify-section-sections--19655295205558__header .nav a.active:hover,
-    #shopify-section-sections--19655295205558__header .nav a.active:focus {
-      color: #3cd36a !important;
+      text-decoration: none !important;
     }
     /* Cart count number matches link hover green */
     .nav a.icon-cart:hover span {
