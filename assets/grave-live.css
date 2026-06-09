@@ -259,6 +259,20 @@ input[type="button"]:hover {
   display: block !important;
 }
 
+.coffin-art {
+  fill: #ffffff !important;
+  transition: fill 0.2s ease !important;
+}
+
+.footer-reference__logo-link:hover .coffin-art {
+  fill: #3cd36a !important;
+  filter: drop-shadow(0 0 18px #3cd36a) drop-shadow(0 0 6px #3cd36a) !important;
+}
+
+.grave-text {
+  fill: #ffffff !important;
+}
+
 .footer-reference__copyright {
   position: absolute !important;
   bottom: 18px !important;
@@ -276,6 +290,24 @@ input[type="button"]:hover {
   font-size: 10px !important;
 }
 
+.footer-reference__copyright a:hover {
+  color: #3cd36a !important;
+}
+
+.footer-reference__social-icon {
+  fill: #ffffff !important;
+  display: block !important;
+  transition: fill 0.2s ease !important;
+}
+
+.footer-reference__social-link:hover .footer-reference__social-icon {
+  fill: #3cd36a !important;
+}
+
+.footer-reference__social-link:hover {
+  opacity: 1 !important;
+}
+
 .footer-reference__divider {
   position: absolute !important;
   width: 1px !important;
@@ -287,8 +319,9 @@ input[type="button"]:hover {
 }
 
 .footer-reference__menus {
-  margin-left: 112px !important;
-  column-gap: 20px !important;
+  margin-left: 144px !important;
+  column-gap: 55px !important;
+  align-self: center !important;
   padding-top: 18px !important;
   padding-bottom: 18px !important;
 }
@@ -297,6 +330,11 @@ input[type="button"]:hover {
   font-size: 17px !important;
   white-space: nowrap !important;
   font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+.footer-reference__menu a:hover {
+  color: #3cd36a !important;
+  opacity: 1 !important;
 }
 
 .footer-reference__newsletter {
