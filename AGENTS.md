@@ -2,16 +2,28 @@
 
 ## Deploy Workflow
 
-### ⚠️ CRITICAL: CDN Cache
+### ⚠️ CRITICAL: CDN Cache (READ THIS BEFORE EVERY CSS EDIT)
 Shopify's CDN caches CSS files permanently (1-year `max-age=31557600`). Once a filename is served by the CDN, **all subsequent uploads to the same filename are invisible**.
 
-**Always use a new filename** for CSS changes. Never modify `grave-custom.css` and expect it to update.
+**Always use a new filename** for CSS changes. Never modify an existing CSS file and expect it to update. This is the #1 source of frustration when changes "don't work."
 
-### Deploy Process
-1. Create a new CSS file with a fresh name: `grave-v2.css`, `grave-v3.css`, etc.
-2. Update `layout/theme.liquid` to reference the new filename
-3. Push via CLI: `shopify theme push --store=i0zd90-iw --theme=148523188406 --allow-live`
-4. After push, clear Liquid render cache by saving in Theme Editor or rename the theme in admin
+### Current Active Files
+- **CSS**: `assets/grave-v4.css` (latest version)
+- **theme.liquid**: references `grave-v4.css` on line 340
+- Next version when making changes: `grave-v5.css`
+
+### Deploy Process (follow EVERY time)
+1. **Create a NEW CSS file** with the next version number (e.g., `grave-v5.css`)
+2. **Copy current CSS content** to the new file
+3. **Make all edits** to the NEW file only
+4. **Update `layout/theme.liquid`** to reference the new filename
+5. **Push BOTH files**: `shopify theme push -s i0zd90-iw -t 148523188406 --allow-live --nodelete`
+6. **Tell user to hard refresh** (Cmd+Shift+R) — regular refresh won't work
+
+### ⚠️ NEVER DO THIS
+- Editing `grave-v4.css` and re-uploading (CDN serves old version)
+- Forgetting to update `theme.liquid` to reference new filename
+- Pushing only the CSS file without pushing `theme.liquid`
 
 ### Authentication
 API token from `~/Library/Preferences/shopify-cli-kit-nodejs/config.json`:
@@ -38,8 +50,8 @@ API token from `~/Library/Preferences/shopify-cli-kit-nodejs/config.json`:
 - All CSS work is in `assets/grave-custom.css` (local) and `assets/grave-live.css`
 
 ### Key Files
-- `assets/grave-live.css` — current active custom CSS file
-- `layout/theme.liquid` — references `grave-live.css`
+- `assets/grave-v4.css` — current active custom CSS file
+- `layout/theme.liquid` — references `grave-v4.css`
 - `assets/jsSlideshow.js` — appended JS for parallax zoom and coffin scroll indicator
 - `assets/ProximaNova-Bold.ttf` — custom font
 - `assets/stay-haunted-banner.svg` — marquee SVG

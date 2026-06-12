@@ -19,4 +19,10 @@
       content: page.content,
     %}
   </div>
+  <!-- page-{{ page.id }} -->
+  <style>
+    #shopify-section-{{ section.id }} .container.main-wrapper { max-width: none !important; margin-bottom: 0 !important; }
+    #shopify-section-{{ section.id }} .one-whole.column > div[style*="margin"] { max-width: 1760px !important; width: 100% !important; }
+    #shopify-section-{{ section.id }} .one-whole.column p { font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-size: 28px !important; }
+  </style>
 </section>
