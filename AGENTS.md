@@ -39,7 +39,7 @@ When the user says "changes aren't showing," **do NOT immediately write more cod
 7. Repeat until chaos
 
 ### The Correct Response
-1. **Verify the code is correct in the backend** (Shopify code editor)
+1. **Verify the code is correct in the backend** (Shopify code editor or API)
 2. **If code looks correct → STOP. Tell the user:**
    - "The code is correct in the Shopify backend"
    - "The CDN is caching the old version"
@@ -65,6 +65,13 @@ When the user says "changes aren't showing," **do NOT immediately write more cod
 - Don't rely on Cmd+Shift+R alone
 - Keep an Incognito window open for checking changes
 - Or use a secondary browser (Safari/Firefox) just for previewing
+
+### Key Facts About Shopify CDN (2026)
+- Bare query strings (`?v=123`) no longer bust cache — Shopify updated their policy
+- Only a new filename forces CDN to fetch fresh content
+- The `| asset_url` filter appends a version hash, but CDN still caches by filename
+- Use Preview URL with `?preview_theme_id=` parameter to bypass heavy caching
+- There is no "Clear Cache" button in Shopify admin
 
 ## Authentication
 API token from `~/Library/Preferences/shopify-cli-kit-nodejs/config.json`:
