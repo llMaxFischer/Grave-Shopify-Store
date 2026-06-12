@@ -8,10 +8,10 @@ Shopify's CDN caches CSS files permanently (1-year `max-age=31557600`). Once a f
 **Always use a new filename** for CSS changes. Never modify an existing CSS file and expect it to update. This is the #1 source of frustration when changes "don't work."
 
 ### Current Active Files
-- **CSS**: `assets/grave-v19.css` (latest version)
+- **CSS**: `assets/grave-v20.css` (latest version)
 - **About page CSS**: `assets/about-page-v2.css`
-- **theme.liquid**: references `grave-v19.css` on line 340 and `about-page-v2.css` on line 341
-- Next version when making changes: `grave-v20.css`
+- **theme.liquid**: references `grave-v20.css` on line 340 and `about-page-v2.css` on line 341
+- Next version when making changes: `grave-v21.css`
 
 ### Deploy Process (follow EVERY time)
 1. **Create a NEW CSS file** with the next version number (e.g., `grave-v19.css`)
