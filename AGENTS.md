@@ -8,12 +8,12 @@ Shopify's CDN caches CSS files permanently (1-year `max-age=31557600`). Once a f
 **Always use a new filename** for CSS changes. Never modify an existing CSS file and expect it to update. This is the #1 source of frustration when changes "don't work."
 
 ### Current Active Files
-- **CSS**: `assets/grave-v4.css` (latest version)
-- **theme.liquid**: references `grave-v4.css` on line 340
-- Next version when making changes: `grave-v5.css`
+- **CSS**: `assets/grave-v18.css` (latest version)
+- **theme.liquid**: references `grave-v18.css` on line 340
+- Next version when making changes: `grave-v19.css`
 
 ### Deploy Process (follow EVERY time)
-1. **Create a NEW CSS file** with the next version number (e.g., `grave-v5.css`)
+1. **Create a NEW CSS file** with the next version number (e.g., `grave-v19.css`)
 2. **Copy current CSS content** to the new file
 3. **Make all edits** to the NEW file only
 4. **Update `layout/theme.liquid`** to reference the new filename
@@ -21,39 +21,82 @@ Shopify's CDN caches CSS files permanently (1-year `max-age=31557600`). Once a f
 6. **Tell user to hard refresh** (Cmd+Shift+R) — regular refresh won't work
 
 ### ⚠️ NEVER DO THIS
-- Editing `grave-v4.css` and re-uploading (CDN serves old version)
+- Editing `grave-v18.css` and re-uploading (CDN serves old version)
 - Forgetting to update `theme.liquid` to reference new filename
 - Pushing only the CSS file without pushing `theme.liquid`
 
-### Authentication
+## ⚠️ CRITICAL: Avoid the Compounding Loop
+
+When the user says "changes aren't showing," **do NOT immediately write more code.** This creates a compounding loop where perfectly good code gets overwritten.
+
+### The Loop (AVOID THIS)
+1. Agent writes code → pushes to Shopify
+2. User doesn't see change (CDN cache)
+3. Agent writes MORE code to "fix" it
+4. Now there are conflicting styles
+5. User says "that broke something else"
+6. Agent writes EVEN MORE code to fix that
+7. Repeat until chaos
+
+### The Correct Response
+1. **Verify the code is correct in the backend** (Shopify code editor)
+2. **If code looks correct → STOP. Tell the user:**
+   - "The code is correct in the Shopify backend"
+   - "The CDN is caching the old version"
+   - "Do NOT let me write more code yet"
+   - "Please check in Incognito window or secondary browser"
+   - "If still not showing, try the Double Save trick (see below)"
+3. **Only write more code if the user confirms the backend code is wrong**
+
+### Verification Steps (before writing ANY more code)
+1. Check `shopify theme push` output — did it succeed?
+2. If user says "not showing" — ask them to check Shopify code editor (not preview)
+3. If code is correct in editor → it's a CDN issue, not a code issue
+4. Have user try: Incognito window, secondary browser, or Double Save trick
+
+### Double Save Trick (force Shopify preview to re-render)
+1. Open Shopify code editor
+2. Open the file that was just changed
+3. Add a single space → Save
+4. Delete the space → Save
+5. This forces the customizer to re-render
+
+### Multi-Browser Strategy
+- Don't rely on Cmd+Shift+R alone
+- Keep an Incognito window open for checking changes
+- Or use a secondary browser (Safari/Firefox) just for previewing
+
+## Authentication
 API token from `~/Library/Preferences/shopify-cli-kit-nodejs/config.json`:
 - Config is JSON with `sessionStore` as a nested JSON string
 - Navigate to: `sessionStore → accounts.shopify.com → [sessionId] → identity → accessToken`
 - For store-specific: `sessionStore → accounts.shopify.com → [sessionId] → applications → [store key] → accessToken`
 - Token expires ~2 hours; run `shopify auth login` to refresh
 
-### REST API Endpoint
+## REST API Endpoint
 `https://i0zd90-iw.myshopify.com/admin/api/2024-04/themes/148523188406/assets.json`
 - Bearer token auth
 - GET to read, PUT to upload, DELETE to remove
 - Live theme ID: `148523188406`
 
-### Theme Info
-- Live theme: "Copy of Grave Apparel - 04/19/26 - Mike Edits"
+## Theme Info
+- Live theme: "Grave Apparel - Mike's Edit" (#148523188406)
 - Development theme: `149314896054` (name: "Development (c1b2fa-iMac)")
 - Parallax theme, Shopify Online Store 2.0 (JSON templates)
 - Primary green: `#3cd36a`, Page bg: `#121212`, Text: `#d1d7d9`
 
-### Git
+## Git
 - Remote: `https://github.com/llMaxFischer/Grave-Shopify-Store.git`
-- Last commit (as of session end): `c187f43`
-- All CSS work is in `assets/grave-custom.css` (local) and `assets/grave-live.css`
+- Last commit (as of session end): `bad3b2d`
 
-### Key Files
-- `assets/grave-v4.css` — current active custom CSS file
-- `layout/theme.liquid` — references `grave-v4.css`
-- `assets/jsSlideshow.js` — appended JS for parallax zoom and coffin scroll indicator
+## Key Files
+- `assets/grave-v18.css` — current active custom CSS file
+- `layout/theme.liquid` — references `grave-v18.css`
+- `assets/grave-custom.js` — renamed from jsSlideshow.js for CDN cache bust
+- `assets/jsSlideshow.js` — old filename, CDN-cached
 - `assets/ProximaNova-Bold.ttf` — custom font
+- `assets/Times New Roman Bold.ttf` — custom font for titles
 - `assets/stay-haunted-banner.svg` — marquee SVG
 - `assets/facebook.svg`, `assets/instagram.svg` — social icon SVGs
 - `sections/footer.liquid` — footer layout with reference-based classes
+- `.opencode/skills/shopify-cdn/SKILL.md` — CDN caching workflow skill
