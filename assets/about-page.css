@@ -2,4 +2,5 @@
 .container.main-wrapper { max-width: none !important; margin-bottom: 0 !important; }
 .global-wrapper .shopify-section:last-of-type .section { margin-bottom: 0 !important; }
 .one-whole.column > div[style*="margin"] { max-width: 1760px !important; width: 100% !important; }
-.one-whole.column p { font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-size: 28px !important; }
+.one-whole.column p { font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-size: 26px !important; }
+.page .shopify-section--footer { margin-top: 0 !important; padding-top: 0 !important; }

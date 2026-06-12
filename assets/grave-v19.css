@@ -2619,19 +2619,3 @@ ul.header__secondary-navigation.menu.right {
   width: 100% !important;
   margin: 0 !important;
 }
-
-/* =========================================
-   ABOUT PAGE — orphan fix + gap fix
-   ========================================= */
-
-/* Reduce paragraph size to prevent orphan "life" on second paragraph */
-.one-whole.column p {
-  font-size: 26px !important;
-}
-
-/* Kill gap above footer on about page */
-.page .shopify-section:last-of-type .section,
-.page .shopify-section--footer {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
