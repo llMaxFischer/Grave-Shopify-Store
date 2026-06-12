@@ -1233,12 +1233,12 @@ input[type="button"]:hover {
   border-color: #3cd36a;
 }
 
-/* Selected size — keep white outline, no fill */
+/* Selected size — green fill (same as hover) */
 .shopify-section--product-template .swatch:not(.swatch--color) input[type=radio]:checked + .swatch-element label,
 .shopify-section--product-template .swatch:not(.swatch--color) .swatch-element input:checked + label {
-  background: transparent;
-  color: #ffffff;
-  border-color: #ffffff;
+  background: #3cd36a;
+  color: #181818;
+  border-color: #3cd36a;
   box-shadow: none;
   outline: none;
 }

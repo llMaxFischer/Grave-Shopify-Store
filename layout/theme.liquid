@@ -39,7 +39,7 @@
     <link rel="preload" href="{{ 'mmenu-styles.scss' | asset_url }}" as="style">
     <link rel="preload" href="{{ 'fancybox.css' | asset_url }}" as="style">
     <link rel="preload" href="{{ 'styles.css' | asset_url }}" as="style">
-    <link rel="preload" href="{{ 'jsSlideshow.js' | asset_url }}" as="script">
+    <link rel="preload" href="{{ 'grave-custom.js' | asset_url }}" as="script">
     <link rel="preload" href="{{ 'app.js' | asset_url }}" as="script">
 
     <!-- Stylesheet for mmenu plugin -->
@@ -93,7 +93,7 @@
     </script>
 
     <script src="{{ 'vendors.js' | asset_url }}" defer></script>
-    <script src="{{ 'jsSlideshow.js' | asset_url }}" defer></script>
+    <script src="{{ 'grave-custom.js' | asset_url }}" defer></script>
     <script src="{{ 'app.js' | asset_url }}" defer></script>
 
     {%- render 'head.import-map' -%}
@@ -337,7 +337,7 @@
         }
       </style>
     </noscript>
-  {{ 'grave-v15.css' | asset_url | stylesheet_tag }}
+  {{ 'grave-v17.css' | asset_url | stylesheet_tag }}
 {{ 'about-page.css' | asset_url | stylesheet_tag }}
 
   <style>
@@ -593,6 +593,21 @@
           updateParallaxZoom();
         }
       })();
+    </script>
+    <script>
+    (function() {
+      function clearSizeRadios() {
+        document.querySelectorAll('.swatch:not(.swatch--color) input[type=radio]').forEach(function(r) { r.checked = false; });
+      }
+      /* Clear theme default on load */
+      setTimeout(clearSizeRadios, 500);
+      /* Click outside to deselect */
+      document.addEventListener('mousedown', function(e) {
+        if (!e.target.closest('.swatch:not(.swatch--color) .swatch-element label')) {
+          clearSizeRadios();
+        }
+      });
+    })();
     </script>
   </body>  
 </html>
