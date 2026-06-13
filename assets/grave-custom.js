@@ -186,6 +186,13 @@ window.PXUTheme.jsSlideshow = {
     }
   });
 
+  /* Track real user interaction vs programmatic JS */
+  var userActing = false;
+  document.addEventListener('mousedown', function() { userActing = true; });
+  document.addEventListener('mouseup', function() { userActing = false; });
+  document.addEventListener('touchstart', function() { userActing = true; });
+  document.addEventListener('touchend', function() { userActing = false; });
+
   /* MutationObserver to catch theme JS re-checking radios */
   var observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
@@ -193,7 +200,11 @@ window.PXUTheme.jsSlideshow = {
         var target = mutation.target;
         if (target.tagName === 'INPUT' && target.type === 'radio' &&
             target.closest('.swatch:not(.swatch--color)')) {
-          /* Allow the click to set it, but clear others */
+          /* If not triggered by human, undo the check */
+          if (!userActing) {
+            target.checked = false;
+          }
+          /* Clear any other checked radios in this group */
           var name = target.name;
           var radios = document.querySelectorAll('.swatch:not(.swatch--color) input[type=radio][name="' + name + '"]');
           radios.forEach(function(radio) {
