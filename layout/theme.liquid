@@ -346,8 +346,12 @@
     .header, div.header_bar, div.sticky--active { background: #121212 !important; }
     /* Kill gap between page content and footer */
     .global-wrapper .shopify-section:last-of-type .section { margin-bottom: 0 !important; }
-    /* About page — gap above footer */
-    .global-wrapper .shopify-section:last-of-type .section { margin-bottom: 0 !important; }
+    /* About page — fix orphan "Life" + text size: match ID specificity of inline page styles */
+    #shopify-section-template--19893959721142__main .one-whole.column > div[style*="margin"] { max-width: 1900px !important; width: 96% !important; }
+    #shopify-section-template--19893959721142__main .one-whole.column p { font-size: 22px !important; }
+    /* About page — kill gray bar above footer */
+    #shopify-section-sections--19893959360694__footer { margin-top: 0 !important; }
+    #shopify-section-sections--19893959360694__footer .section { padding-top: 0 !important; margin-top: 0 !important; background: #121212 !important; }
     .banner__inner-text { padding-top: 217px !important; }
     .banner__inner-text .headline {
       font-size: 72px !important;
@@ -609,5 +613,6 @@
       });
     })();
     </script>
+    <script src="{{ 'about-overrides-v1.js' | asset_url }}" defer></script>
   </body>  
 </html>
