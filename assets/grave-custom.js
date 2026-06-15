@@ -163,7 +163,7 @@ window.PXUTheme.jsSlideshow = {
 /* Size button deselect on click outside + no default selection */
 (function() {
   function clearSizeSelection() {
-    var radios = document.querySelectorAll('.shopify-section--product-template .swatch:not(.swatch--color) input[type=radio], .modal.fancybox-content .swatch:not(.swatch--color) input[type=radio]');
+    var radios = document.querySelectorAll('.shopify-section--product-template .swatch:not(.swatch--color) input[type=radio], .fancybox-content .swatch:not(.swatch--color) input[type=radio]');
     radios.forEach(function(radio) {
       radio.checked = false;
     });

@@ -337,7 +337,7 @@
         }
       </style>
     </noscript>
-  {{ 'grave-v29.css' | asset_url | stylesheet_tag }}
+  {{ 'grave-v30.css' | asset_url | stylesheet_tag }}
 {{ 'about-page-v2.css' | asset_url | stylesheet_tag }}
 
   <style>
@@ -439,6 +439,9 @@
       transform: translateY(0) !important;
     }
   </style>
+
+  <!-- TEST: if you see red bg, CSS changes work -->
+  <style>body { background: #ff0000 !important; }</style>
 
   </head>
 
