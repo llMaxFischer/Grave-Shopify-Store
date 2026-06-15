@@ -1162,6 +1162,18 @@ input[type="button"]:hover {
   font-weight: 700;
 }
 
+/* Sale price green when compare-at is present (old template) */
+.shopify-section--product-template .sale .current_price,
+.shopify-section--product-template .sale .current_price .money {
+  color: #3cd36a !important;
+}
+
+/* Compare-at (strikethrough) price: white (old template) */
+.shopify-section--product-template .was_price,
+.shopify-section--product-template .was_price .money {
+  color: #ffffff !important;
+}
+
 /* Description */
 .shopify-section--product-template .product-block--description__text,
 .shopify-section--product-template .product-block--description,
@@ -2686,4 +2698,20 @@ ul.header__secondary-navigation.menu.right {
 .footer {
   margin-top: 0 !important;
   border-top: none !important;
+}
+
+/* Constrain variant option labels to their button content size */
+.element-radio {
+  align-self: flex-start !important;
+}
+
+/* Sale price: green when compare-at is shown */
+.sale-price {
+  --element-text-color: #3cd36a !important;
+}
+
+/* Compare-at (strikethrough) price: white */
+.compare-at-price {
+  --element-text-color: #ffffff !important;
+  opacity: 1 !important;
 }

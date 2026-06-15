@@ -86,7 +86,7 @@
       "settings": {
         "product_breadcrumb": true,
         "show_thumbnails": true,
-        "show_arrows": true,
+        "show_arrows": false,
         "enable_lightbox": true,
         "activate_zoom": false,
         "slideshow_speed": 0,

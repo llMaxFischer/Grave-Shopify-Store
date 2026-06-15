@@ -21,7 +21,7 @@
   {% endif %}
 {% endfor %}
 
-<div class="swatch is-flex is-flex-wrap" data-option-index="{{ option_index }}">
+<div class="swatch is-flex is-flex-wrap{% if is_color %} swatch--color{% endif %}" data-option-index="{{ option_index }}">
   <div class="option-title" aria-label="{{ value | escape }}" tabindex="0">{{ swatch }}</div>
 
   {%- assign values = '' -%}

@@ -94,6 +94,7 @@
 
     <script src="{{ 'vendors.js' | asset_url }}" defer></script>
     <script src="{{ 'grave-custom.js' | asset_url }}" defer></script>
+    <script src="{{ 'grave-product.js' | asset_url }}" defer></script>
     <script src="{{ 'app.js' | asset_url }}" defer></script>
 
     {%- render 'head.import-map' -%}
@@ -337,7 +338,7 @@
         }
       </style>
     </noscript>
-  {{ 'grave-v30.css' | asset_url | stylesheet_tag }}
+  {{ 'grave-v31.css' | asset_url | stylesheet_tag }}
 {{ 'about-page-v2.css' | asset_url | stylesheet_tag }}
 
   <style>
@@ -439,9 +440,6 @@
       transform: translateY(0) !important;
     }
   </style>
-
-  <!-- TEST: if you see red bg, CSS changes work -->
-  <style>body { background: #ff0000 !important; }</style>
 
   </head>
 
@@ -600,21 +598,6 @@
           updateParallaxZoom();
         }
       })();
-    </script>
-    <script>
-    (function() {
-      function clearSizeRadios() {
-        document.querySelectorAll('.swatch:not(.swatch--color) input[type=radio]').forEach(function(r) { r.checked = false; });
-      }
-      /* Clear theme default on load */
-      setTimeout(clearSizeRadios, 500);
-      /* Click outside to deselect */
-      document.addEventListener('mousedown', function(e) {
-        if (!e.target.closest('.swatch:not(.swatch--color) .swatch-element label')) {
-          clearSizeRadios();
-        }
-      });
-    })();
     </script>
     <script src="{{ 'about-overrides-v1.js' | asset_url }}" defer></script>
   </body>  
