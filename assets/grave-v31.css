@@ -2700,6 +2700,17 @@ ul.header__secondary-navigation.menu.right {
   border-top: none !important;
 }
 
+/* Sale tag color — both flex-pdp badge and old template thumbnail banner */
+:root {
+  --color-sale-tag: #fc5d32 !important;
+}
+
+.sale_banner,
+.element-badge--sale {
+  background: #fc5d32 !important;
+  background-color: #fc5d32 !important;
+}
+
 /* Constrain variant option labels to their button content size */
 .element-radio {
   align-self: flex-start !important;

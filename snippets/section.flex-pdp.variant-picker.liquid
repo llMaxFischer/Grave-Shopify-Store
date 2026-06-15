@@ -30,7 +30,7 @@
       {% case variant_selector_type %}
         {% when 'radio' %}
           {% capture option_name_content %}
-            {% assign option_name = option.name | append: ':' %}
+            {% assign option_name = 'Choose a ' | append: option.name | append: ':' %}
             {% render 'element.text', as: 'span', text: option_name, style: 'font-weight: 600;' %}
             {% render 'element.text', as: 'span', text: product.selected_or_first_available_variant.options[forloop.index0], style: 'opacity: 0.75;' %}
           {% endcapture %}
