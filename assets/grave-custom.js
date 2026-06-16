@@ -161,3 +161,57 @@ window.PXUTheme.jsSlideshow = {
 /* coffin removed — now rendered inline in image-with-text-overlay-section.liquid */
 
 /* Size deselection moved to grave-product.js (mutation observer approach) */
+
+/* Abbreviate full size words in swatch labels to S/M/L/XL/2XL/3XL */
+(function() {
+  var SIZE_MAP = {
+    'small': 'S', 'medium': 'M', 'large': 'L',
+    'x-large': 'XL', 'xlarge': 'XL', 'extra large': 'XL',
+    '2x-large': '2XL', '2xlarge': '2XL', 'xx-large': '2XL', 'xxlarge': '2XL', 'double extra large': '2XL',
+    '3x-large': '3XL', '3xlarge': '3XL', 'xxx-large': '3XL', 'xxxlarge': '3XL', 'triple extra large': '3XL'
+  };
+
+  function abbreviateSizeLabels(root) {
+    var labels = (root || document).querySelectorAll('.swatch:not(.swatch--color) .swatch-element label');
+    labels.forEach(function(label) {
+      var text = label.childNodes;
+      for (var i = 0; i < text.length; i++) {
+        if (text[i].nodeType === 3) { // text node
+          var val = text[i].textContent.trim().toLowerCase();
+          if (SIZE_MAP[val]) {
+            text[i].textContent = SIZE_MAP[val];
+          }
+        }
+      }
+    });
+  }
+
+  function init() {
+    abbreviateSizeLabels(document);
+
+    // Re-run when quickshop modal opens (fancybox callback)
+    if (window.$ && $.fancybox) {
+      $(document).on('afterShow.fancybox', function() {
+        abbreviateSizeLabels(document.querySelector('.fancybox-content'));
+      });
+    }
+
+    // Also observe for dynamically loaded quickshop content
+    var observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        mutation.addedNodes.forEach(function(node) {
+          if (node.nodeType === 1) {
+            abbreviateSizeLabels(node);
+          }
+        });
+      });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
