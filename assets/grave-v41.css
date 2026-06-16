@@ -617,6 +617,10 @@ input[type="button"]:hover {
   margin-bottom: 0;
 }
 
+.fancybox-content .product-block--first {
+  margin-top: 72px !important;
+}
+
 /* Product title */
 .fancybox-content .product-block h3,
 .fancybox-content .product-block h1,
