@@ -168,7 +168,8 @@ window.PXUTheme.jsSlideshow = {
     'small': 'S', 'medium': 'M', 'large': 'L',
     'x-large': 'XL', 'xlarge': 'XL', 'extra large': 'XL',
     '2x-large': '2XL', '2xlarge': '2XL', 'xx-large': '2XL', 'xxlarge': '2XL', 'double extra large': '2XL',
-    '3x-large': '3XL', '3xlarge': '3XL', 'xxx-large': '3XL', 'xxxlarge': '3XL', 'triple extra large': '3XL'
+    '3x-large': '3XL', '3xlarge': '3XL', 'xxx-large': '3XL', 'xxxlarge': '3XL', 'triple extra large': '3XL',
+    'xs': 'XS', 'x-small': 'XS', 'xsmall': 'XS', 'extra small': 'XS'
   };
 
   function abbreviateSizeLabels(root) {
@@ -189,10 +190,11 @@ window.PXUTheme.jsSlideshow = {
   function init() {
     abbreviateSizeLabels(document);
 
-    // Re-run when quickshop modal opens (fancybox callback)
+    // Re-run when quickshop modal opens (fancybox v3.x uses .fb namespace, .fancybox-stage)
     if (window.$ && $.fancybox) {
-      $(document).on('afterShow.fancybox', function() {
-        abbreviateSizeLabels(document.querySelector('.fancybox-content'));
+      $(document).on('afterLoad.fb afterShow.fb', function() {
+        var stage = document.querySelector('.fancybox-slide--current') || document.querySelector('.fancybox-stage');
+        if (stage) abbreviateSizeLabels(stage);
       });
     }
 

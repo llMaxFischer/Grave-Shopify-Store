@@ -41,7 +41,9 @@
         "divider",
         "form"
       ],
-      "settings": {}
+      "settings": {
+        "show_arrows": false
+      }
     }
   },
   "order": [
