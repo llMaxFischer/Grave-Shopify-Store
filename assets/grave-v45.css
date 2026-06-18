@@ -2660,7 +2660,7 @@ ul.header__secondary-navigation.menu.right {
 }
 
 .coffin-icon {
-  display: none;
+  display: block;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -2670,15 +2670,7 @@ ul.header__secondary-navigation.menu.right {
   animation: coffin-bounce-icon 1.6s ease-in-out infinite;
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.45));
   cursor: pointer;
-  bottom: 88px;
-}
-
-#banner-template--19655300055222__1637000454b16be487 .parallax__wrap {
-  position: relative;
-}
-
-#banner-template--19655300055222__1637000454b16be487 .coffin-icon {
-  display: block;
+  bottom: 50px;
 }
 
 @keyframes coffin-bounce-icon {

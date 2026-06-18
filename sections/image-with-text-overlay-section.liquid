@@ -44,14 +44,8 @@
       {% endif %}
     </div>
   </div>
-  {% if section.id contains '1637000454b16be487' %}
-    <img class="coffin-icon" src="{{ 'Coffin Scroll Icon 2.png' | asset_url }}" alt="Scroll" width="32" height="32">
-  {% endif %}
-
   {% if section.settings.homepage_arrow %}
-    <a class="scroll-arrow" href="#banner-{{ section.id }}-content">
-      <span class="icon-arrow-down"></span>
-    </a>
+    <img class="coffin-icon" src="{{ 'Coffin Scroll Icon 2.png' | asset_url }}" alt="Scroll" width="32" height="32">
   {% endif %}
 {% endcapture %}
 
@@ -155,15 +149,11 @@
     background-position: {{ section.settings.image.presentation.focal_point }} !important;
   }
 
-  {% if section.id contains '1637000454b16be487' %}
-    #banner-{{ section.id }} .coffin-icon {
-      display: block;
-    }
-  {% else %}
+  {% unless section.id contains '1637000454b16be487' %}
     #shopify-section-{{ section.id }} .banner__inner-text {
       padding-top: 60px !important;
     }
-  {% endif %}
+  {% endunless %}
 
   @media only screen and (max-width: 798px) {
     {% if settings.slideshow_images_crop or section.settings.parallax_effect and settings.enable_mobile_parallax %}
