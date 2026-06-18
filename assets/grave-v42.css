@@ -435,8 +435,8 @@ input[type="button"]:hover {
 /* --- Main layout: outer padding --- */
 .fancybox-content .container.is-quickshop.product_section {
   max-width: 1280px;
-  min-height: 800px;
-  max-height: 800px;
+  min-height: 700px;
+  max-height: 700px;
   padding: 0 !important;
   background: #0e0c10;
   position: relative;
@@ -463,9 +463,10 @@ input[type="button"]:hover {
   flex-direction: column !important;
   width: 130px !important;
   min-width: 130px !important;
-  max-height: 800px;
+  max-height: 700px;
   gap: 8px !important;
-  padding: 20px 0 !important;
+  justify-content: center;
+  padding: 20px 0 20px 8px !important;
   margin: 0 !important;
   order: -1;
   align-items: center !important;
@@ -560,6 +561,7 @@ input[type="button"]:hover {
   align-self: stretch;
   display: flex;
   align-items: center;
+  padding-left: 32px;
 }
 
 .fancybox-content .product-gallery__main .image__container {
@@ -618,7 +620,15 @@ input[type="button"]:hover {
 }
 
 .fancybox-content .product-block--first {
-  margin-top: 72px !important;
+  margin-top: 50px !important;
+}
+
+.fancybox-content .product-block--title {
+  padding-left: 32px;
+}
+
+.fancybox-content .product-block--price {
+  padding-left: 32px;
 }
 
 /* Product title */
@@ -667,6 +677,12 @@ input[type="button"]:hover {
   font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.6;
+  margin: 0;
+}
+
+.fancybox-content .product-block--description {
+  margin-left: 32px !important;
+  margin-right: 32px !important;
 }
 
 .fancybox-content .product-block span,
@@ -687,7 +703,11 @@ input[type="button"]:hover {
 .fancybox-content hr {
   border: 0;
   border-top: 1px solid rgba(255,255,255,0.08);
-  margin: 8px 0 12px;
+  margin: 0;
+}
+
+.fancybox-content .product-block--divider {
+  margin: -12px 32px;
 }
 
 /* Dropdowns */
@@ -716,6 +736,7 @@ input[type="button"]:hover {
 .fancybox-content .swatch {
   gap: 8px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .fancybox-content .swatch.swatch--color {
@@ -724,6 +745,12 @@ input[type="button"]:hover {
 
 .fancybox-content .swatch.swatch--color .option-title {
   margin-left: -20px;
+}
+
+.fancybox-content .swatch .option-title {
+  width: 100%;
+  text-align: left;
+  padding-left: 32px;
 }
 
 .fancybox-content .swatch input[type=radio] {
@@ -840,6 +867,8 @@ input[type="button"]:hover {
   gap: 10px;
   align-items: stretch;
   max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Add to Cart — solid green */
@@ -857,7 +886,7 @@ input[type="button"]:hover {
   font-size: 17px !important;
   font-weight: 700 !important;
   letter-spacing: 0.02em;
-  box-shadow: 0 4px 18px rgba(60,211,106,0.25);
+  box-shadow: 0 0 18px rgba(60,211,106,0.25);
   transform: none !important;
   transition: transform .2s ease, box-shadow .2s ease !important;
 }
@@ -865,7 +894,7 @@ input[type="button"]:hover {
 .fancybox-content .action_button.add_to_cart:hover,
 .fancybox-content .ajax-submit.action_button.add_to_cart:hover {
   transform: translateY(-1px) scale(1.02) !important;
-  box-shadow: 0 8px 28px rgba(60,211,106,0.4) !important;
+  box-shadow: 0 0 28px rgba(60,211,106,0.4) !important;
   background: #3cd36a !important;
   color: #181818 !important;
 }
@@ -900,7 +929,7 @@ input[type="button"]:hover {
   border-color: #3cd36a !important;
   color: #3cd36a !important;
   transform: translateY(-1px) scale(1.02) !important;
-  box-shadow: 0 4px 18px rgba(60,211,106,0.25) !important;
+  box-shadow: 0 0 18px rgba(60,211,106,0.25) !important;
 }
 
 /* --- CLOSE BUTTON --- */
@@ -1420,7 +1449,7 @@ input[type="button"]:hover {
   font-weight: 700 !important;
   font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   letter-spacing: 0.02em;
-  box-shadow: 0 4px 18px rgba(60,211,106,0.25);
+  box-shadow: 0 0 18px rgba(60,211,106,0.25);
   transform: none !important;
   transition: transform .2s ease, box-shadow .2s ease !important;
 }
@@ -1428,7 +1457,7 @@ input[type="button"]:hover {
 .shopify-section--product-template .action_button.add_to_cart:hover,
 .shopify-section--product-template .ajax-submit.action_button.add_to_cart:hover {
   transform: translateY(-1px) scale(1.02) !important;
-  box-shadow: 0 8px 28px rgba(60,211,106,0.4) !important;
+  box-shadow: 0 0 28px rgba(60,211,106,0.4) !important;
   background: #3cd36a !important;
   color: #181818 !important;
 }
@@ -1461,7 +1490,7 @@ input[type="button"]:hover {
 .shopify-section--product-template .shopify-payment-button__button.shopify-payment-button__button--unbranded:hover {
   background: rgba(60,211,106,0.08) !important;
   transform: translateY(-1px) scale(1.02) !important;
-  box-shadow: 0 4px 18px rgba(60,211,106,0.25) !important;
+  box-shadow: 0 0 18px rgba(60,211,106,0.25) !important;
   color: #3cd36a !important;
 }
 
@@ -1889,7 +1918,7 @@ input[type="button"]:hover {
   font-weight: 700 !important;
   font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   letter-spacing: 0.02em;
-  box-shadow: 0 4px 18px rgba(60,211,106,0.25);
+  box-shadow: 0 0 18px rgba(60,211,106,0.25);
   transform: none !important;
   transition: transform .2s ease, box-shadow .2s ease !important;
 }
@@ -1897,7 +1926,7 @@ input[type="button"]:hover {
 .shopify-section--quick-shop .action_button.add_to_cart:hover,
 .shopify-section--quick-shop .ajax-submit.action_button.add_to_cart:hover {
   transform: translateY(-1px) scale(1.02) !important;
-  box-shadow: 0 8px 28px rgba(60,211,106,0.4) !important;
+  box-shadow: 0 0 28px rgba(60,211,106,0.4) !important;
   background: #3cd36a !important;
   color: #181818 !important;
 }
@@ -1930,7 +1959,7 @@ input[type="button"]:hover {
 .shopify-section--quick-shop .shopify-payment-button__button.shopify-payment-button__button--unbranded:hover {
   background: rgba(60,211,106,0.08) !important;
   transform: translateY(-1px) scale(1.02) !important;
-  box-shadow: 0 4px 18px rgba(60,211,106,0.25) !important;
+  box-shadow: 0 0 18px rgba(60,211,106,0.25) !important;
   color: #3cd36a !important;
 }
 
@@ -1991,10 +2020,10 @@ input[type="button"]:hover {
   gap: 8px;
   color: #ffffff;
   text-decoration: none;
-  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  font-family: 'Times New Roman Bold', 'Times New Roman', Times, serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
   transition: color 0.2s ease;
 }
 
@@ -2007,6 +2036,9 @@ input[type="button"]:hover {
   height: 18px;
   flex-shrink: 0;
   transition: transform 0.2s ease;
+  background: none !important;
+  fill: none !important;
+  stroke: currentColor;
 }
 
 .featured-collection__view-all-link:hover .featured-collection__arrow {

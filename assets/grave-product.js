@@ -210,6 +210,15 @@
     clearInitialSelection();
     setTimeout(clearInitialSelection, 100);
     setTimeout(clearInitialSelection, 500);
+
+    // Reset when quickshop modal opens (fancybox v3.x uses .fb namespace)
+    if (window.$ && $.fancybox) {
+      $(document).on('afterLoad.fb', function() {
+        hasUserInteracted = false;
+        clearInitialSelection();
+        setTimeout(clearInitialSelection, 100);
+      });
+    }
   }
 
   if (document.readyState === 'loading') {
