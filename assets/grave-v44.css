@@ -2626,10 +2626,9 @@ ul.header__secondary-navigation.menu.right {
   background-color: #3cd36a !important;
 }
 
-/* Parallax: fix snap by disabling competing min-height and JS top drift */
+/* Parallax: fix snap by disabling competing JS top drift */
 .parallax__container .parallax {
   top: 0 !important;
-  min-height: 0 !important;
 }
 
 @keyframes hero-zoom {
