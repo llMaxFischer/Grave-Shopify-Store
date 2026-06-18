@@ -36,8 +36,119 @@
   color: #9f1217 !important;
   fill: #9f1217 !important;
 }
-/* Contact page spacing */
-.contact-section {
+/* Contact page — dark theme consistency */
+.page-contact .main-wrapper {
+  padding: 48px 0 80px;
+}
+
+.page-contact h1.center {
+  font-family: 'Times New Roman Bold', 'Times New Roman', Times, serif !important;
+  font-size: 42px !important;
+  color: #ffffff !important;
+  margin-bottom: 8px !important;
+  letter-spacing: 1px;
+}
+
+.page-contact .feature_divider {
+  border-color: #3cd36a !important;
+  width: 50px !important;
+  margin: 16px auto 32px !important;
+}
+
+/* Dark form inputs */
+.page-contact input[type="text"],
+.page-contact input[type="email"],
+.page-contact textarea {
+  background: #2a2a2a !important;
+  border: 1px solid #444 !important;
+  color: #d1d7d9 !important;
+  font-size: 15px !important;
+  border-radius: 4px !important;
+}
+
+.page-contact input[type="text"]::placeholder,
+.page-contact input[type="email"]::placeholder,
+.page-contact textarea::placeholder {
+  color: rgba(255,255,255,0.3) !important;
+}
+
+.page-contact input[type="text"]:focus,
+.page-contact input[type="email"]:focus,
+.page-contact textarea:focus {
+  border-color: #3cd36a !important;
+  box-shadow: 0 0 8px rgba(60, 211, 106, 0.45) !important;
+  outline: none !important;
+}
+
+.page-contact textarea {
+  min-height: 140px !important;
+}
+
+/* Labels */
+.page-contact label {
+  color: #d1d7d9 !important;
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  margin-bottom: 6px !important;
+  font-weight: 600 !important;
+}
+
+.page-contact label .red {
+  color: #fc5d32 !important;
+}
+
+/* Submit button — green accent */
+.page-contact .action_button[type="submit"] {
+  background: #3cd36a !important;
+  color: #181818 !important;
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-weight: bold !important;
+  font-size: 14px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  padding: 14px 36px !important;
+  border-radius: 6px !important;
+  border: none !important;
+  margin-top: 4px !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.page-contact .action_button[type="submit"]:hover {
+  transform: scale(1.08) !important;
+  box-shadow: 0 0 18px 4px rgba(60, 211, 106, 0.5) !important;
+  background: #3cd36a !important;
+  color: #181818 !important;
+}
+
+/* Success/error messages */
+.page-contact .quote {
+  color: #d1d7d9 !important;
+  text-align: center !important;
+  padding: 16px 20px !important;
+  border: 1px solid #444 !important;
+  border-radius: 6px !important;
+  margin-bottom: 24px !important;
+  font-style: italic !important;
+}
+
+.page-contact .contact-form ul.center,
+.page-contact .contact-template_contact_form ul.center {
+  color: #fc5d32 !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 20px !important;
+  text-align: center !important;
+}
+
+.page-contact .contact-form ul.center li,
+.page-contact .contact-template_contact_form ul.center li {
+  margin-bottom: 4px !important;
+}
+
+/* Section spacing */
+.contact-section,
+.shopify-section--page-contact-template {
   padding-top: 80px;
 }
 /* Button hover effects */
