@@ -20,7 +20,7 @@
         "link": "",
         "text_position": "center center",
         "homepage_arrow": true,
-        "parallax_effect": false,
+        "parallax_effect": true,
         "parallax_image_height": 600
       }
     },
