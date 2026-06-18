@@ -24,5 +24,29 @@
     #shopify-section-{{ section.id }} .container.main-wrapper { max-width: none !important; margin-bottom: 0 !important; }
     #shopify-section-{{ section.id }} .one-whole.column > div[style*="margin"] { max-width: 1760px !important; width: 100% !important; }
     #shopify-section-{{ section.id }} .one-whole.column p { font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-size: 28px !important; }
+
+      {% if page.id == 110479671478 %}
+      #shopify-section-{{ section.id }} .container.main-wrapper { max-width: 840px !important; }
+      #shopify-section-{{ section.id }} .one-whole.column p,
+      #shopify-section-{{ section.id }} .one-whole.column li {
+        font-size: 16px !important;
+        font-weight: normal !important;
+      }
+      #shopify-section-{{ section.id }} .one-whole.column ul li strong,
+      #shopify-section-{{ section.id }} .one-whole.column ul li b {
+        font-weight: normal !important;
+      }
+      #shopify-section-{{ section.id }} .one-whole.column h2,
+      #shopify-section-{{ section.id }} .one-whole.column h3 {
+        font-size: 19px !important;
+        font-weight: 600 !important;
+        margin-top: 24px !important;
+        margin-bottom: 4px !important;
+      }
+      #shopify-section-{{ section.id }} .one-whole.column:last-child {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+      }
+      {% endif %}
   </style>
 </section>
