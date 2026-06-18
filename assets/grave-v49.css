@@ -63,7 +63,8 @@
   border: 1px solid #444 !important;
   color: #d1d7d9 !important;
   font-size: 15px !important;
-  border-radius: 4px !important;
+  border-radius: 8px !important;
+  min-height: 54px !important;
 }
 
 .page-contact .contact-template_contact_form input[type="text"]::placeholder,
