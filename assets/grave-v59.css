@@ -2980,3 +2980,35 @@ body.page .page ul li strong,
 body.page .page ul li b {
   font-weight: normal;
 }
+
+/* Sizing guide toggle in product description */
+.sizing-guide-wrapper {
+  margin-top: 16px;
+}
+.sizing-guide-toggle {
+  display: inline-block;
+  color: #3cd36a;
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: 'Acumin Pro','Acumin Pro Condensed','Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+.sizing-guide-toggle:hover {
+  color: #2ebf5e;
+}
+.sizing-guide-arrow {
+  margin-left: 4px;
+}
+.sizing-guide-content {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #d1d7d9;
+}
+.sizing-guide-content strong {
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #ffffff;
+}

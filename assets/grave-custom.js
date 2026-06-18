@@ -217,3 +217,44 @@ window.PXUTheme.jsSlideshow = {
     init();
   }
 })();
+
+/* Sizing guide toggle — hides sizing info behind clickable link in product description */
+(function() {
+  function initSizingToggle() {
+    var descEl = document.querySelector('.product-block--description__text')
+              || document.querySelector('element-text-rte.element-text--rte');
+    if (!descEl) return;
+
+    var html = descEl.innerHTML;
+    var marker = 'SIZING INFORMATION:';
+    var idx = html.indexOf(marker);
+    if (idx === -1) return;
+
+    var before = html.substring(0, idx);
+    var sizingContent = html.substring(idx);
+
+    var wrapper = document.createElement('div');
+    wrapper.className = 'sizing-guide-wrapper';
+    wrapper.innerHTML =
+      '<a href="#" class="sizing-guide-toggle">Sizing Guide <span class="sizing-guide-arrow">▸</span></a>' +
+      '<div class="sizing-guide-content" style="display:none;">' + sizingContent + '</div>';
+
+    descEl.innerHTML = before;
+    descEl.appendChild(wrapper);
+
+    var toggle = wrapper.querySelector('.sizing-guide-toggle');
+    var content = wrapper.querySelector('.sizing-guide-content');
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      var isHidden = content.style.display === 'none';
+      content.style.display = isHidden ? 'block' : 'none';
+      toggle.querySelector('.sizing-guide-arrow').textContent = isHidden ? '▾' : '▸';
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSizingToggle);
+  } else {
+    initSizingToggle();
+  }
+})();
