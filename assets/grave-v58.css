@@ -2790,7 +2790,7 @@ ul.header__secondary-navigation.menu.right {
   animation: coffin-bounce-icon 1.6s ease-in-out infinite;
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.45));
   cursor: pointer;
-  bottom: 50px;
+  bottom: 68px;
 }
 
 @keyframes coffin-bounce-icon {
