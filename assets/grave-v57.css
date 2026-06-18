@@ -2963,21 +2963,20 @@ ul.header__secondary-navigation.menu.right {
   opacity: 1 !important;
 }
 
-/* FAQ page typography */
-.page-narrow .page {
+body.page .page {
   font-size: 15px;
 }
-.page-narrow .page h2,
-.page-narrow .page h3 {
+body.page .page h2,
+body.page .page h3 {
   font-size: 17px;
   font-weight: 600;
   margin-top: 20px;
   margin-bottom: 4px;
 }
-.page-narrow .page ul li {
+body.page .page ul li {
   font-weight: normal;
 }
-.page-narrow .page ul li strong,
-.page-narrow .page ul li b {
+body.page .page ul li strong,
+body.page .page ul li b {
   font-weight: normal;
 }
