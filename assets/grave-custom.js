@@ -227,11 +227,20 @@ window.PXUTheme.jsSlideshow = {
 
     var html = descEl.innerHTML;
     var marker = 'SIZING INFORMATION:';
-    var idx = html.indexOf(marker);
-    if (idx === -1) return;
+    var textIdx = html.toUpperCase().indexOf(marker);
+    if (textIdx === -1) return;
 
-    var before = html.substring(0, idx);
-    var sizingContent = html.substring(idx);
+    // Walk back from textIdx to find the start of the enclosing tag (e.g. <div>)
+    var tagStart = textIdx;
+    var lt = html.lastIndexOf('<', textIdx);
+    if (lt !== -1 && html.indexOf('>', lt) > textIdx) {
+      // textIdx is inside a tag's attribute — skip (unlikely)
+    } else if (lt !== -1) {
+      tagStart = lt;
+    }
+
+    var before = html.substring(0, tagStart);
+    var sizingContent = html.substring(tagStart);
 
     var wrapper = document.createElement('div');
     wrapper.className = 'sizing-guide-wrapper';
