@@ -236,7 +236,7 @@ window.PXUTheme.jsSlideshow = {
     var wrapper = document.createElement('div');
     wrapper.className = 'sizing-guide-wrapper';
     wrapper.innerHTML =
-      '<a href="#" class="sizing-guide-toggle">Sizing Guide <span class="sizing-guide-arrow">▸</span></a>' +
+      '<a href="#" class="sizing-guide-toggle">View Size Guide <span class="sizing-guide-arrow">▸</span></a>' +
       '<div class="sizing-guide-content" style="display:none;">' + sizingContent + '</div>';
 
     descEl.innerHTML = before;
