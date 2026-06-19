@@ -113,7 +113,7 @@
       {{ shop.name }}
     {% endif %}
   </a>
-  <a href="#cart" class="icon-cart cart-button right"><span>{{ cart.item_count }}</span></a>
+  <a href="{{ routes.cart_url }}" class="icon-cart cart-button right"><span>{{ cart.item_count }}</span></a>
 </div>
 
 <div class="hidden">
@@ -525,8 +525,7 @@
           {% endif %}
 
           <li class="cart">
-            <a href="#cart" class="icon-cart cart-button"><span>{{ cart.item_count }}</span></a>
-            <a href="{{ routes.cart_url }}" class="icon-cart cart-button no-js-only"><span>{{ cart.item_count }}</span></a>
+            <a href="{{ routes.cart_url }}" class="icon-cart cart-button"><span>{{ cart.item_count }}</span></a>
           </li>
         </ul>
       </div>

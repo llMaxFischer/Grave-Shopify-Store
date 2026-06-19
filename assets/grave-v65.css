@@ -112,7 +112,7 @@
 /* Submit button — green accent */
 .page-contact .contact-template_contact_form .action_button[type="submit"] {
   background: #3cd36a !important;
-  color: #181818 !important;
+  color: #121212 !important;
   font-family: 'Proxima Nova', 'Acumin Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   font-weight: bold !important;
   font-size: 16px !important;
@@ -129,7 +129,7 @@
   transform: scale(1.08) !important;
   box-shadow: 0 0 18px 4px rgba(60, 211, 106, 0.5) !important;
   background: #3cd36a !important;
-  color: #181818 !important;
+  color: #121212 !important;
 }
 
 /* Success/error messages */
@@ -249,7 +249,7 @@ input[type="button"]:hover {
   max-width: calc(100% - 24px);
   padding: 12px 20px !important;
   background: #3cd36a !important;
-  color: #181818 !important;
+  color: #121212 !important;
   border: none !important;
   border-radius: 8px;
   font-family: 'Proxima Nova', 'Candelabra', 'Acumin Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
@@ -271,7 +271,7 @@ input[type="button"]:hover {
 
 .quick_shop.quick_shop--button .icon-search {
   font-size: 14px;
-  color: #181818 !important;
+  color: #121212 !important;
   fill: #181818 !important;
 }
 
@@ -287,7 +287,7 @@ input[type="button"]:hover {
   transform: translateX(-50%) translateY(0) scale(1.08);
   box-shadow: 0 14px 28px rgba(0,0,0,0.65);
   background-color: #3cd36a !important;
-  color: #181818 !important;
+  color: #121212 !important;
 }
 
 @media (max-width: 767px) {
@@ -856,15 +856,19 @@ input[type="button"]:hover {
 .fancybox-content .swatch {
   gap: 8px;
   flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.fancybox-content .swatch:not(.swatch--color) {
   justify-content: center;
 }
 
 .fancybox-content .swatch.swatch--color {
-  padding-left: 20px;
+  padding-left: 32px;
 }
 
 .fancybox-content .swatch.swatch--color .option-title {
-  margin-left: -20px;
+  margin-left: -32px;
 }
 
 .fancybox-content .swatch .option-title {
@@ -907,7 +911,7 @@ input[type="button"]:hover {
 
 .fancybox-content .swatch:not(.swatch--color) .swatch-element label:hover {
   background: #3cd36a;
-  color: #181818;
+  color: #121212;
   border-color: #3cd36a;
 }
 
@@ -915,7 +919,7 @@ input[type="button"]:hover {
 .fancybox-content .swatch:not(.swatch--color) input[type=radio]:checked + .swatch-element label:hover,
 .fancybox-content .swatch:not(.swatch--color) .swatch-element input:checked + label:hover {
   background: #3cd36a;
-  color: #181818;
+  color: #121212;
   border-color: #3cd36a;
 }
 
@@ -923,56 +927,48 @@ input[type="button"]:hover {
 .fancybox-content .swatch:not(.swatch--color) input[type=radio]:checked + .swatch-element label,
 .fancybox-content .swatch:not(.swatch--color) .swatch-element input:checked + label {
   background: #3cd36a;
-  color: #181818;
+  color: #121212;
   border-color: #3cd36a;
   box-shadow: none;
   outline: none;
 }
 
-/* --- COLOR SWATCHES (mockup style) --- */
-.fancybox-content .swatch .swatch-element.color {
+/* --- COLOR SWATCHES — outer ring (both fancybox + quick-shop) --- */
+.fancybox-content .swatch .swatch-element.color,
+.shopify-section--quick-shop .swatch .swatch-element.color {
   margin: 0 6px 8px 0;
   padding: 0 !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
-.fancybox-content .swatch .swatch-element.color label {
+.fancybox-content .swatch .swatch-element.color label,
+.shopify-section--quick-shop .swatch.swatch--color .swatch-element label {
   width: 28px;
   height: 28px;
   min-width: 28px;
   min-height: 28px;
   border-radius: 50%;
   padding: 0;
-  border: none;
+  border: 2px solid rgba(255,255,255,0.25);
   box-shadow: none;
   position: relative;
-  transition: all .2s ease;
+  transition: border-color .2s ease;
   cursor: pointer;
-}
-
-/* Outer white ring */
-.fancybox-content .swatch .swatch-element.color label::before {
-  content: '';
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.18);
   box-sizing: border-box;
-  pointer-events: none;
-  transition: border-color .2s ease, border-width .2s ease;
+  background-clip: content-box;
 }
 
-.fancybox-content .swatch .swatch-element.color label:hover::before {
-  border-color: rgba(255,255,255,0.45);
+.fancybox-content .swatch .swatch-element.color label:hover,
+.shopify-section--quick-shop .swatch.swatch--color .swatch-element label:hover {
+  border-color: rgba(255,255,255,0.6);
 }
 
-/* Selected — full white ring */
-.fancybox-content .swatch .swatch-element.color input[type=radio]:checked + label::before,
-.fancybox-content .swatch .swatch-element.color label[for]:has(+ input:checked)::before {
+.fancybox-content .swatch .swatch-element.color input[type=radio]:checked + label,
+.shopify-section--quick-shop .swatch.swatch--color input[type=radio]:checked + .swatch-element label,
+.shopify-section--quick-shop .swatch.swatch--color .swatch-element input:checked + label {
   border-color: #ffffff;
-  border-width: 1.5px;
 }
 
 /* --- BUTTONS --- */
@@ -993,30 +989,35 @@ input[type="button"]:hover {
 
 /* Add to Cart — solid green */
 .fancybox-content .action_button.add_to_cart,
-.fancybox-content .ajax-submit.action_button.add_to_cart {
+.fancybox-content .ajax-submit.action_button.add_to_cart,
+.fancybox-content .action_button.add_to_cart .text,
+.fancybox-content .ajax-submit.action_button.add_to_cart .text {
   flex: 1;
   width: auto;
   justify-content: center;
   min-height: 54px;
   background: #3cd36a !important;
-  color: #181818 !important;
+  color: #121212 !important;
   border: none !important;
   border-radius: 10px !important;
   font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   font-size: 17px !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.02em;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
   box-shadow: 0 0 18px rgba(60,211,106,0.25);
   transform: none !important;
   transition: transform .2s ease, box-shadow .2s ease !important;
 }
 
 .fancybox-content .action_button.add_to_cart:hover,
-.fancybox-content .ajax-submit.action_button.add_to_cart:hover {
+.fancybox-content .ajax-submit.action_button.add_to_cart:hover,
+.fancybox-content .action_button.add_to_cart:hover .text,
+.fancybox-content .ajax-submit.action_button.add_to_cart:hover .text {
   transform: translateY(-1px) scale(1.02) !important;
   box-shadow: 0 0 28px rgba(60,211,106,0.4) !important;
   background: #3cd36a !important;
-  color: #181818 !important;
+  color: #121212 !important;
 }
 
 /* Buy It Now — green outline */
@@ -1035,10 +1036,10 @@ input[type="button"]:hover {
   background: transparent !important;
   color: #3cd36a !important;
   font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  font-weight: 700;
+  font-weight: 500 !important;
   font-size: 17px;
-  letter-spacing: 0.02em;
-  text-transform: none;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
   box-shadow: none !important;
   transform: none !important;
   transition: background .2s ease, transform .2s ease !important;
@@ -1485,7 +1486,7 @@ input[type="button"]:hover {
 /* Hover — green fill */
 .shopify-section--product-template .swatch:not(.swatch--color) .swatch-element label:hover {
   background: #3cd36a;
-  color: #181818;
+  color: #121212;
   border-color: #3cd36a;
 }
 
@@ -1493,7 +1494,7 @@ input[type="button"]:hover {
 .shopify-section--product-template .swatch:not(.swatch--color) input[type=radio]:checked + .swatch-element label:hover,
 .shopify-section--product-template .swatch:not(.swatch--color) .swatch-element input:checked + label:hover {
   background: #3cd36a;
-  color: #181818;
+  color: #121212;
   border-color: #3cd36a;
 }
 
@@ -1501,7 +1502,7 @@ input[type="button"]:hover {
 .shopify-section--product-template .swatch:not(.swatch--color) input[type=radio]:checked + .swatch-element label,
 .shopify-section--product-template .swatch:not(.swatch--color) .swatch-element input:checked + label {
   background: #3cd36a;
-  color: #181818;
+  color: #121212;
   border-color: #3cd36a;
   box-shadow: none;
   outline: none;
@@ -1515,21 +1516,23 @@ input[type="button"]:hover {
   min-height: 28px;
   border-radius: 50%;
   padding: 0;
-  border: 2px solid transparent;
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.15);
-  transition: all .2s ease;
+  border: 2px solid rgba(255,255,255,0.25);
+  box-shadow: none;
+  position: relative;
+  transition: border-color .2s ease;
   cursor: pointer;
+  box-sizing: border-box;
+  background-clip: content-box;
 }
 
 .shopify-section--product-template .swatch.swatch--color .swatch-element label:hover {
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.4);
+  border-color: rgba(255,255,255,0.6);
 }
 
 /* Selected color — white ring */
 .shopify-section--product-template .swatch.swatch--color input[type=radio]:checked + .swatch-element label,
 .shopify-section--product-template .swatch.swatch--color .swatch-element input:checked + label {
-  box-shadow: 0 0 0 1px #ffffff;
-  border-color: transparent;
+  border-color: #ffffff;
 }
 
 /* Disabled / soldout swatch state */
@@ -1556,30 +1559,35 @@ input[type="button"]:hover {
 
 /* Add to Cart — solid green */
 .shopify-section--product-template .action_button.add_to_cart,
-.shopify-section--product-template .ajax-submit.action_button.add_to_cart {
+.shopify-section--product-template .ajax-submit.action_button.add_to_cart,
+.shopify-section--product-template .action_button.add_to_cart .text,
+.shopify-section--product-template .ajax-submit.action_button.add_to_cart .text {
   flex: 1;
   width: auto;
   justify-content: center;
   min-height: 54px;
   background: #3cd36a !important;
-  color: #181818 !important;
+  color: #121212 !important;
   border: none !important;
   border-radius: 10px !important;
   font-size: 17px !important;
-  font-weight: 700 !important;
+  font-weight: 500 !important;
   font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  letter-spacing: 0.02em;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
   box-shadow: 0 0 18px rgba(60,211,106,0.25);
   transform: none !important;
   transition: transform .2s ease, box-shadow .2s ease !important;
 }
 
 .shopify-section--product-template .action_button.add_to_cart:hover,
-.shopify-section--product-template .ajax-submit.action_button.add_to_cart:hover {
+.shopify-section--product-template .ajax-submit.action_button.add_to_cart:hover,
+.shopify-section--product-template .action_button.add_to_cart:hover .text,
+.shopify-section--product-template .ajax-submit.action_button.add_to_cart:hover .text {
   transform: translateY(-1px) scale(1.02) !important;
   box-shadow: 0 0 28px rgba(60,211,106,0.4) !important;
   background: #3cd36a !important;
-  color: #181818 !important;
+  color: #121212 !important;
 }
 
 /* Buy It Now — green outline */
@@ -1598,10 +1606,10 @@ input[type="button"]:hover {
   background: transparent !important;
   color: #3cd36a !important;
   font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  font-weight: 700;
+  font-weight: 500 !important;
   font-size: 17px;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
   box-shadow: none !important;
   transform: none !important;
   transition: background .2s ease, transform .2s ease !important;
@@ -1962,7 +1970,7 @@ input[type="button"]:hover {
 /* Hover — green fill */
 .shopify-section--quick-shop .swatch:not(.swatch--color) .swatch-element label:hover {
   background: #3cd36a;
-  color: #181818;
+  color: #121212;
   border-color: #3cd36a;
 }
 
@@ -1970,7 +1978,7 @@ input[type="button"]:hover {
 .shopify-section--quick-shop .swatch:not(.swatch--color) input[type=radio]:checked + .swatch-element label:hover,
 .shopify-section--quick-shop .swatch:not(.swatch--color) .swatch-element input:checked + label:hover {
   background: #3cd36a;
-  color: #181818;
+  color: #121212;
   border-color: #3cd36a;
 }
 
@@ -1978,35 +1986,10 @@ input[type="button"]:hover {
 .shopify-section--quick-shop .swatch:not(.swatch--color) input[type=radio]:checked + .swatch-element label,
 .shopify-section--quick-shop .swatch:not(.swatch--color) .swatch-element input:checked + label {
   background: #3cd36a;
-  color: #181818;
+  color: #121212;
   border-color: #3cd36a;
   box-shadow: none;
   outline: none;
-}
-
-/* --- COLOR SWATCHES --- */
-.shopify-section--quick-shop .swatch.swatch--color .swatch-element label {
-  width: 28px;
-  height: 28px;
-  min-width: 28px;
-  min-height: 28px;
-  border-radius: 50%;
-  padding: 0;
-  border: 2px solid transparent;
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.15);
-  transition: all .2s ease;
-  cursor: pointer;
-}
-
-.shopify-section--quick-shop .swatch.swatch--color .swatch-element label:hover {
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.4);
-}
-
-/* Selected color — white ring */
-.shopify-section--quick-shop .swatch.swatch--color input[type=radio]:checked + .swatch-element label,
-.shopify-section--quick-shop .swatch.swatch--color .swatch-element input:checked + label {
-  box-shadow: 0 0 0 1px #ffffff;
-  border-color: transparent;
 }
 
 /* --- BUTTONS --- */
@@ -2025,30 +2008,35 @@ input[type="button"]:hover {
 
 /* Add to Cart — solid green */
 .shopify-section--quick-shop .action_button.add_to_cart,
-.shopify-section--quick-shop .ajax-submit.action_button.add_to_cart {
+.shopify-section--quick-shop .ajax-submit.action_button.add_to_cart,
+.shopify-section--quick-shop .action_button.add_to_cart .text,
+.shopify-section--quick-shop .ajax-submit.action_button.add_to_cart .text {
   flex: 1;
   width: auto;
   justify-content: center;
   min-height: 54px;
   background: #3cd36a !important;
-  color: #181818 !important;
+  color: #121212 !important;
   border: none !important;
   border-radius: 10px !important;
   font-size: 17px !important;
-  font-weight: 700 !important;
+  font-weight: 500 !important;
   font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  letter-spacing: 0.02em;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
   box-shadow: 0 0 18px rgba(60,211,106,0.25);
   transform: none !important;
   transition: transform .2s ease, box-shadow .2s ease !important;
 }
 
 .shopify-section--quick-shop .action_button.add_to_cart:hover,
-.shopify-section--quick-shop .ajax-submit.action_button.add_to_cart:hover {
+.shopify-section--quick-shop .ajax-submit.action_button.add_to_cart:hover,
+.shopify-section--quick-shop .action_button.add_to_cart:hover .text,
+.shopify-section--quick-shop .ajax-submit.action_button.add_to_cart:hover .text {
   transform: translateY(-1px) scale(1.02) !important;
   box-shadow: 0 0 28px rgba(60,211,106,0.4) !important;
   background: #3cd36a !important;
-  color: #181818 !important;
+  color: #121212 !important;
 }
 
 /* Buy It Now — green outline */
@@ -2067,10 +2055,10 @@ input[type="button"]:hover {
   background: transparent !important;
   color: #3cd36a !important;
   font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  font-weight: 700;
+  font-weight: 500 !important;
   font-size: 17px;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
   box-shadow: none !important;
   transform: none !important;
   transition: background .2s ease, transform .2s ease !important;
@@ -2729,7 +2717,7 @@ ul.header__secondary-navigation.menu.right {
   border-radius: 8px !important;
   font-family: 'Candelabra', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   background-color: #3cd36a !important;
-  color: #181818 !important;
+  color: #121212 !important;
   text-transform: capitalize !important;
   line-height: 1 !important;
   display: inline-flex !important;
@@ -3011,4 +2999,656 @@ body.page .page ul li b {
   margin-top: 12px;
   font-size: 14px;
   color: #ffffff;
+}
+
+/* --- CART PAGE (new table layout) --- */
+
+/* Wrapper */
+.cart-page__wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Header row: title + continue shopping */
+.cart-page__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cart-page__title {
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  text-transform: none;
+  margin: 0;
+}
+
+.cart-page__continue-link {
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #d1d7d9;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color .2s ease;
+  white-space: nowrap;
+}
+
+.cart-page__continue-link:hover {
+  color: #ffffff;
+}
+
+/* Empty cart */
+.cart-page__empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #d1d7d9;
+  font-size: 16px;
+}
+
+.cart-page__empty a {
+  color: #3cd36a;
+  text-decoration: none;
+}
+
+/* Column header row */
+.cart-table__header {
+  display: grid;
+  grid-template-columns: 1fr 160px 180px 140px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  margin-bottom: 8px;
+}
+
+.cart-table__col {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.cart-table__col--price,
+.cart-table__col--quantity,
+.cart-table__col--total {
+  text-align: center;
+}
+
+/* Item rows */
+.cart-table__body {
+  margin-bottom: 32px;
+}
+
+.cart-table__row {
+  display: grid;
+  grid-template-columns: 1fr 160px 180px 140px;
+  align-items: center;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Product cell */
+.cart-table__col--product {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cart-item__image-link {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  display: block;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #2a2a2a;
+}
+
+.cart-item__image-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cart-item__details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cart-item__title {
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.cart-item__title:hover {
+  color: #3cd36a;
+}
+
+.shopify-section--cart-template .cart__product-options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.shopify-section--cart-template .cart__product-option {
+  font-size: 13px;
+  color: #d1d7d9;
+  margin-bottom: 0;
+}
+
+.shopify-section--cart-template .cart__product-option-name {
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.shopify-section--cart-template .applied_discount {
+  font-size: 12px;
+  color: #3cd36a;
+  margin: 2px 0 0;
+}
+
+/* Price cell */
+.cart-table__col--price {
+  text-align: center;
+}
+
+.cart-item__price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.cart-item__price .money {
+  font-size: 15px;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.cart-item__price--sale {
+  color: #3cd36a !important;
+}
+
+.cart-item__price--was {
+  text-decoration: line-through;
+  color: #888 !important;
+  font-size: 13px !important;
+}
+
+.shopify-section--cart-template .cart__item-unit-price {
+  font-size: 11px;
+  color: #888;
+  margin-top: 2px;
+  text-align: center;
+}
+
+/* Quantity stepper */
+.cart-table__col--quantity {
+  display: flex;
+  justify-content: center;
+}
+
+.cart-qty-stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 8px;
+  overflow: hidden;
+  height: 44px;
+}
+
+.cart-qty-btn {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  color: #d1d7d9;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s ease, color .15s ease;
+  flex-shrink: 0;
+}
+
+.cart-qty-btn:hover {
+  background: rgba(255,255,255,0.08);
+  color: #ffffff;
+}
+
+.cart-qty-input {
+  width: 48px;
+  height: 44px;
+  background: transparent !important;
+  border: none !important;
+  border-left: 1px solid rgba(255,255,255,0.25) !important;
+  border-right: 1px solid rgba(255,255,255,0.25) !important;
+  border-radius: 0 !important;
+  color: #ffffff !important;
+  font-size: 14px;
+  text-align: center;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: unset !important;
+  box-shadow: none !important;
+  -moz-appearance: textfield;
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.cart-qty-input::-webkit-inner-spin-button,
+.cart-qty-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.cart-qty-input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Total cell */
+.cart-table__col--total {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.cart-item__total {
+  font-size: 15px;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.cart-item__remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  color: #888;
+  transition: color .2s ease, border-color .2s ease;
+  text-decoration: none;
+}
+
+.cart-item__remove:hover {
+  color: #fc5d32;
+  border-color: #fc5d32;
+}
+
+/* Footer: right-aligned subtotal + checkout */
+.cart-page__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-top: 8px;
+  max-width: 440px;
+  margin-left: auto;
+}
+
+.cart-page__discounts {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.cart-page__discount-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #3cd36a;
+  margin-bottom: 6px;
+}
+
+.cart-page__subtotal-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.cart-page__subtotal-label {
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.cart-page__subtotal-amount {
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.cart-page__tax-label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 20px;
+  text-align: right;
+  width: 100%;
+}
+
+.cart-page__tax-label a {
+  color: #888;
+  text-decoration: underline;
+}
+
+.cart-page__note-label {
+  font-size: 13px;
+  color: #d1d7d9;
+  margin-bottom: 6px;
+  width: 100%;
+}
+
+.cart-page__note {
+  width: 100%;
+  min-height: 80px;
+  background: #2a2a2a;
+  border: 1px solid #555;
+  border-radius: 8px;
+  color: #d1d7d9;
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  padding: 10px 12px;
+  resize: vertical;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+}
+
+.cart-page__note:focus {
+  border-color: #3cd36a;
+  box-shadow: 0 0 0 2px rgba(60,211,106,0.2);
+  outline: none;
+}
+
+.shopify-section--cart-template .tos_checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.shopify-section--cart-template .tos_checkbox .tos_agree {
+  min-width: 15px;
+  min-height: 15px;
+  margin-top: 2px;
+  accent-color: #3cd36a;
+}
+
+.shopify-section--cart-template .tos_label {
+  font-size: 13px;
+  color: #d1d7d9;
+  text-transform: none;
+  font-weight: normal;
+  display: inline;
+}
+
+.shopify-section--cart-template .add-to-cart-wrap {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.shopify-section--cart-template .action_button.add_to_cart#checkout {
+  background: #3cd36a;
+  color: #121212;
+  border: none;
+  border-radius: 8px;
+  padding: 0 20px;
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  height: 55px;
+  min-height: 55px;
+  width: 100%;
+  cursor: pointer;
+  transform: none;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+  display: block;
+}
+
+.shopify-section--cart-template .action_button.add_to_cart#checkout:hover {
+  background: #3cd36a;
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 0 28px rgba(60, 211, 106, 0.4);
+}
+
+.shopify-section--cart-template .action_button.action_button--secondary,
+.shopify-section--cart-template .cart-button-update.action_button.action_button--secondary {
+  background-color: transparent;
+  border: 1px solid #3cd36a;
+  color: #3cd36a;
+  border-radius: 8px;
+  padding: 0 20px;
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  height: 44px;
+  min-height: 44px;
+  width: 100%;
+  cursor: pointer;
+  transition: all .2s ease;
+  box-shadow: none;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.shopify-section--cart-template .action_button.action_button--secondary:hover {
+  background: #3cd36a;
+  color: #121212;
+}
+
+.shopify-section--cart-template .additional-checkout-buttons {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.shopify-section--cart-template .additional-checkout-buttons .dynamic-checkout__content {
+  padding-top: 0 !important;
+}
+
+/* Shipping calculator */
+body.cart .shipping-calculator {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+body.cart .shipping-calculator__heading {
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-bottom: 20px;
+}
+
+body.cart .shipping-calculator label {
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #d1d7d9;
+  margin-bottom: 4px;
+  display: block;
+}
+
+body.cart .shipping-calculator input[type="text"],
+body.cart .shipping-calculator select {
+  background: #2a2a2a;
+  border: 1px solid #555555;
+  border-radius: 8px;
+  color: #d1d7d9;
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0 12px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+body.cart .shipping-calculator input[type="text"]:focus,
+body.cart .shipping-calculator select:focus {
+  border-color: #3cd36a;
+  box-shadow: 0 0 0 2px rgba(60, 211, 106, 0.25);
+  outline: none;
+}
+
+body.cart .shipping-calculator .action_button.get-rates {
+  background: #3cd36a;
+  color: #121212;
+  border: none;
+  border-radius: 8px;
+  padding: 0 20px;
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  height: 44px;
+  min-height: 44px;
+  width: 100%;
+  cursor: pointer;
+  transition: background .2s ease;
+  margin-top: 0;
+}
+
+body.cart .shipping-calculator .action_button.get-rates:hover {
+  background: #2ebf5e;
+}
+
+body.cart .shipping-rates {
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #d1d7d9;
+  margin-top: 10px;
+}
+
+body.cart .shipping-rates ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+
+body.cart .shipping-rates ul li {
+  padding: 4px 0;
+}
+
+/* Responsive: stack to mobile */
+@media only screen and (max-width: 768px) {
+  .cart-table__header {
+    display: none;
+  }
+
+  .cart-table__row {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 0;
+  }
+
+  .cart-table__col--product {
+    align-items: flex-start;
+  }
+
+  .cart-table__col--price,
+  .cart-table__col--quantity,
+  .cart-table__col--total {
+    text-align: left;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .cart-table__col--total {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .cart-page__footer {
+    max-width: 100%;
+    align-items: stretch;
+  }
+
+  .cart-page__subtotal-row {
+    justify-content: space-between;
+  }
+
+  .cart-page__tax-label {
+    text-align: left;
+  }
+}
+
+/* Flex-pdp Add to Cart — overrides element-button theme colors */
+.add-to-cart-button.element-button {
+  --element-button-color-primary: #121212 !important;
+  --element-button-color-secondary: #3cd36a !important;
+  color: #121212 !important;
+  background: #3cd36a !important;
+  border: none !important;
+  border-radius: 10px !important;
+  font-size: 17px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  box-shadow: 0 0 18px rgba(60,211,106,0.25);
+  height: 54px;
+  min-height: 54px;
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease !important;
+  transform: none !important;
+}
+
+.add-to-cart-button.element-button:hover {
+  transform: translateY(-1px) scale(1.02) !important;
+  box-shadow: 0 0 28px rgba(60,211,106,0.4) !important;
+  background: #3cd36a !important;
+  color: #121212 !important;
+}
+
+/* Flex-pdp Buy It Now — overrides element-button theme colors */
+.shopify-section--main-product-high-variant .shopify-payment-button__button.shopify-payment-button__button--unbranded {
+  border-radius: 10px !important;
+  border: 1.5px solid #3cd36a !important;
+  background: transparent !important;
+  color: #3cd36a !important;
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 17px;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  box-shadow: none !important;
+  transition: background .2s ease, transform .2s ease !important;
+}
+
+.shopify-section--main-product-high-variant .shopify-payment-button__button.shopify-payment-button__button--unbranded:hover {
+  background: rgba(60,211,106,0.08) !important;
+  transform: translateY(-1px) scale(1.02) !important;
+  box-shadow: 0 0 18px rgba(60,211,106,0.25) !important;
+  color: #3cd36a !important;
 }

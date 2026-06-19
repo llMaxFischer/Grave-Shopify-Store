@@ -8,13 +8,13 @@ Shopify's CDN caches CSS files permanently (1-year `max-age=31557600`). Once a f
 **Always use a new filename** for CSS changes. Never modify an existing CSS file and expect it to update. This is the #1 source of frustration when changes "don't work."
 
 ### Current Active Files
-- **CSS**: `assets/grave-v59.css` (latest version)
+- **CSS**: `assets/grave-v65.css` (latest version)
 - **About page CSS**: `assets/about-page-v2.css`
-- **theme.liquid**: references `grave-v59.css` on line 341 and `about-page-v2.css` on line 342
-- Next version when making changes: `grave-v59.css`
+- **theme.liquid**: references `grave-v65.css` on line 341 and `about-page-v2.css` on line 342
+- Next version when making changes: `grave-v65.css`
 
 ### Deploy Process (follow EVERY time)
-1. **Create a NEW CSS file** with the next version number (e.g., `grave-v59.css`)
+1. **Create a NEW CSS file** with the next version number (e.g., `grave-v64.css`)
 2. **Copy current CSS content** to the new file
 3. **Make all edits** to the NEW file only
 4. **Update `layout/theme.liquid`** to reference the new filename
@@ -98,8 +98,8 @@ API token from `~/Library/Preferences/shopify-cli-kit-nodejs/config.json`:
 - Last commit (as of session end): `bad3b2d`
 
 ## Key Files
-- `assets/grave-v59.css` — current active custom CSS file
-- `layout/theme.liquid` — references `grave-v59.css`
+- `assets/grave-v64.css` — current active custom CSS file
+- `layout/theme.liquid` — references `grave-v64.css`
 - `assets/grave-custom.js` — renamed from jsSlideshow.js for CDN cache bust
 - `assets/jsSlideshow.js` — old filename, CDN-cached
 - `assets/ProximaNova-Bold.ttf` — custom font

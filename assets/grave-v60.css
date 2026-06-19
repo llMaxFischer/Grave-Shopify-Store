@@ -3012,3 +3012,381 @@ body.page .page ul li b {
   font-size: 14px;
   color: #ffffff;
 }
+
+/* --- CART PAGE --- */
+.shopify-section--cart-template .container.main {
+  max-width: 1000px;
+}
+
+.shopify-section--cart-template h1 {
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.shopify-section--cart-template .feature_divider {
+  border-color: #3cd36a;
+  width: 50px;
+  border-width: 2px;
+  border-style: solid;
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+  margin: 15px auto 30px;
+}
+
+.shopify-section--cart-template h4 {
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.shopify-section--cart-template h4.discount,
+.shopify-section--cart-template h4.subtotal {
+  margin-bottom: 10px;
+  padding-bottom: 0;
+}
+
+.shopify-section--cart-template .cart_items p {
+  margin-bottom: 8px;
+}
+
+.shopify-section--cart-template .cart_items p a {
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.shopify-section--cart-template .cart_items p a:hover {
+  color: #3cd36a;
+}
+
+.shopify-section--cart-template .cart_page_image {
+  text-align: center;
+  display: block;
+  margin: 0 1rem 1rem 0;
+}
+
+.shopify-section--cart-template .cart_page_image img {
+  border-radius: 8px;
+}
+
+.shopify-section--cart-template .cart__product-options {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  font-size: 13px;
+  margin: 0 0 10px;
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #d1d7d9;
+}
+
+.shopify-section--cart-template .cart__product-option-name {
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.shopify-section--cart-template .price_total {
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #d1d7d9;
+}
+
+.shopify-section--cart-template .price_total strong {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.shopify-section--cart-template .quantity_label {
+  display: inline;
+  font-size: 14px;
+  color: #d1d7d9;
+  text-transform: none;
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin-right: 6px;
+}
+
+.shopify-section--cart-template input.quantity {
+  width: 60px;
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 8px 5px;
+  background: #2a2a2a;
+  border: 1px solid #555555;
+  border-radius: 8px;
+  color: #d1d7d9;
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  text-align: center;
+  height: 40px;
+  min-height: 40px;
+}
+
+.shopify-section--cart-template input.quantity:focus {
+  border-color: #3cd36a;
+  box-shadow: 0 0 0 2px rgba(60, 211, 106, 0.25);
+  outline: none;
+}
+
+.shopify-section--cart-template .applied_discount {
+  color: #3cd36a;
+  font-size: 13px;
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.shopify-section--cart-template .remove_item a {
+  font-size: 13px;
+  color: #d1d7d9;
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity .2s ease;
+}
+
+.shopify-section--cart-template .remove_item a:hover {
+  opacity: 1;
+  color: #fc5d32;
+}
+
+.shopify-section--cart-template .cart__item-unit-price {
+  font-size: 12px;
+  color: #d1d7d9;
+  opacity: 0.7;
+}
+
+.shopify-section--cart-template .subtotal_amount {
+  margin-bottom: 15px;
+}
+
+.shopify-section--cart-template .subtotal_amount strong {
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+
+.shopify-section--cart-template .subtotal_amount .money {
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.shopify-section--cart-template .cart__tax-label {
+  display: block;
+  font-size: 12px;
+  color: #d1d7d9;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+.shopify-section--cart-template label[for="cart-note"] {
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #d1d7d9;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.shopify-section--cart-template #cart-note {
+  min-height: 80px;
+  box-sizing: border-box;
+  margin: 0 0 15px;
+  background: #2a2a2a;
+  border: 1px solid #555555;
+  border-radius: 8px;
+  color: #d1d7d9;
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  padding: 10px 12px;
+  width: 100%;
+  resize: vertical;
+}
+
+.shopify-section--cart-template #cart-note:focus {
+  border-color: #3cd36a;
+  box-shadow: 0 0 0 2px rgba(60, 211, 106, 0.25);
+  outline: none;
+}
+
+.shopify-section--cart-template .tos_checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.shopify-section--cart-template .tos_checkbox .tos_agree {
+  min-width: 15px;
+  min-height: 15px;
+  accent-color: #3cd36a;
+}
+
+.shopify-section--cart-template .tos_label {
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #d1d7d9;
+  margin-left: 8px;
+  text-transform: none;
+  font-weight: normal;
+}
+
+.shopify-section--cart-template .action_button.add_to_cart#checkout {
+  background: #3cd36a;
+  color: #181818;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  min-height: 55px;
+  width: 100%;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.shopify-section--cart-template .action_button.add_to_cart#checkout:hover {
+  background: #2ebf5e;
+}
+
+.shopify-section--cart-template .action_button.action_button--secondary,
+.shopify-section--cart-template .cart-button-update.action_button.action_button--secondary {
+  background-color: transparent;
+  border: 1px solid #3cd36a;
+  color: #3cd36a;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  min-height: 44px;
+  width: 100%;
+  cursor: pointer;
+  transition: all .2s ease;
+  box-shadow: none;
+}
+
+.shopify-section--cart-template .action_button.action_button--secondary:hover {
+  background: #3cd36a;
+  color: #181818;
+}
+
+.shopify-section--cart-template .continue_shopping {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.shopify-section--cart-template .continue_shopping a {
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #3cd36a;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.shopify-section--cart-template .continue_shopping a:hover {
+  color: #ffffff;
+}
+
+.shopify-section--cart-template .additional-checkout-buttons {
+  margin-top: 10px;
+}
+
+.shopify-section--cart-template .additional-checkout-buttons .dynamic-checkout__content {
+  padding-top: 0 !important;
+}
+
+/* Shipping calculator */
+body.cart .shipping-calculator {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+body.cart .shipping-calculator__heading {
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-bottom: 20px;
+}
+
+body.cart .shipping-calculator label {
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #d1d7d9;
+  margin-bottom: 4px;
+  display: block;
+}
+
+body.cart .shipping-calculator input[type="text"],
+body.cart .shipping-calculator select {
+  background: #2a2a2a;
+  border: 1px solid #555555;
+  border-radius: 8px;
+  color: #d1d7d9;
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0 12px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+body.cart .shipping-calculator input[type="text"]:focus,
+body.cart .shipping-calculator select:focus {
+  border-color: #3cd36a;
+  box-shadow: 0 0 0 2px rgba(60, 211, 106, 0.25);
+  outline: none;
+}
+
+body.cart .shipping-calculator .action_button.get-rates {
+  background: #3cd36a;
+  color: #181818;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  min-height: 44px;
+  width: 100%;
+  cursor: pointer;
+  transition: all .2s ease;
+  margin-top: 0;
+}
+
+body.cart .shipping-calculator .action_button.get-rates:hover {
+  background: #2ebf5e;
+}
+
+body.cart .shipping-rates {
+  font-family: 'Proxima Nova', 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #d1d7d9;
+  margin-top: 10px;
+}
+
+body.cart .shipping-rates ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+
+body.cart .shipping-rates ul li {
+  padding: 4px 0;
+}

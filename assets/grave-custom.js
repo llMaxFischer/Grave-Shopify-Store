@@ -258,3 +258,10 @@ window.PXUTheme.jsSlideshow = {
     initSizingToggle();
   }
 })();
+
+/* Force cart icon to navigate to /cart — stops event before broken slide-out cart JS can intercept */
+document.addEventListener('click', function(e) {
+  if (e.target.closest('.icon-cart.cart-button')) {
+    e.stopPropagation();
+  }
+}, true);
