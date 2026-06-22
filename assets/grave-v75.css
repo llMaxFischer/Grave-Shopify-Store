@@ -2468,11 +2468,12 @@ input[type="button"]:hover {
   line-height: 1;
   text-decoration: none;
   box-shadow: none;
+  opacity: 0.25;
   transition: opacity .22s ease, transform .22s ease;
 }
 
 .footer .four-sevenths.columns .social-icons a:hover {
-  opacity: 0.75;
+  opacity: 0.6;
   transform: translateY(-1px);
 }
 
@@ -2543,6 +2544,7 @@ input[type="button"]:hover {
     justify-content: center;
     color: #ffffff;
     text-decoration: none;
+    opacity: 0.25;
   }
 
   .footer .four-sevenths.columns {
