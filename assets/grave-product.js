@@ -217,6 +217,28 @@
         hasUserInteracted = false;
         clearInitialSelection();
         setTimeout(clearInitialSelection, 100);
+        setTimeout(clearInitialSelection, 300);
+        setTimeout(clearInitialSelection, 600);
+        setTimeout(clearInitialSelection, 1000);
+
+        // MutationObserver: intercept any auto-check on swatch radios after modal loads
+        var container = document.querySelector('.fancybox-content') || document.querySelector('.fancybox-stage');
+        if (container && !container._graveMutationObserver) {
+          var mo = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+              if (mutation.attributeName === 'checked') {
+                var target = mutation.target;
+                if (target.tagName === 'INPUT' && target.type === 'radio' &&
+                    isVariantRadio(target) && target.checked && !hasUserInteracted) {
+                  target.checked = false;
+                  disableForm(getForm(target));
+                }
+              }
+            });
+          });
+          mo.observe(container, { subtree: true, attributes: true, attributeFilter: ['checked'] });
+          container._graveMutationObserver = mo;
+        }
       });
     }
   }
