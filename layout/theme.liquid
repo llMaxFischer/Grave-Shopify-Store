@@ -342,6 +342,16 @@
 {{ 'about-page-v6.css' | asset_url | stylesheet_tag }}
 
   <style>
+    /*
+     * INLINE OVERRIDES — theme.liquid
+     * ─────────────────────────────────────────────────────────────
+     * RULE: All mobile/tablet styles MUST live inside
+     *       @media (max-width: 767px) { ... }
+     *       at the bottom of this block.
+     *       Anything outside a media query = DESKTOP only.
+     * ─────────────────────────────────────────────────────────────
+     */
+
     *:focus, *:focus-visible, *:active { outline: none !important; box-shadow: none !important; }
     html, body, .global-wrapper, .main-wrapper { background: #121212 !important; }
     .header, div.header_bar, div.sticky--active { background: #121212 !important; }
@@ -371,14 +381,15 @@
       font-size: 22px !important;
       font-weight: normal !important;
     }
+    /* ── DESKTOP ONLY — do not remove from media query ── */
     .banner__inner-text .action_button {
       display: inline-flex !important;
       flex-direction: column !important;
       justify-content: flex-start !important;
       align-items: center !important;
-      padding: 18px 40px !important;
+      padding: 11px 30px !important;
       margin-top: 40px !important;
-      font-size: 42px !important;
+      font-size: 38px !important;
       transition: transform 0.25s ease, box-shadow 0.25s ease !important;
     }
     .banner__inner-text .action_button:hover {
