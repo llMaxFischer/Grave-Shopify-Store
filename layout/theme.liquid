@@ -607,7 +607,17 @@
           new universalParallax().init({
             speed: window.PXUTheme.media_queries.tablet.matches ? 10 : 4
           });
-
+          // Desktop: shift hero background-position up after parallax sets it on readystatechange:complete
+          if (window.innerWidth > 767) {
+            document.addEventListener('readystatechange', function() {
+              if (document.readyState === 'complete') {
+                document.querySelectorAll('.parallax-banner .parallax__container .parallax').forEach(function(el) {
+                  el.style.backgroundPositionX = '50%';
+                  el.style.backgroundPositionY = '-60px';
+                });
+              }
+            });
+          }
         }
       });
     </script>
