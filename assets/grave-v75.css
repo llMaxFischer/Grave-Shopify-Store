@@ -2354,6 +2354,7 @@ input[type="button"]:hover {
   padding: 0 62px 0 22px;
   font-size: 15px;
   box-sizing: border-box;
+  background: rgba(236, 236, 237, 0.25);
 }
 
 .footer .newsletter .contact_email::placeholder {
