@@ -261,10 +261,14 @@ window.PXUTheme.jsSlideshow = {
     });
   }
 
+  // Run after all other deferred scripts have had a chance to finish
+  function runWhenReady() {
+    setTimeout(initSizingToggle, 300);
+  }
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSizingToggle);
+    document.addEventListener('DOMContentLoaded', runWhenReady);
   } else {
-    initSizingToggle();
+    runWhenReady();
   }
 })();
 

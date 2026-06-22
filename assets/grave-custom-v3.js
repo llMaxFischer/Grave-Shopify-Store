@@ -225,34 +225,45 @@ window.PXUTheme.jsSlideshow = {
               || document.querySelector('element-text-rte.element-text--rte');
     if (!descEl) return;
 
-    var html = descEl.innerHTML;
-    var marker = 'SIZING INFORMATION:';
-    var textIdx = html.toUpperCase().indexOf(marker);
-    if (textIdx === -1) return;
-
-    // Walk back from textIdx to find the start of the enclosing tag (e.g. <div>)
-    var tagStart = textIdx;
-    var lt = html.lastIndexOf('<', textIdx);
-    if (lt !== -1 && html.indexOf('>', lt) > textIdx) {
-      // textIdx is inside a tag's attribute — skip (unlikely)
-    } else if (lt !== -1) {
-      tagStart = lt;
+    // Walk child nodes to find the first one whose textContent contains the marker
+    var markerText = 'SIZING INFORMATION:';
+    var nodes = descEl.childNodes;
+    var splitNode = null;
+    for (var i = 0; i < nodes.length; i++) {
+      if (nodes[i].textContent && nodes[i].textContent.toUpperCase().indexOf(markerText) !== -1) {
+        splitNode = nodes[i];
+        break;
+      }
     }
+    if (!splitNode) return;
 
-    var before = html.substring(0, tagStart);
-    var sizingContent = html.substring(tagStart);
-
+    // Build the wrapper with the toggle link
     var wrapper = document.createElement('div');
     wrapper.className = 'sizing-guide-wrapper';
-    wrapper.innerHTML =
-      '<a href="#" class="sizing-guide-toggle">View Size Guide <span class="sizing-guide-arrow">▸</span></a>' +
-      '<div class="sizing-guide-content" style="display:none;">' + sizingContent + '</div>';
 
-    descEl.innerHTML = before;
+    var toggle = document.createElement('a');
+    toggle.href = '#';
+    toggle.className = 'sizing-guide-toggle';
+    toggle.innerHTML = 'View Size Guide <span class="sizing-guide-arrow">&#9658;</span>';
+
+    var content = document.createElement('div');
+    content.className = 'sizing-guide-content';
+    content.style.display = 'none';
+
+    wrapper.appendChild(toggle);
+    wrapper.appendChild(content);
+
+    // Move splitNode and all subsequent siblings into content
+    var toMove = [];
+    var node = splitNode;
+    while (node) {
+      toMove.push(node);
+      node = node.nextSibling;
+    }
+    toMove.forEach(function(n) { content.appendChild(n); });
+
     descEl.appendChild(wrapper);
 
-    var toggle = wrapper.querySelector('.sizing-guide-toggle');
-    var content = wrapper.querySelector('.sizing-guide-content');
     toggle.addEventListener('click', function(e) {
       e.preventDefault();
       var isHidden = content.style.display === 'none';

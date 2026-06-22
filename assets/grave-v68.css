@@ -237,6 +237,10 @@ input[type="button"]:hover {
 }
 
 .quick_shop.quick_shop--button {
+  text-transform: capitalize !important;
+  font-family: "Acumin Pro", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
   position: absolute !important;
   left: 50%;
   bottom: 18px;
@@ -284,6 +288,10 @@ input[type="button"]:hover {
 }
 
 .quick_shop.quick_shop--button:hover {
+  text-transform: capitalize !important;
+  font-family: "Acumin Pro", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
   transform: translateX(-50%) translateY(0) scale(1.08);
   box-shadow: 0 14px 28px rgba(0,0,0,0.65);
   background-color: #3cd36a !important;
@@ -2970,8 +2978,14 @@ body.page .page ul li b {
 }
 
 /* Sizing guide toggle in product description */
-.sizing-guide-wrapper {
+.sizing-guide-details {
   margin-top: 16px;
+}
+.sizing-guide-details summary {
+  list-style: none;
+}
+.sizing-guide-details summary::-webkit-details-marker {
+  display: none;
 }
 .sizing-guide-toggle {
   display: inline-block;
@@ -2985,8 +2999,11 @@ body.page .page ul li b {
 .sizing-guide-toggle:hover {
   color: #2ebf5e;
 }
-.sizing-guide-arrow {
-  margin-left: 4px;
+.sizing-guide-arrow::before {
+  content: ' ▸';
+}
+.sizing-guide-details[open] .sizing-guide-arrow::before {
+  content: ' ▾';
 }
 .sizing-guide-content {
   margin-top: 12px;
