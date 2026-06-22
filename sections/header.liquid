@@ -152,21 +152,6 @@
           </li>
         {% endif %}
       {% endfor %}
-      {% if shop.customer_accounts_enabled %}
-        {% if customer %}
-          <li>
-            <a href="{{ routes.account_url }}" data-no-instant>{{ customer.name }}</a>
-          </li>
-          <li>
-            <a href="{{ routes.account_logout_url }}" id="customer_logout_link" data-no-instant>{{ 'layout.customer.log_out' | t }}</a>
-          </li>
-        {% else %}
-          <li>
-            <a href="{{ routes.account_login_url }}" id="customer_login_link" data-no-instant>{{ 'layout.customer.log_in' | t }}</a>
-          </li>
-        {% endif %}
-      {% endif %}
-
       {% if currency_selector == true or locale_selector == true %}
         {% render 'localization-switcher-mobile',
                 additional_classes: 'mobile-menu__disclosure',
@@ -502,12 +487,6 @@
                       currency_selector: currency_selector,
                       locale_selector: locale_selector
               %}
-            </li>
-          {% endif %}
-
-          {% if shop.customer_accounts_enabled %}
-            <li class="header-account">
-              <a href="{{ routes.account_url }}" title="{{ 'layout.customer.my_account' | t }} {% if customer %}({{ customer.email }}){% endif %}">{% if customer %}{{ 'layout.customer.my_account' | t }}{% else %}<span class="icon-user-icon"></span>{% endif %}</a>
             </li>
           {% endif %}
 
