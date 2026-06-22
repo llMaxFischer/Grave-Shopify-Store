@@ -3699,6 +3699,8 @@ body.cart .shipping-rates ul li {
   font-weight: 500 !important;
   letter-spacing: 0 !important;
   text-transform: none !important;
+  box-shadow: none !important;
+  transform: none !important;
 }
 .newsletter_popup .js-newsletter-popup .contact_email {
   border-radius: 50px !important;
@@ -3706,4 +3708,6 @@ body.cart .shipping-rates ul li {
 .newsletter_popup .js-newsletter-popup .action_button.sign_up:hover {
   background: #35c060 !important;
   color: #121212 !important;
+  box-shadow: none !important;
+  transform: none !important;
 }
