@@ -1472,7 +1472,7 @@ input[type="button"]:hover {
 
 /* Size swatch tiles — outline/secondary style */
 .shopify-section--product-template .swatch:not(.swatch--color) .swatch-element label {
-  width: 56px;
+  width: 62px;
   height: 40px;
   padding: 0 14px;
   display: inline-flex;
