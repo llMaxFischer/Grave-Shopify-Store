@@ -459,6 +459,19 @@
     .image__container:hover .quick_shop.quick_shop--button {
       transform: translateY(0) !important;
     }
+    /* Tablet + mobile: remove hover effects (no cursor) */
+    @media (hover: none) {
+      .action_button:hover,
+      .banner__inner-text .action_button:hover,
+      .quick_shop.quick_shop--button:hover {
+        transform: none !important;
+        box-shadow: none !important;
+        background-color: #3cd36a !important;
+      }
+      .action_button:hover {
+        color: #121212 !important;
+      }
+    }
   </style>
 
   </head>
