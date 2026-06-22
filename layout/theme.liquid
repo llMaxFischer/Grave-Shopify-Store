@@ -339,7 +339,7 @@
       </style>
     </noscript>
   {{ 'grave-v75.css' | asset_url | stylesheet_tag }}
-{{ 'about-page-v4.css' | asset_url | stylesheet_tag }}
+{{ 'about-page-v5.css' | asset_url | stylesheet_tag }}
 
   <style>
     *:focus, *:focus-visible, *:active { outline: none !important; box-shadow: none !important; }
@@ -579,6 +579,6 @@
     </script>
     <script>(function(n, v) {/* eslint-disable-next-line max-len */if (window.Shopify && window.Shopify.theme && navigator && navigator.sendBeacon && window.Shopify.designMode) {if (sessionStorage.getItem('oots_beacon')) return;navigator.sendBeacon('https://app.outofthesandbox.com/beacon', new URLSearchParams({shop_domain: window.Shopify.shop.toLowerCase(),shop_id: '{{ shop.id }}',shop_email: '{{ shop.email }}',theme_name: n.toLowerCase(),theme_version: v.toLowerCase(),theme_store_id: window.Shopify.theme.theme_store_id,theme_id: window.Shopify.theme.id,theme_role: window.Shopify.theme.role,}));sessionStorage.setItem('oots_beacon', '');}}('parallax','7.1.1'))</script>
 
-    <script src="{{ 'about-overrides-v2.js' | asset_url }}" defer></script>
+    <script src="{{ 'about-overrides-v3.js' | asset_url }}" defer></script>
   </body>  
 </html>

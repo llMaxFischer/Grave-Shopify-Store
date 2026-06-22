@@ -1,0 +1,6 @@
+/* About page fixes */
+.container.main-wrapper { max-width: none !important; margin-bottom: 0 !important; }
+.global-wrapper .shopify-section:last-of-type .section { margin-bottom: 0 !important; }
+.one-whole.column > div[style*="margin"] { max-width: 1760px !important; width: 92% !important; }
+.one-whole.column :is(h1,h2,h3,h4,h5,h6,p,li,span) { font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-size: 22px !important; }
+.page .shopify-section--footer { margin-top: 0 !important; padding-top: 0 !important; }
