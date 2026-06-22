@@ -138,14 +138,14 @@
         "collection_rEFkML": {
           "type": "collection",
           "settings": {
-            "feature_collection": "hats-1",
+            "feature_collection": "hats",
             "image": "shopify://shop_images/Grave_Hats.png"
           }
         },
         "collection_nK6GPY": {
           "type": "collection",
           "settings": {
-            "feature_collection": "enamel-pins",
+            "feature_collection": "pins",
             "image": "shopify://shop_images/Coffin_Pin_5x7_1557fc12-d2c8-4aef-8092-215774db92a0.png"
           }
         }
