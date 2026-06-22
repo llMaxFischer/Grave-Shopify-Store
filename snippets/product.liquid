@@ -343,10 +343,30 @@
               {% else %}
                 <div class="product-block--description__text">
                   {% if block.settings.description_words == 'none' %}
-                    {{ product.description | split: '<!-- split -->' | first }}
+                    {% assign desc_raw = product.description | split: '<!-- split -->' | first %}
+                    {% if desc_raw contains 'SIZING INFORMATION:' %}
+                      {% assign desc_parts = desc_raw | split: 'SIZING INFORMATION:' %}
+                      {{ desc_parts[0] }}
+                      <details class="sizing-guide-details">
+                        <summary class="sizing-guide-toggle">View Size Guide <span class="sizing-guide-arrow"></span></summary>
+                        <div class="sizing-guide-content">SIZING INFORMATION:{{ desc_parts[1] }}</div>
+                      </details>
+                    {% else %}
+                      {{ desc_raw }}
+                    {% endif %}
                   {% else %}
                     {% if tabs %}
-                      {{ product.description | split: '<!-- split -->' | first }}
+                      {% assign desc_raw = product.description | split: '<!-- split -->' | first %}
+                      {% if desc_raw contains 'SIZING INFORMATION:' %}
+                        {% assign desc_parts = desc_raw | split: 'SIZING INFORMATION:' %}
+                        {{ desc_parts[0] }}
+                        <details class="sizing-guide-details">
+                          <summary class="sizing-guide-toggle">View Size Guide <span class="sizing-guide-arrow"></span></summary>
+                          <div class="sizing-guide-content">SIZING INFORMATION:{{ desc_parts[1] }}</div>
+                        </details>
+                      {% else %}
+                        {{ desc_raw }}
+                      {% endif %}
                     {% else %}
                       {{ product.description | strip_html | truncatewords: block.settings.description_words }}
                     {% endif %}
