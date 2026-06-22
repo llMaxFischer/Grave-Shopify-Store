@@ -607,11 +607,19 @@
           new universalParallax().init({
             speed: window.PXUTheme.media_queries.tablet.matches ? 10 : 4
           });
-          // Desktop only: shift hero image up 60px by overriding the inline backgroundPosition set by parallax JS
+          // Desktop only: shift hero image up 60px — must run after parallax sets backgroundPosition inline
+          // Parallax fires on readystatechange:complete, so we use window.load to guarantee we run after it
           if (window.innerWidth > 767) {
-            document.querySelectorAll('.parallax-banner .parallax__container .parallax').forEach(function(el) {
-              el.style.backgroundPosition = '50% -60px';
-            });
+            function applyHeroOffset() {
+              document.querySelectorAll('.parallax-banner .parallax__container .parallax').forEach(function(el) {
+                el.style.backgroundPosition = '50% -60px';
+              });
+            }
+            if (document.readyState === 'complete') {
+              applyHeroOffset();
+            } else {
+              window.addEventListener('load', applyHeroOffset);
+            }
           }
         }
       });
