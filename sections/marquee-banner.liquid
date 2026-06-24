@@ -39,54 +39,29 @@
     100% { transform: translateX(-100vw); }
   }
 
-  .marquee-banner__mobile {
-    display: none;
-  }
-
   @media (max-width: 767px) {
-    .marquee-banner__track {
+    .marquee-banner__desktop-img {
       display: none !important;
     }
-    .marquee-banner__mobile {
-      display: flex !important;
-      overflow: hidden !important;
-      white-space: nowrap !important;
-      background: #540c1f !important;
-      line-height: 60px !important;
-      font-size: 36px !important;
-      font-weight: bold !important;
-      color: #000000 !important;
-      font-family: 'Acumin Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-      animation: marqueeMobileScroll 12s linear infinite !important;
+    .marquee-banner__mobile-img {
+      display: block !important;
+      width: calc(100vw + 1px) !important;
+      height: auto !important;
+      margin-right: -1px !important;
     }
-    .marquee-banner__mobile span {
-      padding: 0 40px !important;
-      flex-shrink: 0 !important;
-    }
-  }
-
-  @keyframes marqueeMobileScroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
   }
 </style>
 
 <div class="marquee-banner__wrapper">
   <div class="marquee-banner__track">
     <div class="marquee-banner__item">
-      <img src="{{ 'stay-haunted-banner.svg' | asset_url }}" alt="Stay Haunted" loading="eager">
+      <img class="marquee-banner__desktop-img" src="{{ 'stay-haunted-banner.svg' | asset_url }}" alt="Stay Haunted" loading="eager">
+      <img class="marquee-banner__mobile-img" src="{{ 'Stay Haunted Scroll Banner MOBILE.svg' | asset_url }}" alt="Stay Haunted" loading="eager" style="display:none">
     </div>
     <div class="marquee-banner__item">
-      <img src="{{ 'stay-haunted-banner.svg' | asset_url }}" alt="Stay Haunted" loading="eager">
+      <img class="marquee-banner__desktop-img" src="{{ 'stay-haunted-banner.svg' | asset_url }}" alt="Stay Haunted" loading="eager">
+      <img class="marquee-banner__mobile-img" src="{{ 'Stay Haunted Scroll Banner MOBILE.svg' | asset_url }}" alt="Stay Haunted" loading="eager" style="display:none">
     </div>
-  </div>
-  <div class="marquee-banner__mobile">
-    <span>STAY HAUNTED</span>
-    <span>STAY HAUNTED</span>
-    <span>STAY HAUNTED</span>
-    <span>STAY HAUNTED</span>
-    <span>STAY HAUNTED</span>
-    <span>STAY HAUNTED</span>
   </div>
 </div>
 
