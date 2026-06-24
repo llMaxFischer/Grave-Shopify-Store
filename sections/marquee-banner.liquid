@@ -38,6 +38,13 @@
     0% { transform: translateX(0); }
     100% { transform: translateX(-100vw); }
   }
+
+  @media (max-width: 767px) {
+    .marquee-banner__item img {
+      height: 140px !important;
+      object-fit: fill !important;
+    }
+  }
 </style>
 
 <div class="marquee-banner__wrapper">
