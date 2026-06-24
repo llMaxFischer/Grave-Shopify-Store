@@ -25,7 +25,6 @@
   .marquee-banner__item {
     flex: 0 0 100vw;
     overflow: visible;
-    position: relative;
   }
 
   .marquee-banner__item img {
@@ -41,22 +40,9 @@
   }
 
   @media (max-width: 767px) {
-    .marquee-banner__item {
-      height: 120px !important;
-      overflow: hidden;
-    }
     .marquee-banner__item img {
-      display: none !important;
-    }
-    .marquee-banner__item::before {
-      content: '' !important;
-      display: block !important;
-      width: calc(100vw + 1px) !important;
       height: 120px !important;
-      background-image: url("{{ 'stay-haunted-banner.svg' | asset_url }}") !important;
-      background-size: 100% 100% !important;
-      background-repeat: no-repeat !important;
-      margin-right: -1px !important;
+      object-fit: fill !important;
     }
   }
 </style>
