@@ -41,23 +41,23 @@
 
   @keyframes marqueeMobileScroll {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-200vw); }
+    100% { transform: translateX(-150vw); }
   }
 
   @media (max-width: 767px) {
     .marquee-banner__track {
-      width: 400vw !important;
+      width: 300vw !important;
       animation-name: marqueeMobileScroll !important;
     }
     .marquee-banner__item {
-      flex: 0 0 200vw !important;
+      flex: 0 0 150vw !important;
     }
     .marquee-banner__desktop-img {
       display: none !important;
     }
     .marquee-banner__mobile-img {
       display: block !important;
-      width: calc(200vw + 1px) !important;
+      width: calc(150vw + 1px) !important;
       height: auto !important;
       margin-right: -1px !important;
     }
