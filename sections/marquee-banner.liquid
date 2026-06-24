@@ -39,13 +39,25 @@
     100% { transform: translateX(-100vw); }
   }
 
+  @keyframes marqueeMobileScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-200vw); }
+  }
+
   @media (max-width: 767px) {
+    .marquee-banner__track {
+      width: 400vw !important;
+      animation-name: marqueeMobileScroll !important;
+    }
+    .marquee-banner__item {
+      flex: 0 0 200vw !important;
+    }
     .marquee-banner__desktop-img {
       display: none !important;
     }
     .marquee-banner__mobile-img {
       display: block !important;
-      width: calc(100vw + 1px) !important;
+      width: calc(200vw + 1px) !important;
       height: auto !important;
       margin-right: -1px !important;
     }
