@@ -611,19 +611,9 @@
           new universalParallax().init({
             speed: window.PXUTheme.media_queries.tablet.matches ? 10 : 4
           });
-          // Override inline backgroundPosition set by parallax JS — fires after init is done
-          document.addEventListener('readystatechange', function() {
-            if (document.readyState === 'complete') {
-              document.querySelectorAll('.parallax-banner .parallax__container .parallax').forEach(function(el) {
-                if (window.innerWidth > 767) {
-                  el.style.backgroundPositionX = '50%';
-                  el.style.backgroundPositionY = '-60px';
-                } else {
-                  el.style.backgroundPositionX = '50%';
-                  el.style.backgroundPositionY = '-100px';
-                }
-              });
-            }
+          // Override inline backgroundPosition set by parallax JS — immediate, no event needed
+          document.querySelectorAll('.parallax-banner .parallax__container .parallax').forEach(function(el) {
+            el.style.backgroundPosition = window.innerWidth > 767 ? '50% -60px' : '50% -100px';
           });
         }
       });
