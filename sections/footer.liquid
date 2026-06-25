@@ -81,7 +81,6 @@
           <li><a href="/collections/t-shirts-2">T-shirts</a></li>
           <li><a href="/collections/long-sleeve-shirts-1">Long Sleeve Shirts</a></li>
           <li><a href="/collections/hoodies">Hoodies</a></li>
-          <li><a href="/collections/hats">Hats</a></li>
           <li><a href="/collections/pins">Accessories</a></li>
         </ul>
 
@@ -90,11 +89,12 @@
           <li><a href="/pages/contact">Contact</a></li>
           <li><a href="/pages/faq">FAQ</a></li>
           <li><a href="/pages/return-policy">Return Policy</a></li>
+          <li><a href="/collections/hats">Hats</a></li>
         </ul>
       </div>
 
       <div class="footer-reference__newsletter">
-        <h3 class="footer-reference__newsletter-title">Join our email list</h3>
+        <h3 class="footer-reference__newsletter-title">Join Our Email List</h3>
 
         {% if section.settings.richtext != blank %}
           <div class="footer-reference__newsletter-copy">
@@ -489,22 +489,101 @@
 }
 
 @media (max-width: 767px) {
-  .footer.footer--reference .section {
-    padding: 42px 0 18px;
-  }
+    .footer.footer--reference .section {
+      padding: 28px 16px 32px;
+    }
 
-  .footer-reference__menus {
-    grid-template-columns: 1fr;
-    column-gap: 0;
-    row-gap: 8px;
-  }
+    .footer-reference__container {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
 
-  .footer-reference__logo {
-    width: 170px;
-  }
+    .footer-reference__brand {
+      padding-top: 0;
+      min-height: auto;
+      text-align: center;
+    }
 
-  .footer-reference__newsletter-title {
-    font-size: 20px;
+    .footer-reference__divider {
+      display: none;
+    }
+
+    .footer-reference__logo {
+      width: 170px;
+      margin: 0 auto;
+    }
+
+    .footer-reference__menus {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 16px;
+      padding-top: 0;
+    }
+
+    .footer-reference__menu li {
+      margin: 0 0 12px;
+    }
+
+    .footer-reference__menu a {
+      font-size: 20px;
+    }
+
+    .footer-reference__newsletter {
+      padding-top: 0;
+    }
+
+    .footer-reference__newsletter-title {
+      font-family: Times-Roman, Times, serif !important;
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .footer-reference__newsletter-copy p {
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .footer-reference__newsletter-form .contact_email {
+      height: 52px;
+      min-height: 52px;
+      border-radius: 26px;
+      background: #c0c5c9;
+      color: #121212;
+      padding: 0 24px;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    .footer-reference__newsletter-form .contact_email::placeholder {
+      color: #121212;
+      opacity: 1;
+    }
+
+    .footer-reference__newsletter-form .action_button.sign_up {
+      width: 34px;
+      min-width: 34px;
+      height: 34px;
+      min-height: 34px;
+      right: 18px;
+    }
+
+    .footer-reference__newsletter-form .action_button.sign_up:after {
+      width: 34px;
+      height: 34px;
+      font-size: 20px;
+      line-height: 34px;
+    }
+
+    .footer-reference__social {
+      justify-content: center;
+      margin-top: 0;
+      margin-right: 0;
+      gap: 14px;
+    }
+
+    .footer-reference__copyright {
+      display: none;
+    }
   }
-}
 </style>
