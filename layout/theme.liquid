@@ -472,8 +472,10 @@
     .image__container:hover .quick_shop.quick_shop--button {
       transform: translateY(0) !important;
     }
-    /* ── MOBILE FOOTER — hide desktop footer, show mobile block ── */
+    /* ── MOBILE FOOTER — CSS only, no JS ── */
+    .footer-mobile { display: none; }
     @media (max-width: 767px) {
+      .footer-mobile { display: block !important; }
       .footer.footer--reference { display: none !important; }
       .footer-mobile .input-row {
         display: flex !important;

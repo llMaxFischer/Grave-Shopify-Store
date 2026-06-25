@@ -39,7 +39,7 @@
 %}
 
 <!-- ── MOBILE-ONLY FOOTER ── hidden on desktop via inline style -->
-<div class="footer-mobile" style="display:none;background:#1b1b1d;color:#fff;padding:48px 24px 40px;box-sizing:border-box;width:100%;text-align:center;">
+<div class="footer-mobile" style="background:#1b1b1d;color:#fff;padding:48px 24px 40px;box-sizing:border-box;width:100%;text-align:center;">
 
   <!-- Logo -->
   <div style="margin-bottom:36px;">
@@ -113,24 +113,7 @@
   <p style="font-size:12px;color:rgba(255,255,255,0.45);margin:0;">&copy; {{ "now" | date: "%Y" }} {{ shop.name }}. All rights reserved.</p>
 </div>
 
-<script>
-  (function() {
-    var mq = window.matchMedia('(max-width: 767px)');
-    var mobileFooter = document.querySelector('.footer-mobile');
-    var desktopFooter = document.querySelector('.footer.footer--reference');
-    function toggle(e) {
-      if (e.matches) {
-        mobileFooter.style.display = 'block';
-        desktopFooter.style.display = 'none';
-      } else {
-        mobileFooter.style.display = 'none';
-        desktopFooter.style.display = '';
-      }
-    }
-    toggle(mq);
-    mq.addEventListener('change', toggle);
-  })();
-</script>
+
 
 <div class="footer footer--reference">
   <section class="section">
