@@ -743,9 +743,9 @@
           document.querySelectorAll('.parallax-banner .parallax__container .parallax').forEach(function(el) {
             el.style.backgroundPosition = window.innerWidth > 767 ? '50% -60px' : '50% -100px';
           });
-          // Hero banner only — shift image up extra 50px
+          // Hero banner only — shift image up 50px (more negative Y = higher crop point)
           document.querySelectorAll('#banner-template--19893959557302__1637000454b16be487 .parallax__container .parallax').forEach(function(el) {
-            el.style.backgroundPosition = window.innerWidth > 767 ? '50% -110px' : '50% -150px';
+            el.style.backgroundPosition = '50% calc(50% - 50px)';
           });
         }
       });
