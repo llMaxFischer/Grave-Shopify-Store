@@ -397,6 +397,12 @@
       box-shadow: 0 0 18px 4px #3dd13d !important;
       background-color: #3cd36a !important;
     }
+    /* Mobile header: double height, larger logo, remove white border */
+    @media (max-width: 767px) {
+      #header { height: 80px !important; line-height: 80px !important; border-bottom: none !important; }
+      #header a.mobile_logo img { max-height: 60px !important; max-width: 250px !important; }
+      .global-wrapper { margin-top: 80px !important; }
+    }
     /* Responsive banner text + images */
     @media (max-width: 767px) {
       .banner__inner-text { max-width: 92% !important; padding-top: 40px !important; }
