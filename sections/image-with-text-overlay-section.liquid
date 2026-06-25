@@ -105,6 +105,13 @@
           alt
           src="data:image/svg+xml;utf8,<svg%20xmlns='http://www.w3.org/2000/svg'%20width='{{ banner_image.width }}'%20height='{{ banner_image.height }}'></svg>"
         >
+        <img
+          class="hero-mobile-img"
+          src="{{ 'Hero Image - for Mobile.png' | asset_url }}"
+          alt="{{ banner_image.alt | escape }}"
+          loading="eager"
+          style="display:none"
+        >
       </div>
     {% else %}
       <div class="banner__wrap">
