@@ -494,15 +494,17 @@
     }
 
     .footer-reference__container {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 32px !important;
+      max-width: 100% !important;
     }
 
     .footer-reference__brand {
-      padding-top: 0;
-      min-height: auto;
-      text-align: center;
+      padding-top: 0 !important;
+      min-height: 0 !important;
+      text-align: center !important;
+      position: static !important;
     }
 
     .footer-reference__divider {
@@ -510,8 +512,9 @@
     }
 
     .footer-reference__logo {
-      width: 170px;
-      margin: 0 auto;
+      width: 170px !important;
+      margin: 0 auto !important;
+      display: block !important;
     }
 
     .footer-reference__menus {
