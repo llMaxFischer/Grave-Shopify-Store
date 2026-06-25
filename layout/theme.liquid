@@ -472,8 +472,9 @@
     .image__container:hover .quick_shop.quick_shop--button {
       transform: translateY(0) !important;
     }
-    /* ── MOBILE FOOTER — single column stacked layout ── */
+    /* ── MOBILE FOOTER — hide desktop footer, show mobile block ── */
     @media (max-width: 767px) {
+      .footer.footer--reference { display: none !important; }
       #shopify-section-sections--19893959360694__footer .section {
         padding: 40px 24px 48px !important;
       }
