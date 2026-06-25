@@ -105,6 +105,7 @@
           alt
           src="data:image/svg+xml;utf8,<svg%20xmlns='http://www.w3.org/2000/svg'%20width='{{ banner_image.width }}'%20height='{{ banner_image.height }}'></svg>"
         >
+        {% if section.id contains '1637000454b16be487' %}
         <img
           class="hero-mobile-img"
           src="{{ 'Hero Image - for Mobile 2.png' | asset_url }}"
@@ -112,6 +113,7 @@
           loading="eager"
           style="display:none"
         >
+        {% endif %}
       </div>
     {% else %}
       <div class="banner__wrap">
