@@ -495,7 +495,7 @@
     }
     /* ── MOBILE PDP: main image top, thumbnails horizontal squares below ── */
     @media (max-width: 767px) {
-      /* 1. Gallery: collapse flex row → block, remove fixed height, kill divider */
+      /* Gallery: collapse flex row → block, remove fixed height, kill divider */
       .shopify-section--product-template .product-gallery {
         display: block !important;
         height: auto !important;
@@ -504,7 +504,7 @@
         display: none !important;
       }
 
-      /* 2. Main image: full width, no height constraint */
+      /* Main image: full width, no height constraint */
       .shopify-section--product-template .product-gallery__main {
         width: 100% !important;
         height: auto !important;
@@ -519,20 +519,20 @@
         margin-bottom: 0 !important;
       }
 
-      /* 3. Hide flickity prev/next arrows */
+      /* Hide flickity prev/next arrows */
       .shopify-section--product-template .product-gallery__main .flickity-prev-next-button {
         display: none !important;
       }
 
-      /* 4. Show page dots below main image */
+      /* Pagination dots: 16px below main image */
       .shopify-section--product-template .product-gallery__main .flickity-page-dots {
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
         gap: 6px !important;
         position: static !important;
-        padding: 10px 0 4px !important;
-        margin: 0 !important;
+        margin: 16px 0 0 0 !important;
+        padding: 0 !important;
         list-style: none !important;
         bottom: auto !important;
         width: auto !important;
@@ -553,7 +553,7 @@
         height: 8px !important;
       }
 
-      /* 5. Thumbnail strip — horizontal scrolling row */
+      /* Thumbnail strip: 16px below dots */
       .shopify-section--product-template .product-gallery__thumbnails {
         position: relative !important;
         left: auto !important;
@@ -564,7 +564,7 @@
         min-width: unset !important;
         height: auto !important;
         min-height: 80px !important;
-        margin: 8px 0 0 !important;
+        margin: 16px 0 0 0 !important;
         padding: 0 4px !important;
         opacity: 1 !important;
         display: flex !important;
@@ -581,7 +581,7 @@
         display: none !important;
       }
 
-      /* 6. Flickity viewport/slider in thumbnails — normal flow */
+      /* Flickity viewport/slider in thumbnails — normal flow */
       .shopify-section--product-template .product-gallery__thumbnails .flickity-viewport,
       .shopify-section--product-template .product-gallery__thumbnails .flickity-slider {
         position: static !important;
@@ -598,7 +598,7 @@
         gap: 6px !important;
       }
 
-      /* 7. Each thumbnail — 72×72 square */
+      /* Each thumbnail — 72×72 square */
       .shopify-section--product-template .product-gallery__thumbnail {
         position: static !important;
         left: auto !important;
@@ -627,6 +627,15 @@
         outline: 2px solid #fff !important;
         outline-offset: -2px !important;
         box-shadow: none !important;
+      }
+
+      /* 16px gap between gallery (thumbnails) and product title/details */
+      .product_section .three-fifths.columns.medium-down--one-whole {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+      }
+      .product_section .two-fifths.columns.medium-down--one-whole {
+        margin-top: 16px !important;
       }
     }
     /* ── MOBILE FOOTER — CSS only, no JS ── */
