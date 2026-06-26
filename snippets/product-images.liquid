@@ -189,13 +189,22 @@
         var dotsWrap = document.getElementById('mobile-dots-{{ product.id }}');
         if (!dotsWrap) return;
         var dots = dotsWrap.querySelectorAll('.mobile-gallery-dot');
+
+        function isMobile() { return window.innerWidth < 768; }
+
         function waitForFlickity() {
-          var gallery = dotsWrap.previousElementSibling && dotsWrap.previousElementSibling.classList.contains('product-gallery__main')
-            ? dotsWrap.previousElementSibling
-            : dotsWrap.closest('.product-gallery') && dotsWrap.closest('.product-gallery').querySelector('.product-gallery__main');
-          if (!gallery) { setTimeout(waitForFlickity, 200); return; }
-          var flkty = window.Flickity && Flickity.data(gallery);
+          var productGallery = dotsWrap.closest('.product-gallery');
+          if (!productGallery) { setTimeout(waitForFlickity, 200); return; }
+
+          var mainEl = productGallery.querySelector('.product-gallery__main');
+          var thumbEl = productGallery.querySelector('.product-gallery__thumbnails');
+
+          if (!mainEl) { setTimeout(waitForFlickity, 200); return; }
+
+          var flkty = window.Flickity && Flickity.data(mainEl);
           if (!flkty) { setTimeout(waitForFlickity, 200); return; }
+
+          /* ── Wire dots to main slider ── */
           flkty.on('select', function() {
             dots.forEach(function(d) { d.classList.remove('is-selected'); });
             if (dots[flkty.selectedIndex]) dots[flkty.selectedIndex].classList.add('is-selected');
@@ -203,7 +212,16 @@
           dots.forEach(function(dot, i) {
             dot.addEventListener('click', function() { flkty.select(i); });
           });
+
+          /* ── On mobile: destroy flickity on thumbnail strip so native swipe works ── */
+          if (isMobile() && thumbEl) {
+            var thumbFlkty = window.Flickity && Flickity.data(thumbEl);
+            if (thumbFlkty) {
+              thumbFlkty.destroy();
+            }
+          }
         }
+
         document.addEventListener('DOMContentLoaded', waitForFlickity);
         if (document.readyState !== 'loading') waitForFlickity();
       })();
