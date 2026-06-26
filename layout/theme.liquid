@@ -509,6 +509,7 @@
         width: 100% !important;
         height: auto !important;
         display: block !important;
+        margin-bottom: 26px !important;
       }
       .shopify-section--product-template .product-gallery__main img {
         max-height: none !important;
@@ -524,19 +525,18 @@
         display: none !important;
       }
 
-      /* Pagination dots: 16px below main image */
+      /* Pagination dots: 16px below image, 16px above thumbnails */
       .shopify-section--product-template .product-gallery__main .flickity-page-dots {
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
         gap: 8px !important;
-        position: static !important;
-        top: auto !important;
-        bottom: auto !important;
-        left: auto !important;
-        right: auto !important;
-        margin: 16px 0 0 0 !important;
-        padding: 12px 0 !important;
+        position: absolute !important;
+        bottom: -26px !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
         list-style: none !important;
         width: auto !important;
         height: auto !important;
@@ -553,9 +553,7 @@
         background: #999 !important;
         opacity: 1 !important;
         cursor: pointer !important;
-        position: static !important;
-        left: auto !important;
-        bottom: auto !important;
+        border: none !important;
       }
       .shopify-section--product-template .product-gallery__main .flickity-page-dots .dot.is-selected {
         background: #fff !important;
