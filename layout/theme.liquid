@@ -495,22 +495,37 @@
     }
     /* ── MOBILE PDP: main image top, thumbnails horizontal squares below ── */
     @media (max-width: 767px) {
-      /* 1. Collapse any gap between the gallery and the product details */
-      .product_slider {
+      /* 1. Gallery: collapse flex row → block, remove fixed height, kill divider */
+      .shopify-section--product-template .product-gallery {
         display: block !important;
-        margin-bottom: 0 !important;
+        height: auto !important;
       }
-      .product-gallery__main {
-        width: 100% !important;
-      }
-
-      /* 2. Hide flickity prev/next arrow buttons on the main slider */
-      .product-gallery .product-gallery__main .flickity-prev-next-button {
+      .shopify-section--product-template .product-gallery::after {
         display: none !important;
       }
 
-      /* 3. Show page dots on the main slider */
-      .product-gallery .product-gallery__main .flickity-page-dots {
+      /* 2. Main image: full width, no height constraint */
+      .shopify-section--product-template .product-gallery__main {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+      }
+      .shopify-section--product-template .product-gallery__main img {
+        max-height: none !important;
+        width: 100% !important;
+        height: auto !important;
+      }
+      .product_slider {
+        margin-bottom: 0 !important;
+      }
+
+      /* 3. Hide flickity prev/next arrows */
+      .shopify-section--product-template .product-gallery__main .flickity-prev-next-button {
+        display: none !important;
+      }
+
+      /* 4. Show page dots below main image */
+      .shopify-section--product-template .product-gallery__main .flickity-page-dots {
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
@@ -522,7 +537,7 @@
         bottom: auto !important;
         width: auto !important;
       }
-      .product-gallery .product-gallery__main .flickity-page-dots .dot {
+      .shopify-section--product-template .product-gallery__main .flickity-page-dots .dot {
         display: inline-block !important;
         width: 6px !important;
         height: 6px !important;
@@ -532,27 +547,21 @@
         opacity: 1 !important;
         cursor: pointer !important;
       }
-      .product-gallery .product-gallery__main .flickity-page-dots .dot.is-selected {
+      .shopify-section--product-template .product-gallery__main .flickity-page-dots .dot.is-selected {
         background: #fff !important;
         width: 8px !important;
         height: 8px !important;
       }
 
-      /* 4. Hide the theme's header divider under the page title */
-      .product_section .breadcrumb__wrapper,
-      .product_section .breadcrumb {
-        margin-bottom: 0.5em !important;
-        padding-bottom: 0 !important;
-      }
-
-      /* 5. Thumbnail strip container — ensure normal document flow */
-      .product-gallery__thumbnails {
+      /* 5. Thumbnail strip — horizontal scrolling row */
+      .shopify-section--product-template .product-gallery__thumbnails {
         position: relative !important;
         left: auto !important;
         top: auto !important;
         bottom: auto !important;
         right: auto !important;
         width: 100% !important;
+        min-width: unset !important;
         height: auto !important;
         min-height: 80px !important;
         margin: 8px 0 0 !important;
@@ -564,16 +573,17 @@
         gap: 6px !important;
         overflow-x: auto !important;
         overflow-y: hidden !important;
-        z-index: auto !important;
+        align-items: flex-start !important;
+        order: 0 !important;
         scrollbar-width: none !important;
       }
-      .product-gallery__thumbnails::-webkit-scrollbar {
+      .shopify-section--product-template .product-gallery__thumbnails::-webkit-scrollbar {
         display: none !important;
       }
 
-      /* 6. Flickity wrappers — content-box (no absolute) */
-      .product-gallery__thumbnails .flickity-viewport,
-      .product-gallery__thumbnails .flickity-slider {
+      /* 6. Flickity viewport/slider in thumbnails — normal flow */
+      .shopify-section--product-template .product-gallery__thumbnails .flickity-viewport,
+      .shopify-section--product-template .product-gallery__thumbnails .flickity-slider {
         position: static !important;
         left: auto !important;
         top: auto !important;
@@ -588,8 +598,8 @@
         gap: 6px !important;
       }
 
-      /* 7. Each thumbnail — squares in flow */
-      .product-gallery__thumbnails .product-gallery__thumbnail {
+      /* 7. Each thumbnail — 72×72 square */
+      .shopify-section--product-template .product-gallery__thumbnail {
         position: static !important;
         left: auto !important;
         top: auto !important;
@@ -603,23 +613,20 @@
         opacity: 1 !important;
         overflow: hidden !important;
         border-radius: 4px !important;
-        z-index: auto !important;
+        border: none !important;
       }
-      .product-gallery__thumbnails .product-gallery__thumbnail.is-nav-selected {
-        opacity: 1 !important;
-        outline: 2px solid #fff !important;
-        outline-offset: -2px !important;
-      }
-      .product-gallery__thumbnails .product-gallery__thumbnail img {
+      .shopify-section--product-template .product-gallery__thumbnail img {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important;
         display: block !important;
       }
-
-      /* 8. Hide flickity prev/next on thumbnail strip */
-      .product-gallery__thumbnails .flickity-prev-next-button {
-        display: none !important;
+      .shopify-section--product-template .product-gallery__thumbnail.is-nav-selected {
+        opacity: 1 !important;
+        border: none !important;
+        outline: 2px solid #fff !important;
+        outline-offset: -2px !important;
+        box-shadow: none !important;
       }
     }
     /* ── MOBILE FOOTER — CSS only, no JS ── */
