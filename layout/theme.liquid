@@ -498,12 +498,30 @@
       transform: translateY(0) !important;
     }
     /* ── DESKTOP PDP: pagination dots below main image ── */
+    /* The gallery is a flex-row (thumbs | main). The dots sit as a sibling.
+       We use order:2 to push them after the main image, margin-left to align
+       under the image (not the thumbnail column), and flex-wrap on the parent. */
+    .shopify-section--product-template .product-gallery {
+      flex-wrap: wrap;
+    }
+    .shopify-section--product-template .product-gallery__thumbnails {
+      order: 0;
+    }
+    .shopify-section--product-template .product-gallery__main {
+      order: 1;
+    }
     .shopify-section--product-template .mobile-gallery-dots {
+      order: 2;
+      /* Push dots into the same horizontal track as the main image.
+         The thumbnail column is ~130px wide (set by grave-v75.css).
+         We use margin-left to skip past it so dots centre under the image. */
+      width: calc(100% - 130px);
+      margin-left: 130px;
       justify-content: center;
       align-items: center;
       gap: 8px;
-      padding: 14px 0 4px;
-      margin: 0;
+      padding: 12px 0 4px;
+      margin-top: 0;
     }
     .shopify-section--product-template .mobile-gallery-dot {
       width: 7px;
