@@ -73,6 +73,7 @@
                   "
                   href="{{ media | img_url: '2048x' }}"
                   data-fancybox="{{ product.id }}"
+                  data-options='{"smallBtn":true}'
                   data-alt="{{ media.alt | escape }}"
                   title="{{ media.alt | escape }}"
                   tabindex="0"
@@ -250,10 +251,10 @@
 
       })();
 
-      /* ── Mobile: bind touchstart directly on fancybox close button ──
-         afterShow fires after fancybox renders its toolbar. We find the
-         close button in the container and attach a touchstart handler
-         that calls close() immediately, before any gesture logic runs. */
+      /* ── Force-inject a close button into the fancybox slide on afterShow ──
+         Fancybox sets smallBtn: false for image content, so the close button
+         is never rendered. We create one manually and attach capture-phase
+         handlers that close before any gesture/navigation logic fires. */
       document.addEventListener('DOMContentLoaded', function() {
         function waitForFancybox() {
           if (typeof window.$ === 'undefined' || !window.$.fancybox) {
@@ -262,16 +263,9 @@
           }
           var $ = window.$;
           $(document).on('afterShow.fb', function(ev, instance) {
-            var closeBtn = instance.$refs.container[0].querySelector('[data-fancybox-close]');
-            if (!closeBtn) return;
-            // Remove any previous listener to avoid duplicates
-            closeBtn.removeEventListener('touchstart', closeBtn._fbClose, true);
-            closeBtn._fbClose = function(e) {
-              e.stopPropagation();
-              e.preventDefault();
-              instance.close();
-            };
-            closeBtn.addEventListener('touchstart', closeBtn._fbClose, {capture: true, passive: false});
+            /* Disable all fancybox click actions — only the X button closes */
+            instance.clickSlide = false;
+            instance.clickContent = false;
           });
         }
         waitForFancybox();

@@ -498,6 +498,7 @@
     .image__container:hover .quick_shop.quick_shop--button {
       transform: translateY(0) !important;
     }
+    @media (min-width: 768px) {
     /* ── DESKTOP PDP: pagination dots below main image ── */
     /* The gallery is a flex-row (thumbs | main). The dots sit as a sibling.
        We use order:2 to push them after the main image, margin-left to align
@@ -523,6 +524,7 @@
       gap: 8px;
       padding: 4px 0;
       margin-top: 18px;
+    }
     }
     .shopify-section--product-template .mobile-gallery-dot {
       width: 7px;
@@ -689,17 +691,22 @@
         margin-top: 16px !important;
       }
     }
+    /* ── FANCYBOX LIGHTBOX: toolbar hidden, image clicks blocked, only our X button works ── */
+    .fancybox-toolbar { display: none !important; }
+    .fancybox-container .fancybox-content {
+      pointer-events: none !important;
+    }
+    .fancybox-container .fancybox-close-small {
+      pointer-events: auto !important;
+      z-index: 99999 !important;
+    }
+
     /* ── MOBILE: fancybox image lightbox — hide nav arrows (swipe works), fix close z-index ── */
     @media (max-width: 767px) {
       /* Nav arrows overlap the close button — hide them, user swipes to navigate */
       .fancybox-navigation .fancybox-button--arrow_left,
       .fancybox-navigation .fancybox-button--arrow_right {
         display: none !important;
-      }
-      /* Ensure close button is above everything and has a large tap target */
-      .fancybox-toolbar {
-        z-index: 99999 !important;
-        pointer-events: auto !important;
       }
       .fancybox-button--close {
         z-index: 99999 !important;
