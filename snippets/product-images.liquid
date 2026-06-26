@@ -219,6 +219,25 @@
             if (thumbFlkty) {
               thumbFlkty.destroy();
             }
+
+            /* Re-wire thumbnail taps to select the main image */
+            var thumbItems = thumbEl.querySelectorAll('.product-gallery__thumbnail');
+            thumbItems.forEach(function(thumb, i) {
+              thumb.style.cursor = 'pointer';
+              thumb.addEventListener('click', function() {
+                flkty.select(i);
+                thumbItems.forEach(function(t) { t.classList.remove('is-nav-selected'); });
+                thumb.classList.add('is-nav-selected');
+              });
+            });
+
+            /* Keep thumbnail selected state in sync when main slider changes */
+            flkty.on('select', function() {
+              thumbItems.forEach(function(t) { t.classList.remove('is-nav-selected'); });
+              if (thumbItems[flkty.selectedIndex]) {
+                thumbItems[flkty.selectedIndex].classList.add('is-nav-selected');
+              }
+            });
           }
         }
 
