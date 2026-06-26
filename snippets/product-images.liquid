@@ -246,57 +246,32 @@
 
       })();
 
-      /* ── Mobile: custom position:fixed close button outside fancybox ──
-         Fancybox's built-in toolbar X triggers its swipe/gesture handling.
-         This injects a completely independent close button on document.body
-         that bypasses fancybox's event system entirely. */
-      (function() {
-        var CLS = 'mb-fb-close';
-
-        function addBtn() {
-          if (window.innerWidth >= 768) return;
-          if (document.querySelector('.' + CLS)) return;
-          var b = document.createElement('button');
-          b.className = CLS;
-          b.setAttribute('data-fancybox-close', '');
-          b.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24"><path fill="#fff" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
-          b.style.cssText = 'position:fixed;top:12px;right:12px;z-index:999999;width:48px;height:48px;background:rgba(0,0,0,0.5);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;';
-          b.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            if (window.$ && $.fancybox) $.fancybox.close();
-          }, {passive:false});
-          document.body.appendChild(b);
-          /* Also handle click in case touchstart doesn't fire */
-          b.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            if (window.$ && $.fancybox) $.fancybox.close();
+      /* ── Mobile: bind touchstart directly on fancybox close button ──
+         afterShow fires after fancybox renders its toolbar. We find the
+         close button in the container and attach a touchstart handler
+         that calls close() immediately, before any gesture logic runs. */
+      document.addEventListener('DOMContentLoaded', function() {
+        function waitForFancybox() {
+          if (typeof window.$ === 'undefined' || !window.$.fancybox) {
+            setTimeout(waitForFancybox, 100);
+            return;
+          }
+          var $ = window.$;
+          $(document).on('afterShow.fb', function(ev, instance) {
+            var closeBtn = instance.$refs.container[0].querySelector('[data-fancybox-close]');
+            if (!closeBtn) return;
+            // Remove any previous listener to avoid duplicates
+            closeBtn.removeEventListener('touchstart', closeBtn._fbClose, true);
+            closeBtn._fbClose = function(e) {
+              e.stopPropagation();
+              e.preventDefault();
+              instance.close();
+            };
+            closeBtn.addEventListener('touchstart', closeBtn._fbClose, {capture: true, passive: false});
           });
         }
-
-        function rmBtn() {
-          var el = document.querySelector('.' + CLS);
-          if (el) el.remove();
-        }
-
-        /* Wait for jQuery/fancybox to be available (vendors.js is deferred) */
-        function init() {
-          if (typeof $ === 'undefined' || !$.fancybox) { setTimeout(init, 200); return; }
-          $(document).on('afterShow.fb', function(e, inst) {
-            if (inst.current && inst.current.type === 'image') addBtn();
-          });
-          $(document).on('beforeClose.fb', function(e, inst) {
-            if (inst.current && inst.current.type === 'image') rmBtn();
-          });
-          $(document).on('afterClose.fb', rmBtn);
-        }
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', init);
-        } else {
-          init();
-        }
-      })();
+        waitForFancybox();
+      });
     </script>
   {% endif %}
 
