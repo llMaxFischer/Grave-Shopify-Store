@@ -505,12 +505,12 @@
       }
 
       /* 2. Hide flickity prev/next arrow buttons on the main slider */
-      .product-gallery .flickity-prev-next-button {
+      .product-gallery .product-gallery__main .flickity-prev-next-button {
         display: none !important;
       }
 
       /* 3. Show page dots on the main slider */
-      .product-gallery .flickity-page-dots {
+      .product-gallery .product-gallery__main .flickity-page-dots {
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
@@ -519,8 +519,10 @@
         padding: 10px 0 4px !important;
         margin: 0 !important;
         list-style: none !important;
+        bottom: auto !important;
+        width: auto !important;
       }
-      .product-gallery .flickity-page-dots .dot {
+      .product-gallery .product-gallery__main .flickity-page-dots .dot {
         display: inline-block !important;
         width: 6px !important;
         height: 6px !important;
@@ -530,14 +532,14 @@
         opacity: 1 !important;
         cursor: pointer !important;
       }
-      .product-gallery .flickity-page-dots .dot.is-selected {
+      .product-gallery .product-gallery__main .flickity-page-dots .dot.is-selected {
         background: #fff !important;
         width: 8px !important;
         height: 8px !important;
       }
 
       /* 4. Thumbnail strip container — horizontal scrolling row */
-      .product-gallery__thumbnails {
+      .product-gallery__thumbnails.is-slide-nav--true.product-gallery__thumbnails--bottom-thumbnails {
         position: relative !important;
         opacity: 1 !important;
         width: 100% !important;
@@ -553,10 +555,9 @@
         gap: 6px !important;
         align-items: flex-start !important;
         transform: none !important;
-        /* hide scrollbar but keep scroll */
         scrollbar-width: none !important;
       }
-      .product-gallery__thumbnails::-webkit-scrollbar {
+      .product-gallery__thumbnails.is-slide-nav--true::-webkit-scrollbar {
         display: none !important;
       }
 
@@ -578,7 +579,7 @@
       }
 
       /* 6. Each thumbnail — square with object-fit */
-      .product-gallery__thumbnail {
+      .product-gallery__thumbnails.is-slide-nav--true .product-gallery__thumbnail {
         position: static !important;
         left: auto !important;
         transform: none !important;
@@ -590,11 +591,12 @@
         margin: 0 !important;
         opacity: 1 !important;
       }
-      .product-gallery__thumbnail.is-nav-selected {
+      .product-gallery__thumbnails.is-slide-nav--true .product-gallery__thumbnail.is-nav-selected {
+        opacity: 1 !important;
         outline: 2px solid #fff !important;
         outline-offset: 1px !important;
       }
-      .product-gallery__thumbnail img {
+      .product-gallery__thumbnails.is-slide-nav--true .product-gallery__thumbnail img {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important;
