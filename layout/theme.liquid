@@ -632,16 +632,33 @@
       background-color: #2daf56 !important;
       transition: none !important;
     }
-    /* Tablet + mobile: remove hover effects (no cursor) */
+    /* Touch devices: no movement on any interaction */
     @media (hover: none) {
+      .action_button,
+      .banner__inner-text .action_button,
+      .quick_shop.quick_shop--button {
+        transform: none !important;
+        transition: background-color 0.15s ease !important;
+      }
       .action_button:hover,
+      .action_button:active,
+      .action_button:focus,
       .banner__inner-text .action_button:hover,
-      .quick_shop.quick_shop--button:hover {
+      .banner__inner-text .action_button:active,
+      .banner__inner-text .action_button:focus,
+      .quick_shop.quick_shop--button:hover,
+      .quick_shop.quick_shop--button:active,
+      .quick_shop.quick_shop--button:focus {
         transform: none !important;
         box-shadow: none !important;
-        background-color: #3cd36a !important;
+      }
+      .action_button:active,
+      .banner__inner-text .action_button:active {
+        background-color: #2daf56 !important;
+        color: #121212 !important;
       }
       .action_button:hover {
+        background-color: #3cd36a !important;
         color: #121212 !important;
       }
     }
