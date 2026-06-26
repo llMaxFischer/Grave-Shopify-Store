@@ -175,15 +175,18 @@
         </noscript>
       </div>
     {% endfor %}
-  </div>
 
-  {% comment %} Custom mobile pagination dots — injected below main image, wired to flickity {% endcomment %}
+    {% comment %} Custom pagination dots — below main image, wired to flickity {% endcomment %}
+    {% if product.media.size > 1 %}
+      <div class="mobile-gallery-dots" id="mobile-dots-{{ product.id }}" aria-hidden="true">
+        {% for media in product.media %}
+          <button class="mobile-gallery-dot{% if forloop.first %} is-selected{% endif %}" data-index="{{ forloop.index0 }}" aria-label="Go to image {{ forloop.index }}"></button>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>{% comment %} /.product-gallery__main {% endcomment %}
+
   {% if product.media.size > 1 %}
-    <div class="mobile-gallery-dots" id="mobile-dots-{{ product.id }}" aria-hidden="true">
-      {% for media in product.media %}
-        <button class="mobile-gallery-dot{% if forloop.first %} is-selected{% endif %}" data-index="{{ forloop.index0 }}" aria-label="Go to image {{ forloop.index }}"></button>
-      {% endfor %}
-    </div>
     <script>
       (function() {
         var dotsWrap = document.getElementById('mobile-dots-{{ product.id }}');
