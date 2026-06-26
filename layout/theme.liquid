@@ -493,53 +493,117 @@
     .image__container:hover .quick_shop.quick_shop--button {
       transform: translateY(0) !important;
     }
-    /* ── MOBILE PDP: main image top, thumbnails horizontal below ── */
+    /* ── MOBILE PDP: main image top, thumbnails horizontal squares below ── */
     @media (max-width: 767px) {
-      /* Wrapper: stack vertically */
+      /* 1. Collapse any gap between the gallery and the product details */
       .product_slider {
         display: block !important;
+        margin-bottom: 0 !important;
       }
       .product-gallery__main {
         width: 100% !important;
       }
-      /* Thumbnail strip: override flickity positioning */
-      .product-gallery__thumbnails {
+
+      /* 2. Hide flickity prev/next arrow buttons on the main slider */
+      .product-gallery .flickity-prev-next-button {
+        display: none !important;
+      }
+
+      /* 3. Show page dots on the main slider */
+      .product-gallery .flickity-page-dots {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 6px !important;
         position: static !important;
+        padding: 10px 0 4px !important;
+        margin: 0 !important;
+        list-style: none !important;
+      }
+      .product-gallery .flickity-page-dots .dot {
+        display: inline-block !important;
+        width: 6px !important;
+        height: 6px !important;
+        margin: 0 !important;
+        border-radius: 50% !important;
+        background: #666 !important;
         opacity: 1 !important;
-        height: auto !important;
+        cursor: pointer !important;
+      }
+      .product-gallery .flickity-page-dots .dot.is-selected {
+        background: #fff !important;
+        width: 8px !important;
+        height: 8px !important;
+      }
+
+      /* 4. Thumbnail strip container — horizontal scrolling row */
+      .product-gallery__thumbnails {
+        position: relative !important;
+        opacity: 1 !important;
         width: 100% !important;
-        margin: 12px 0 0 0 !important;
+        height: auto !important;
+        margin: 8px 0 0 !important;
+        padding: 0 4px 8px !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: nowrap !important;
-        overflow-x: auto !important;
-        overflow-y: visible !important;
-        gap: 8px !important;
-        padding: 4px !important;
+        gap: 6px !important;
+        align-items: flex-start !important;
         transform: none !important;
+        /* hide scrollbar but keep scroll */
+        scrollbar-width: none !important;
       }
-      /* Flickity viewport: let content flow normally */
+      .product-gallery__thumbnails::-webkit-scrollbar {
+        display: none !important;
+      }
+
+      /* 5. Flickity wrapper elements — collapse so thumbnails are visible */
       .product-gallery__thumbnails .flickity-viewport {
         position: static !important;
         height: auto !important;
         overflow: visible !important;
+        width: auto !important;
+        display: contents !important;
       }
       .product-gallery__thumbnails .flickity-slider {
         position: static !important;
         transform: none !important;
         display: flex !important;
         flex-direction: row !important;
-        gap: 8px !important;
+        gap: 6px !important;
+        width: auto !important;
       }
-      /* Each thumbnail */
+
+      /* 6. Each thumbnail — square with object-fit */
       .product-gallery__thumbnail {
         position: static !important;
-        width: 72px !important;
-        min-width: 72px !important;
         left: auto !important;
-        margin: 0 !important;
-        flex-shrink: 0 !important;
         transform: none !important;
+        flex: 0 0 72px !important;
+        width: 72px !important;
+        height: 72px !important;
+        overflow: hidden !important;
+        border-radius: 4px !important;
+        margin: 0 !important;
+        opacity: 1 !important;
+      }
+      .product-gallery__thumbnail.is-nav-selected {
+        outline: 2px solid #fff !important;
+        outline-offset: 1px !important;
+      }
+      .product-gallery__thumbnail img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        display: block !important;
+      }
+
+      /* 7. Hide flickity prev/next on thumbnail strip too */
+      .product-gallery__thumbnails .flickity-prev-next-button {
+        display: none !important;
       }
     }
     /* ── MOBILE FOOTER — CSS only, no JS ── */
