@@ -244,19 +244,6 @@
         document.addEventListener('DOMContentLoaded', waitForFlickity);
         if (document.readyState !== 'loading') waitForFlickity();
 
-        /* ── Fix: fancybox close button on mobile ──
-           Fancybox's touch handler intercepts taps before click fires.
-           We capture touchend on the close button and call close() directly. */
-        document.addEventListener('touchend', function(e) {
-          var btn = e.target.closest('[data-fancybox-close]');
-          if (!btn) return;
-          e.preventDefault();
-          e.stopPropagation();
-          if (window.$ && $.fancybox) {
-            $.fancybox.close();
-          }
-        }, { capture: true, passive: false });
-
       })();
     </script>
   {% endif %}

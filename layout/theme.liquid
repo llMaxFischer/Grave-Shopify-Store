@@ -646,6 +646,26 @@
         margin-top: 16px !important;
       }
     }
+    /* ── MOBILE: fancybox image lightbox — hide nav arrows (swipe works), fix close z-index ── */
+    @media (max-width: 767px) {
+      /* Nav arrows overlap the close button — hide them, user swipes to navigate */
+      .fancybox-navigation .fancybox-button--arrow_left,
+      .fancybox-navigation .fancybox-button--arrow_right {
+        display: none !important;
+      }
+      /* Ensure close button is above everything and has a large tap target */
+      .fancybox-toolbar {
+        z-index: 99999 !important;
+        pointer-events: auto !important;
+      }
+      .fancybox-button--close {
+        z-index: 99999 !important;
+        pointer-events: auto !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+      }
+    }
+
     /* ── MOBILE FOOTER — CSS only, no JS ── */
     .footer-mobile { display: none; }
     @media (max-width: 767px) {
