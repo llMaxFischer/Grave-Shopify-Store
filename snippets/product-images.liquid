@@ -245,6 +245,17 @@
         if (document.readyState !== 'loading') waitForFlickity();
 
       })();
+
+      /* ── Mobile: stop Guestures from intercepting close-button touch ──
+         On touch devices, fancybox's swipe/tap handler (Guestures) treats
+         a tap on the close button as a swipe-motion and advances the slide.
+         We intercept touchstart in the capture phase so Guestures never
+         sees the event and the normal click fires → close(). */
+      document.addEventListener('touchstart', function(e) {
+        if (e.target.closest('.fancybox-button--close')) {
+          e.stopPropagation();
+        }
+      }, true);
     </script>
   {% endif %}
 
