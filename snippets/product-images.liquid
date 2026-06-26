@@ -177,6 +177,39 @@
     {% endfor %}
   </div>
 
+  {% comment %} Custom mobile pagination dots — injected below main image, wired to flickity {% endcomment %}
+  {% if product.media.size > 1 %}
+    <div class="mobile-gallery-dots" id="mobile-dots-{{ product.id }}" aria-hidden="true">
+      {% for media in product.media %}
+        <button class="mobile-gallery-dot{% if forloop.first %} is-selected{% endif %}" data-index="{{ forloop.index0 }}" aria-label="Go to image {{ forloop.index }}"></button>
+      {% endfor %}
+    </div>
+    <script>
+      (function() {
+        var dotsWrap = document.getElementById('mobile-dots-{{ product.id }}');
+        if (!dotsWrap) return;
+        var dots = dotsWrap.querySelectorAll('.mobile-gallery-dot');
+        function waitForFlickity() {
+          var gallery = dotsWrap.previousElementSibling && dotsWrap.previousElementSibling.classList.contains('product-gallery__main')
+            ? dotsWrap.previousElementSibling
+            : dotsWrap.closest('.product-gallery') && dotsWrap.closest('.product-gallery').querySelector('.product-gallery__main');
+          if (!gallery) { setTimeout(waitForFlickity, 200); return; }
+          var flkty = window.Flickity && Flickity.data(gallery);
+          if (!flkty) { setTimeout(waitForFlickity, 200); return; }
+          flkty.on('select', function() {
+            dots.forEach(function(d) { d.classList.remove('is-selected'); });
+            if (dots[flkty.selectedIndex]) dots[flkty.selectedIndex].classList.add('is-selected');
+          });
+          dots.forEach(function(dot, i) {
+            dot.addEventListener('click', function() { flkty.select(i); });
+          });
+        }
+        document.addEventListener('DOMContentLoaded', waitForFlickity);
+        if (document.readyState !== 'loading') waitForFlickity();
+      })();
+    </script>
+  {% endif %}
+
   {% comment %} Flickity Product Gallery Thumbnails {% endcomment %}
   {% if show_thumbnails == true %}
     {% if thumbnail_position != 'no-thumbnails' and product.media.size > 1 %}
