@@ -402,11 +402,15 @@
       box-shadow: 0 0 18px 4px #3dd13d !important;
       background-color: #3cd36a !important;
     }
-    .banner__inner-text .action_button:active {
+    .banner__inner-text .action_button:active,
+    body .action_button:active,
+    body input.action_button[type=submit]:active,
+    body input.action_button[type=button]:active {
       transform: none !important;
       box-shadow: none !important;
       background-color: #2daf56 !important;
-      transition: none !important;
+      transition: background-color 0.1s ease !important;
+      scale: 1 !important;
     }
     /* Mobile header: double height, larger logo, remove white border */
     @media (max-width: 767px) {
