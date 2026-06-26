@@ -538,72 +538,86 @@
         height: 8px !important;
       }
 
-      /* 4. Thumbnail strip container — horizontal scrolling row */
-      .product-gallery__thumbnails.is-slide-nav--true.product-gallery__thumbnails--bottom-thumbnails {
+      /* 4. Hide the theme's header divider under the page title */
+      .product_section .breadcrumb__wrapper,
+      .product_section .breadcrumb {
+        margin-bottom: 0.5em !important;
+        padding-bottom: 0 !important;
+      }
+
+      /* 5. Thumbnail strip container — ensure normal document flow */
+      .product-gallery__thumbnails {
         position: relative !important;
-        opacity: 1 !important;
+        left: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        right: auto !important;
         width: 100% !important;
         height: auto !important;
+        min-height: 80px !important;
         margin: 8px 0 0 !important;
-        padding: 0 4px 8px !important;
-        overflow-x: auto !important;
-        overflow-y: hidden !important;
-        -webkit-overflow-scrolling: touch !important;
+        padding: 0 4px !important;
+        opacity: 1 !important;
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: nowrap !important;
         gap: 6px !important;
-        align-items: flex-start !important;
-        transform: none !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        z-index: auto !important;
         scrollbar-width: none !important;
       }
-      .product-gallery__thumbnails.is-slide-nav--true::-webkit-scrollbar {
+      .product-gallery__thumbnails::-webkit-scrollbar {
         display: none !important;
       }
 
-      /* 5. Flickity wrapper elements — collapse so thumbnails are visible */
-      .product-gallery__thumbnails .flickity-viewport {
-        position: static !important;
-        height: auto !important;
-        overflow: visible !important;
-        width: auto !important;
-        display: contents !important;
-      }
+      /* 6. Flickity wrappers — content-box (no absolute) */
+      .product-gallery__thumbnails .flickity-viewport,
       .product-gallery__thumbnails .flickity-slider {
         position: static !important;
+        left: auto !important;
+        top: auto !important;
         transform: none !important;
+        width: auto !important;
+        height: auto !important;
+        min-height: 72px !important;
+        overflow: visible !important;
         display: flex !important;
         flex-direction: row !important;
+        flex-wrap: nowrap !important;
         gap: 6px !important;
-        width: auto !important;
       }
 
-      /* 6. Each thumbnail — square with object-fit */
-      .product-gallery__thumbnails.is-slide-nav--true .product-gallery__thumbnail {
+      /* 7. Each thumbnail — squares in flow */
+      .product-gallery__thumbnails .product-gallery__thumbnail {
         position: static !important;
         left: auto !important;
+        top: auto !important;
+        bottom: auto !important;
         transform: none !important;
         flex: 0 0 72px !important;
         width: 72px !important;
+        min-width: 72px !important;
         height: 72px !important;
-        overflow: hidden !important;
-        border-radius: 4px !important;
         margin: 0 !important;
         opacity: 1 !important;
+        overflow: hidden !important;
+        border-radius: 4px !important;
+        z-index: auto !important;
       }
-      .product-gallery__thumbnails.is-slide-nav--true .product-gallery__thumbnail.is-nav-selected {
+      .product-gallery__thumbnails .product-gallery__thumbnail.is-nav-selected {
         opacity: 1 !important;
         outline: 2px solid #fff !important;
-        outline-offset: 1px !important;
+        outline-offset: -2px !important;
       }
-      .product-gallery__thumbnails.is-slide-nav--true .product-gallery__thumbnail img {
+      .product-gallery__thumbnails .product-gallery__thumbnail img {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important;
         display: block !important;
       }
 
-      /* 7. Hide flickity prev/next on thumbnail strip too */
+      /* 8. Hide flickity prev/next on thumbnail strip */
       .product-gallery__thumbnails .flickity-prev-next-button {
         display: none !important;
       }
