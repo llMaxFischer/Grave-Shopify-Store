@@ -352,8 +352,9 @@
      * ─────────────────────────────────────────────────────────────
      */
 
-    /* Mobile-only elements: hidden by default, shown inside mobile media query */
+    /* PDP pagination dots — hidden by default, shown on PDP (mobile + desktop) */
     .mobile-gallery-dots { display: none !important; }
+    .shopify-section--product-template .mobile-gallery-dots { display: flex !important; }
 
     *:focus, *:focus-visible, *:active { outline: none !important; box-shadow: none !important; }
     html, body, .global-wrapper, .main-wrapper { background: #121212 !important; }
@@ -496,6 +497,31 @@
     .image__container:hover .quick_shop.quick_shop--button {
       transform: translateY(0) !important;
     }
+    /* ── DESKTOP PDP: pagination dots below main image ── */
+    .shopify-section--product-template .mobile-gallery-dots {
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 0 4px;
+      margin: 0;
+    }
+    .shopify-section--product-template .mobile-gallery-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #555;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.2s, width 0.2s, height 0.2s;
+      flex-shrink: 0;
+    }
+    .shopify-section--product-template .mobile-gallery-dot.is-selected {
+      background: #fff;
+      width: 8px;
+      height: 8px;
+    }
+
     /* ── MOBILE PDP: main image top, thumbnails horizontal squares below ── */
     @media (max-width: 767px) {
       /* Gallery: collapse flex row → block, remove fixed height, kill divider */
