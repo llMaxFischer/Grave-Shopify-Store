@@ -870,9 +870,18 @@
       }
 
       /* ── FOOTER: 2-column tablet layout ── */
-      #shopify-section-sections--19893959360694__footer .section {
+      /* Override grave-v75.css fixed 468px height + overflow:hidden on footer */
+      #shopify-section-sections--19893959360694__footer .footer.footer--reference {
+        height: auto !important;
+        overflow: visible !important;
+      }
+      /* Override grave-v75.css height:100% / display:flex / padding:0 on section */
+      #shopify-section-sections--19893959360694__footer .footer.footer--reference .section {
+        display: block !important;
+        height: auto !important;
+        padding: 60px 40px 72px !important;
         position: relative !important;
-        padding: 72px 40px 156px !important;
+        align-items: unset !important;
       }
 
       #shopify-section-sections--19893959360694__footer .footer-reference__container {
@@ -880,41 +889,62 @@
         display: grid !important;
         grid-template-columns: auto 1fr !important;
         column-gap: 48px !important;
-        row-gap: 24px !important;
+        row-gap: 32px !important;
         max-width: 100% !important;
         width: 100% !important;
+        height: auto !important;
         margin: 0 auto !important;
         align-items: start !important;
+        flex: none !important;
       }
 
       #shopify-section-sections--19893959360694__footer .footer-reference__divider {
         display: none !important;
       }
 
-      /* Left column row 1: brand / logo */
+      /* Left column: logo-link reset from absolute to static */
+      #shopify-section-sections--19893959360694__footer .footer-reference__logo-link {
+        position: static !important;
+        transform: none !important;
+        top: auto !important;
+        left: auto !important;
+        width: auto !important;
+        display: block !important;
+      }
+
+      /* Left column row 1: brand */
       #shopify-section-sections--19893959360694__footer .footer-reference__brand {
         grid-column: 1 !important;
         grid-row: 1 !important;
         position: static !important;
+        display: block !important;
         min-height: 0 !important;
-        padding-top: 0 !important;
+        padding: 0 !important;
+        margin-top: -120px !important;
+        align-items: unset !important;
+        justify-content: unset !important;
       }
 
       #shopify-section-sections--19893959360694__footer .footer-reference__logo {
         width: 180px !important;
+        max-width: none !important;
         height: auto !important;
         display: block !important;
-        margin-top: -120px !important;
+        margin: 0 !important;
       }
 
-      /* Right column row 1: menus side-by-side with flex */
+      /* Right column row 1: menus side-by-side with flex, reset margin-left */
       #shopify-section-sections--19893959360694__footer .footer-reference__menus {
         grid-column: 2 !important;
         grid-row: 1 !important;
         display: flex !important;
         flex-direction: row !important;
         gap: 60px !important;
+        margin-left: 0 !important;
+        column-gap: 0 !important;
         padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        align-self: start !important;
       }
 
       #shopify-section-sections--19893959360694__footer .footer-reference__menu {
@@ -930,23 +960,35 @@
 
       #shopify-section-sections--19893959360694__footer .footer-reference__menu a {
         font-size: 17px !important;
+        white-space: normal !important;
       }
 
-      /* Right column row 2: newsletter below links */
+      /* Right column row 2: newsletter below links, reset flex-end alignment */
       #shopify-section-sections--19893959360694__footer .footer-reference__newsletter {
         grid-column: 2 !important;
         grid-row: 2 !important;
-        padding-top: 4px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
         width: auto !important;
+        align-self: start !important;
       }
 
       #shopify-section-sections--19893959360694__footer .footer-reference__newsletter-title {
         text-align: left !important;
+        width: auto !important;
       }
 
       #shopify-section-sections--19893959360694__footer .footer-reference__newsletter-copy,
       #shopify-section-sections--19893959360694__footer .footer-reference__newsletter-copy p {
         text-align: left !important;
+        width: auto !important;
+      }
+
+      #shopify-section-sections--19893959360694__footer .footer-reference__newsletter-form {
+        width: auto !important;
       }
 
       #shopify-section-sections--19893959360694__footer .footer-reference__newsletter-form .input-row {
@@ -955,6 +997,7 @@
         gap: 10px !important;
         align-items: stretch !important;
         max-width: 360px !important;
+        width: auto !important;
         margin: 0 !important;
       }
 
@@ -967,6 +1010,7 @@
         font-size: 14px !important;
         box-sizing: border-box !important;
         width: auto !important;
+        max-width: none !important;
       }
 
       #shopify-section-sections--19893959360694__footer .footer-reference__newsletter-form .action_button.sign_up {
@@ -986,10 +1030,11 @@
       #shopify-section-sections--19893959360694__footer .footer-reference__social {
         justify-content: flex-start !important;
         margin-top: 18px !important;
+        margin-right: 0 !important;
         gap: 20px !important;
       }
 
-      /* Copyright: absolutely positioned 20px from section bottom, left-aligned with logo */
+      /* Copyright: 20px from footer bottom, aligned with logo */
       #shopify-section-sections--19893959360694__footer .footer-reference__copyright {
         position: absolute !important;
         bottom: 20px !important;
@@ -999,6 +1044,7 @@
         transform: none !important;
         white-space: normal !important;
         margin: 0 !important;
+        font-size: 11px !important;
       }
     }
     /* Button click: darken, no motion */
