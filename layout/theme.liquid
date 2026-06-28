@@ -862,21 +862,12 @@
     @media (min-width: 768px) and (max-width: 1400px) and (pointer: coarse),
            (min-width: 768px) and (max-width: 1024px) {
       html { overflow-x: hidden !important; }
-      /* Hero: use tablet image at native resolution, section height matches image */
-      #banner-template--19893959557302__1637000454b16be487 .banner__wrap,
-      #banner-template--19893959557302__1637000454b16be487 .parallax__wrap,
-      #banner-template--19893959557302__1637000454b16be487 .parallax__container,
-      #banner-template--19893959557302__1637000454b16be487 .parallax__container .parallax {
-        height: calc(100vw * 635 / 1170) !important;
-        max-height: 635px !important;
-      }
+      /* Hero: tablet image, fill width, no zoom */
       #banner-template--19893959557302__1637000454b16be487 .parallax__container .parallax {
         background-image: url({{ 'tablet-hero.png' | asset_url }}) !important;
-        background-position: 50% top !important;
+        background-position: 50% 0% !important;
         background-size: 100% auto !important;
         background-repeat: no-repeat !important;
-        top: 0 !important;
-        transform: none !important;
       }
       /* Marquee: scale proportionally with viewport width (2.5x natural ratio) */
       .shopify-section--marquee-banner .marquee-banner__wrapper {
@@ -1248,7 +1239,20 @@
           document.querySelectorAll('.parallax-banner .parallax__container .parallax').forEach(function(el) {
             el.style.backgroundPosition = window.innerWidth > 767 ? '50% -60px' : '50% -100px';
           });
-          // Hero banner only — handled via CSS below
+          // Tablet: kill parallax top offset on hero so image starts at top, no gap
+          var isTablet = window.matchMedia('(min-width: 768px) and (max-width: 1400px) and (pointer: coarse), (min-width: 768px) and (max-width: 1024px)').matches;
+          if (isTablet) {
+            var heroEl = document.querySelector('#banner-template--19893959557302__1637000454b16be487 .parallax__container .parallax');
+            if (heroEl) {
+              var fixHero = function() {
+                heroEl.style.setProperty('top', '0px', 'important');
+                heroEl.style.setProperty('height', '100%', 'important');
+              };
+              fixHero();
+              window.addEventListener('scroll', fixHero, { passive: true });
+              window.addEventListener('resize', fixHero, { passive: true });
+            }
+          }
         }
       });
     </script>
