@@ -869,16 +869,18 @@
         width: auto !important;
       }
 
-      /* ── FOOTER: 2-column tablet layout (logo left / menus + newsletter right) ── */
+      /* ── FOOTER: 2-column tablet layout ── */
       #shopify-section-sections--19893959360694__footer .section {
-        padding: 72px 40px 72px !important;
+        position: relative !important;
+        padding: 72px 40px 156px !important;
       }
 
       #shopify-section-sections--19893959360694__footer .footer-reference__container {
+        position: static !important;
         display: grid !important;
         grid-template-columns: auto 1fr !important;
         column-gap: 48px !important;
-        row-gap: 28px !important;
+        row-gap: 24px !important;
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 auto !important;
@@ -893,36 +895,22 @@
       #shopify-section-sections--19893959360694__footer .footer-reference__brand {
         grid-column: 1 !important;
         grid-row: 1 !important;
-        align-self: start !important;
         position: static !important;
         min-height: 0 !important;
         padding-top: 0 !important;
       }
 
       #shopify-section-sections--19893959360694__footer .footer-reference__logo {
-        width: 120px !important;
+        width: 180px !important;
         height: auto !important;
         display: block !important;
+        margin-top: -120px !important;
       }
 
-      /* Left column row 2: copyright below logo */
-      #shopify-section-sections--19893959360694__footer .footer-reference__copyright {
-        grid-column: 1 !important;
-        grid-row: 2 !important;
-        position: static !important;
-        transform: none !important;
-        left: auto !important;
-        bottom: auto !important;
-        text-align: left !important;
-        white-space: normal !important;
-        margin-top: 14px !important;
-      }
-
-      /* Right column row 1: menus side-by-side with flex, shifted right */
+      /* Right column row 1: menus side-by-side with flex */
       #shopify-section-sections--19893959360694__footer .footer-reference__menus {
         grid-column: 2 !important;
         grid-row: 1 !important;
-        justify-self: end !important;
         display: flex !important;
         flex-direction: row !important;
         gap: 60px !important;
@@ -944,11 +932,10 @@
         font-size: 17px !important;
       }
 
-      /* Right column row 2: newsletter below links, shifted right */
+      /* Right column row 2: newsletter below links */
       #shopify-section-sections--19893959360694__footer .footer-reference__newsletter {
         grid-column: 2 !important;
         grid-row: 2 !important;
-        justify-self: end !important;
         padding-top: 4px !important;
         width: auto !important;
       }
@@ -1002,6 +989,17 @@
         gap: 20px !important;
       }
 
+      /* Copyright: absolutely positioned 20px from section bottom, left-aligned with logo */
+      #shopify-section-sections--19893959360694__footer .footer-reference__copyright {
+        position: absolute !important;
+        bottom: 20px !important;
+        left: 40px !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
+        white-space: normal !important;
+        margin: 0 !important;
+      }
     }
     /* Button click: darken, no motion */
     .action_button:active,
