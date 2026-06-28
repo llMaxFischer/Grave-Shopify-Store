@@ -862,6 +862,14 @@
     @media (min-width: 768px) and (max-width: 1400px) and (pointer: coarse),
            (min-width: 768px) and (max-width: 1024px) {
       html { overflow-x: hidden !important; }
+      /* Marquee: scale proportionally with viewport width (2.5x natural ratio) */
+      .shopify-section--marquee-banner .marquee-banner__wrapper {
+        height: calc(100vw * 46 / 2357 * 2.5) !important;
+      }
+      .shopify-section--marquee-banner .marquee-banner__desktop-img {
+        height: 100% !important;
+        width: auto !important;
+      }
       /* ── FOOTER: 2-column tablet layout ── */
       /* Override grave-v75.css fixed 468px height + overflow:hidden on footer */
       #shopify-section-sections--19893959360694__footer .footer.footer--reference {
