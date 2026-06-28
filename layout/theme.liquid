@@ -858,6 +858,17 @@
         display: none !important;
       }
     }
+    /* ── TABLET (768px – 1024px) ────────────────────────────────── */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      /* Marquee banner: increase height — SVG renders too thin at tablet widths */
+      .shopify-section--marquee-banner .marquee-banner__wrapper {
+        height: 120px !important;
+      }
+      .shopify-section--marquee-banner .marquee-banner__desktop-img {
+        height: 100% !important;
+        width: auto !important;
+      }
+    }
     /* Button click: darken, no motion */
     .action_button:active,
     input.action_button[type=submit]:active,
