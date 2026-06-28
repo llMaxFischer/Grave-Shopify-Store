@@ -1248,19 +1248,24 @@
           document.querySelectorAll('.parallax-banner .parallax__container .parallax').forEach(function(el) {
             el.style.backgroundPosition = window.innerWidth > 767 ? '50% -60px' : '50% -100px';
           });
-          // Tablet: kill parallax top offset on hero so image starts at top, no gap
+          // Tablet: kill parallax top/height on hero — must run AFTER readystatechange:complete
           var isTablet = window.matchMedia('(min-width: 768px) and (max-width: 1400px) and (pointer: coarse), (min-width: 768px) and (max-width: 1024px)').matches;
           if (isTablet) {
-            var heroEl = document.querySelector('#banner-template--19893959557302__1637000454b16be487 .parallax__container .parallax');
-            if (heroEl) {
-              var fixHero = function() {
-                heroEl.style.setProperty('top', '0px', 'important');
-                heroEl.style.setProperty('height', '100%', 'important');
-              };
+            var fixHero = function() {
+              var heroEl = document.querySelector('#banner-template--19893959557302__1637000454b16be487 .parallax__container .parallax');
+              if (heroEl) {
+                heroEl.style.top = '0px';
+                heroEl.style.height = '100%';
+              }
+            };
+            // Run after parallax calculateHeight (fires on readystatechange:complete)
+            if (document.readyState === 'complete') {
               fixHero();
-              window.addEventListener('scroll', fixHero, { passive: true });
-              window.addEventListener('resize', fixHero, { passive: true });
+            } else {
+              window.addEventListener('load', fixHero);
             }
+            window.addEventListener('scroll', fixHero, { passive: true });
+            window.addEventListener('resize', fixHero, { passive: true });
           }
         }
       });
