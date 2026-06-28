@@ -266,6 +266,11 @@
             /* Disable all fancybox click actions — only the X button closes */
             instance.clickSlide = false;
             instance.clickContent = false;
+            /* Hide sticky header while lightbox is open so X button isn't covered */
+            document.body.classList.add('lightbox-open');
+          });
+          $(document).on('afterClose.fb', function() {
+            document.body.classList.remove('lightbox-open');
           });
         }
         waitForFancybox();

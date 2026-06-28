@@ -712,7 +712,12 @@
       pointer-events: auto !important;
       z-index: 99999 !important;
     }
-
+    /* Hide header while lightbox is open so X button isn't covered */
+    body.lightbox-open #header,
+    body.lightbox-open .header,
+    body.lightbox-open .promo-banner {
+      display: none !important;
+    }
     /* ── MOBILE: fancybox image lightbox — hide nav arrows (swipe works), fix close z-index ── */
     @media (max-width: 767px) {
       /* Nav arrows overlap the close button — hide them, user swipes to navigate */
