@@ -871,11 +871,25 @@
         min-height: 0 !important;
         overflow: hidden !important;
       }
-      /* Hero: tablet image, fill width, no zoom */
-      #banner-template--19893959557302__1637000454b16be487 .parallax__container .parallax {
+      /* Hero: section height = image aspect ratio (1170x635) */
+      #shopify-section-sections--19893959557302__1637000454b16be487,
+      #banner-template--19893959557302__1637000454b16be487,
+      #banner-template--19893959557302__1637000454b16be487 .banner__wrap,
+      #banner-template--19893959557302__1637000454b16be487 .parallax__wrap {
+        height: calc(100vw * 635 / 1170) !important;
+        max-height: 635px !important;
+        overflow: hidden !important;
+      }
+      /* Hero: parallax disabled on tablet — CSS controls everything */
+      #banner-template--19893959557302__1637000454b16be487 .parallax-disabled {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
         background-image: url({{ 'tablet-hero.png' | asset_url }}) !important;
-        background-position: 50% 0% !important;
-        background-size: 100% auto !important;
+        background-position: 50% 50% !important;
+        background-size: cover !important;
         background-repeat: no-repeat !important;
       }
       /* Marquee: scale proportionally with viewport width (2.5x natural ratio) */
@@ -1239,6 +1253,15 @@
 
     <script>
       window.addEventListener('DOMContentLoaded', function() {
+        // On tablet: strip parallax class from hero BEFORE plugin init so JS never touches it
+        var isTablet = window.matchMedia('(min-width: 768px) and (max-width: 1400px) and (pointer: coarse), (min-width: 768px) and (max-width: 1024px)').matches;
+        if (isTablet) {
+          var heroParallaxEl = document.querySelector('#banner-template--19893959557302__1637000454b16be487 .parallax');
+          if (heroParallaxEl) {
+            heroParallaxEl.classList.remove('parallax');
+            heroParallaxEl.classList.add('parallax-disabled');
+          }
+        }
         // Parallax plugin initialized if there is a parallax banner added to the page
         if ($('.parallax-banner').length > 0) {
           new universalParallax().init({
@@ -1248,32 +1271,6 @@
           document.querySelectorAll('.parallax-banner .parallax__container .parallax').forEach(function(el) {
             el.style.backgroundPosition = window.innerWidth > 767 ? '50% -60px' : '50% -100px';
           });
-          // Tablet: use MutationObserver to force hero parallax top:0 whenever JS changes it
-          var isTablet = window.matchMedia('(min-width: 768px) and (max-width: 1400px) and (pointer: coarse), (min-width: 768px) and (max-width: 1024px)').matches;
-          if (isTablet) {
-            var attachHeroFix = function() {
-              var heroEl = document.querySelector('#banner-template--19893959557302__1637000454b16be487 .parallax__container .parallax');
-              if (!heroEl) return;
-              var applying = false;
-              var forceTop = function() {
-                if (applying) return;
-                applying = true;
-                heroEl.style.top = '0px';
-                applying = false;
-              };
-              forceTop();
-              new MutationObserver(function(mutations) {
-                mutations.forEach(function(m) {
-                  if (m.attributeName === 'style') forceTop();
-                });
-              }).observe(heroEl, { attributes: true });
-            };
-            if (document.readyState === 'complete') {
-              attachHeroFix();
-            } else {
-              window.addEventListener('load', attachHeroFix);
-            }
-          }
         }
       });
     </script>
