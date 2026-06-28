@@ -858,8 +858,9 @@
         display: none !important;
       }
     }
-    /* ── TABLET (touch devices 768px–1400px, covers iPad Pro 12.9" landscape) ── */
-    @media (min-width: 768px) and (max-width: 1400px) and (pointer: coarse) {
+    /* ── TABLET (touch 768px–1400px OR non-touch 768px–1024px) ── */
+    @media (min-width: 768px) and (max-width: 1400px) and (pointer: coarse),
+           (min-width: 768px) and (max-width: 1024px) {
       /* Marquee banner: increase height — SVG renders too thin at tablet widths */
       .shopify-section--marquee-banner .marquee-banner__wrapper {
         height: 120px !important;
