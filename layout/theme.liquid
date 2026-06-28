@@ -1248,24 +1248,31 @@
           document.querySelectorAll('.parallax-banner .parallax__container .parallax').forEach(function(el) {
             el.style.backgroundPosition = window.innerWidth > 767 ? '50% -60px' : '50% -100px';
           });
-          // Tablet: kill parallax top/height on hero — must run AFTER readystatechange:complete
+          // Tablet: use MutationObserver to force hero parallax top:0 whenever JS changes it
           var isTablet = window.matchMedia('(min-width: 768px) and (max-width: 1400px) and (pointer: coarse), (min-width: 768px) and (max-width: 1024px)').matches;
           if (isTablet) {
-            var fixHero = function() {
+            var attachHeroFix = function() {
               var heroEl = document.querySelector('#banner-template--19893959557302__1637000454b16be487 .parallax__container .parallax');
-              if (heroEl) {
+              if (!heroEl) return;
+              var applying = false;
+              var forceTop = function() {
+                if (applying) return;
+                applying = true;
                 heroEl.style.top = '0px';
-                heroEl.style.height = '100%';
-              }
+                applying = false;
+              };
+              forceTop();
+              new MutationObserver(function(mutations) {
+                mutations.forEach(function(m) {
+                  if (m.attributeName === 'style') forceTop();
+                });
+              }).observe(heroEl, { attributes: true });
             };
-            // Run after parallax calculateHeight (fires on readystatechange:complete)
             if (document.readyState === 'complete') {
-              fixHero();
+              attachHeroFix();
             } else {
-              window.addEventListener('load', fixHero);
+              window.addEventListener('load', attachHeroFix);
             }
-            window.addEventListener('scroll', fixHero, { passive: true });
-            window.addEventListener('resize', fixHero, { passive: true });
           }
         }
       });
