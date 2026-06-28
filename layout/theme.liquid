@@ -862,18 +862,12 @@
     @media (min-width: 768px) and (max-width: 1400px) and (pointer: coarse),
            (min-width: 768px) and (max-width: 1024px) {
       html { overflow-x: hidden !important; }
-      /* Hero: use tablet image, match section height to image aspect ratio (1170×635) */
-      #banner-template--19893959557302__1637000454b16be487 .banner__wrap,
-      #banner-template--19893959557302__1637000454b16be487 .parallax__wrap,
-      #banner-template--19893959557302__1637000454b16be487 .parallax__container,
-      #banner-template--19893959557302__1637000454b16be487 .parallax__container .parallax {
-        height: calc(100vw * 635 / 1170) !important;
-        max-height: 635px !important;
-      }
+      /* Hero: use tablet image, contain to show full image without zoom */
       #banner-template--19893959557302__1637000454b16be487 .parallax__container .parallax {
         background-image: url({{ 'tablet-hero.png' | asset_url }}) !important;
         background-position: 50% 50% !important;
-        background-size: cover !important;
+        background-size: contain !important;
+        background-color: transparent !important;
       }
       /* Marquee: scale proportionally with viewport width (2.5x natural ratio) */
       .shopify-section--marquee-banner .marquee-banner__wrapper {
