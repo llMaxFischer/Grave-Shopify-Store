@@ -92,7 +92,8 @@
                     data-zoom-src="{{ image_5000x }}"
                     data-image-id="{{ product.images[forloop.index0].id }}"
                     data-index="{{ forloop.index0 }}"
-                    data-sizes="auto"
+                    src="{{ image_1200x }}"
+                    sizes="(min-width: 768px) 660px, 100vw"
                     data-srcset="
                       {{ image_200x }} 200w,
                       {{ image_400x }} 400w,

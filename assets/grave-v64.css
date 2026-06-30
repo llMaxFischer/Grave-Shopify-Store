@@ -1298,7 +1298,7 @@ input[type="button"]:hover {
 .shopify-section--product-template .product-gallery__main img {
   display: block;
   max-height: 660px;
-  width: auto;
+  width: 100% !important;
   height: auto;
   object-fit: contain;
 }

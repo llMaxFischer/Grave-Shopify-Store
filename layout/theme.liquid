@@ -703,6 +703,51 @@
         margin-top: 16px !important;
       }
     }
+
+    /* ── NOTIFY FORM (sold out) — match newsletter styling ── */
+    .notify_form__inputs {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+    }
+    .notify_email {
+      width: 100% !important;
+      height: 54px !important;
+      border-radius: 10px !important;
+      background: rgba(236,236,237,0.15) !important;
+      border: 1px solid rgba(255,255,255,0.25) !important;
+      color: #fff !important;
+      padding: 0 18px !important;
+      font-size: 16px !important;
+      box-sizing: border-box !important;
+    }
+    .notify_email::placeholder { color: rgba(255,255,255,0.5) !important; }
+    .notify_form .action_button {
+      width: 100% !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 54px !important;
+      min-height: 54px !important;
+      border-radius: 10px !important;
+      background: #3cd36a !important;
+      color: #121212 !important;
+      font-size: 17px !important;
+      font-weight: 500 !important;
+      font-family: 'Acumin Pro','Acumin Pro Condensed','Helvetica Neue',Helvetica,Arial,sans-serif !important;
+      letter-spacing: 0 !important;
+      text-transform: none !important;
+      box-shadow: none !important;
+      border: none !important;
+      padding: 0 24px !important;
+      line-height: 1 !important;
+      cursor: pointer !important;
+    }
+    .notify_form .action_button:hover {
+      transform: scale(1.05) !important;
+      box-shadow: 0 0 18px 4px rgba(60, 211, 106, 0.5) !important;
+    }
+
     /* ── FANCYBOX LIGHTBOX: toolbar hidden, image clicks blocked, only our X button works ── */
     .fancybox-toolbar { display: none !important; }
     .fancybox-container .fancybox-content {
