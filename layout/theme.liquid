@@ -1350,9 +1350,14 @@
           }
           var $ = window.$;
           $(document).on('afterShow.fb', function(ev, instance) {
-            instance.clickSlide = false;
-            instance.clickContent = false;
+            if (instance && instance.current) {
+              instance.current.opts.clickSlide = false;
+              instance.current.opts.clickContent = false;
+            }
             document.body.classList.add('lightbox-open');
+          });
+          $(document).on('beforeClose.fb', function(ev, instance) {
+            console.log('[fancybox] beforeClose', ev.type, instance.current && instance.current.type, ev.originalEvent && ev.originalEvent.type);
           });
           $(document).on('afterClose.fb', function() {
             document.body.classList.remove('lightbox-open');
