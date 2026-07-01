@@ -61,7 +61,6 @@
           {% if settings.quick_shop_style == 'button' %}
             <span
               data-fancybox
-              data-options='{"clickSlide":false}'
               data-src="#fancybox-product-{{ product.id }}"
               class="quick_shop quick_shop--{{ settings.quick_shop_style }} ss-icon"
               data-gallery="product-{{ product.id }}-gallery"
@@ -72,7 +71,6 @@
           {% else %}
             <span
               data-fancybox
-              data-options='{"clickSlide":false}'
               data-src="#fancybox-product-{{ product.id }}"
               class="quick_shop quick_shop--{{ settings.quick_shop_style }} ss-icon"
               data-gallery="product-{{ product.id }}-gallery"
