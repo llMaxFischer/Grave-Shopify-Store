@@ -748,6 +748,27 @@
       box-shadow: 0 0 18px 4px rgba(60, 211, 106, 0.5) !important;
     }
 
+    /* ── SEARCH PAGE: match input to newsletter email field ── */
+    .search-form--search-template .search-form__input-wrapper input.search-form__input {
+      height: 64px !important;
+      min-height: 64px !important;
+      border: 0 !important;
+      border-radius: 999px !important;
+      background: #e8e8ea !important;
+      color: #1b1b1d !important;
+      padding: 0 24px 0 48px !important;
+      font-size: 15px !important;
+      box-sizing: border-box !important;
+      width: 100% !important;
+      outline: none !important;
+    }
+    .search-form--search-template .search-form__input-wrapper input.search-form__input::placeholder {
+      color: rgba(0,0,0,0.5) !important;
+    }
+    .search-form--search-template .search-form__input-wrapper {
+      position: relative;
+    }
+
     /* ── FANCYBOX LIGHTBOX: toolbar hidden, image clicks blocked, only our X button works ── */
     .fancybox-toolbar { display: none !important; }
     .fancybox-slide--image .fancybox-content {
