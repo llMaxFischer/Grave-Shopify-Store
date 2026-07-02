@@ -1646,6 +1646,17 @@ input[type="button"]:hover {
   color: #3cd36a !important;
 }
 
+/* Product tags (Category: T-shirts) — green hover */
+.shopify-section--product-template .product-details p a,
+.shopify-section--product-template .product-details span a {
+  color: #fff !important;
+  transition: color 0.2s ease !important;
+}
+.shopify-section--product-template .product-details p a:hover,
+.shopify-section--product-template .product-details span a:hover {
+  color: #3cd36a !important;
+}
+
 /* More payment options link */
 .shopify-section--product-template .shopify-payment-button__more-options {
   font-family: 'Acumin Pro', 'Acumin Pro Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
