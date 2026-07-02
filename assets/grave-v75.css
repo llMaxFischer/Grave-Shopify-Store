@@ -1606,6 +1606,15 @@ input[type="button"]:hover {
   flex: 1;
   width: auto;
   max-width: none;
+  min-height: 54px !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+.shopify-section--product-template .shopify-payment-button__button--branded,
+.shopify-section--product-template .shopify-payment-button iframe {
+  min-height: 54px !important;
+  height: 54px !important;
+  border-radius: 10px !important;
 }
 
 .shopify-section--product-template .shopify-payment-button__button.shopify-payment-button__button--unbranded {
