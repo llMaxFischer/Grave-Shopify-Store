@@ -800,18 +800,36 @@
       font-size: 18px !important;
       font-weight: 700 !important;
     }
-    /* Mobile: shrink announcement bar so it fits on one line and gap is manageable */
+    /* Mobile: shrink announcement bar to single line */
     @media (max-width: 767px) {
-      .promo-banner__text {
-        font-size: 13px !important;
-        font-weight: 600 !important;
-        padding-right: 40px !important;
-        padding-left: 12px !important;
-        line-height: 1.3 !important;
+      .promo-banner {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        padding: 0 44px 0 12px !important;
+        height: 36px !important;
+        line-height: 36px !important;
+        display: flex !important;
+        align-items: center !important;
       }
-      /* Banner is ~40px tall on mobile; header is 80px; total offset = 120px */
+      .promo-banner__text {
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        line-height: 36px !important;
+        flex: 1 !important;
+      }
+      .promo-banner__close {
+        height: 36px !important;
+        line-height: 36px !important;
+      }
+      /* header=80px + bar=36px */
       .promo-banner--true .global-wrapper {
-        margin-top: 120px !important;
+        margin-top: 116px !important;
       }
     }
     /* Hide header while lightbox is open so X button isn't covered */
