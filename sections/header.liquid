@@ -63,30 +63,22 @@
 {% if section.settings.promo_text != blank and section.settings.show_announcement %}
   {% if section.settings.promo_home_page and template.name == 'index' %}
     <div class="promo-banner js-promo_banner--index sticky-promo--{{ section.settings.fixed_header }}">
-      {% if section.settings.announcement_link %}
-        <a class="promo-banner__link" href="{{ section.settings.announcement_link }}">
-      {% endif %}
-
-      <p class="promo-banner__text">{{ section.settings.promo_text }}</p>
-
-      {% if section.settings.announcement_link %}
-        </a>
-      {% endif %}
-
+      <div class="promo-banner__marquee-track">
+        {% for i in (1..6) %}
+          <span class="promo-banner__text">{{ section.settings.promo_text }}</span>
+          <span class="promo-banner__sep" aria-hidden="true">&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+        {% endfor %}
+      </div>
       <button class="promo-banner__close icon-close"></button>
     </div>
   {% elsif section.settings.promo_home_page == false %}
     <div class="promo-banner js-promo_banner--global sticky-promo--{{ section.settings.fixed_header }}">
-      {% if section.settings.announcement_link %}
-        <a class="promo-banner__link" href="{{ section.settings.announcement_link }}">
-      {% endif %}
-
-      <p class="promo-banner__text">{{ section.settings.promo_text }}</p>
-
-      {% if section.settings.announcement_link %}
-        </a>
-      {% endif %}
-
+      <div class="promo-banner__marquee-track">
+        {% for i in (1..6) %}
+          <span class="promo-banner__text">{{ section.settings.promo_text }}</span>
+          <span class="promo-banner__sep" aria-hidden="true">&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+        {% endfor %}
+      </div>
       <button class="promo-banner__close icon-close"></button>
     </div>
   {% endif %}
