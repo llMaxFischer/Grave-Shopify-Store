@@ -808,16 +808,22 @@
       .promo-banner__text--static { display: none !important; }
       .promo-banner {
         overflow: hidden !important;
-        padding: 0 36px 0 0 !important;
+        padding: 0 !important;
         height: 36px !important;
-        display: flex !important;
-        align-items: center !important;
+        min-height: 36px !important;
+        max-height: 36px !important;
+        display: block !important;
         position: relative !important;
+        width: 100vw !important;
+        box-sizing: border-box !important;
       }
       .promo-banner__marquee-track {
-        display: flex !important;
+        display: inline-flex !important;
         flex-wrap: nowrap !important;
         white-space: nowrap !important;
+        height: 36px !important;
+        line-height: 36px !important;
+        align-items: center !important;
         animation: promoBannerScroll 40s linear infinite !important;
         will-change: transform;
       }
@@ -829,17 +835,15 @@
         margin: 0 !important;
         flex-shrink: 0 !important;
         display: inline !important;
+        line-height: 36px !important;
       }
-      .promo-banner__sep { flex-shrink: 0 !important; }
+      .promo-banner__sep {
+        flex-shrink: 0 !important;
+        display: inline !important;
+        line-height: 36px !important;
+      }
       .promo-banner__close {
-        position: absolute !important;
-        right: 0 !important;
-        top: 0 !important;
-        height: 36px !important;
-        display: flex !important;
-        align-items: center !important;
-        background: inherit !important;
-        padding: 0 8px !important;
+        display: none !important;
       }
       @keyframes promoBannerScroll {
         0%   { transform: translateX(0); }
