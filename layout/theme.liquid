@@ -377,7 +377,7 @@
     /* Hero image: crop top, show lower portion */
     #banner-template--19893959557302__1637000454b16be487 .parallax__container .parallax { background-position: 50% 70% !important; }
     @media (max-width: 767px) {
-      #banner-template--19893959557302__1637000454b16be487 .parallax__container .parallax { background-image: url({{ 'Mobile Size.png' | asset_url }}) !important; background-position: 50% 50% !important; }
+      #banner-template--19893959557302__1637000454b16be487 .parallax__container .parallax { background-image: url({{ 'Mobile Size.png' | asset_url }}) !important; background-position: 50% 30% !important; background-size: 130% auto !important; }
     }
     /* Collection page mobile banner: Grim with Lantern, 380px height */
     @media (max-width: 767px) {
@@ -455,7 +455,10 @@
       /* Center the inner text block itself */
       .banner__text { justify-content: center !important; align-items: center !important; width: 100% !important; }
       .banner__inner-text { width: 90% !important; max-width: 90% !important; margin-left: auto !important; margin-right: auto !important; }
-      #banner-template--19893959557302__1637000454b16be487 .parallax__wrap { height: 640px !important; }
+      #banner-template--19893959557302__1637000454b16be487 .parallax__wrap { height: 540px !important; }
+      /* Kill remaining gap between nav and hero */
+      #shopify-section-sections--19893959557302__1637000454b16be487 { margin-top: 0 !important; padding-top: 0 !important; }
+      .shopify-section--image-with-text-overlay-section:first-of-type { margin-top: 0 !important; }
       .banner__text { align-items: center !important; }
       h2.title { font-size: 32px !important; }
       .richtext_content--featured_text { font-size: 19px !important; }
