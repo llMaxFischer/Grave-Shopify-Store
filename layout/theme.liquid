@@ -795,14 +795,17 @@
       pointer-events: auto !important;
       z-index: 99999 !important;
     }
-    /* Announcement bar — desktop: static centered text, bold */
+    /* Announcement bar — desktop: static centered text */
+    .promo-banner__text--static { display: block !important; }
+    .promo-banner__marquee-track { display: none !important; }
     .promo-banner__text {
       font-size: 18px !important;
       font-weight: 700 !important;
     }
 
-    /* Mobile only: scrolling marquee */
+    /* Mobile only: hide static text, show scrolling marquee */
     @media (max-width: 767px) {
+      .promo-banner__text--static { display: none !important; }
       .promo-banner {
         overflow: hidden !important;
         padding: 0 36px 0 0 !important;
@@ -827,9 +830,7 @@
         flex-shrink: 0 !important;
         display: inline !important;
       }
-      .promo-banner__sep {
-        flex-shrink: 0 !important;
-      }
+      .promo-banner__sep { flex-shrink: 0 !important; }
       .promo-banner__close {
         position: absolute !important;
         right: 0 !important;
