@@ -377,7 +377,7 @@
     /* Hero image: crop top, show lower portion */
     #banner-template--19893959557302__1637000454b16be487 .parallax__container .parallax { background-position: 50% 70% !important; }
     @media (max-width: 767px) {
-      #banner-template--19893959557302__1637000454b16be487 .parallax__container .parallax { background-image: url({{ 'Mobile Size.png' | asset_url }}) !important; background-position: 50% 30% !important; background-size: 130% auto !important; }
+      #banner-template--19893959557302__1637000454b16be487 .parallax__container .parallax { background-image: url({{ 'Mobile Size.png' | asset_url }}) !important; background-position: 50% 0% !important; background-size: 130% auto !important; }
     }
     /* Collection page mobile banner: Grim with Lantern, 380px height */
     @media (max-width: 767px) {
@@ -1421,7 +1421,7 @@
           });
           // Override inline backgroundPosition set by parallax JS — immediate, no event needed
           document.querySelectorAll('.parallax-banner .parallax__container .parallax').forEach(function(el) {
-            el.style.backgroundPosition = window.innerWidth > 767 ? '50% -60px' : '50% -100px';
+            el.style.backgroundPosition = window.innerWidth > 767 ? '50% -60px' : '50% 0px';
           });
         }
       });
