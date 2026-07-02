@@ -439,6 +439,8 @@
       /* With promo banner: push header down 36px, total content offset = 116px */
       .promo-banner--true #header { top: 36px !important; }
       .promo-banner--true .global-wrapper { margin-top: 116px !important; }
+      /* Kill theme's extra padding on header section that creates the gap */
+      .promo-banner--true .shopify-section--header { padding-top: 0 !important; }
     }
     /* Responsive banner text + images */
     @media (max-width: 767px) {
