@@ -564,7 +564,7 @@ input[type="button"]:hover {
 .fancybox-content .container.is-quickshop.product_section {
   max-width: 1280px;
   min-height: 700px;
-  max-height: 700px;
+  max-height: 860px;
   padding: 0 !important;
   background: #0e0c10;
   position: relative;
@@ -733,13 +733,13 @@ input[type="button"]:hover {
 
 /* --- RIGHT PANEL --- */
 .fancybox-content [data-product-details] {
-  padding: 88px 32px 32px 28px !important;
+  padding: 88px 32px 48px 28px !important;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 28px;
   overflow-y: auto;
-  max-height: 88vh;
+  max-height: 860px;
 }
 
 .fancybox-content .product-block {
