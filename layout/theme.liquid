@@ -809,6 +809,10 @@
       pointer-events: auto !important;
       z-index: 99999 !important;
     }
+    /* Fancybox v3 hides the close button when image is zoomable — override so it's always visible */
+    .fancybox-is-zoomable.fancybox-can-pan .fancybox-close-small {
+      display: block !important;
+    }
     /* Announcement bar — desktop: static centered text */
     .promo-banner__text--static { display: block !important; }
     .promo-banner__marquee-track { display: none !important; }
