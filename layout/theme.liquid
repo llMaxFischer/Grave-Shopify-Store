@@ -1468,6 +1468,22 @@
         }
         waitForFB();
       });
+
+      /* Fallback: native click handler for fancybox close button.
+         Fancybox v3's delegated jQuery handler may not fire in some setups.
+         This fires during bubbling as a reliable fallback; close() is
+         idempotent so double-calling is harmless. */
+      document.addEventListener('click', function(e) {
+        var el = e.target;
+        while (el) {
+          if (el.classList && el.classList.contains('fancybox-close-small') && el.closest('.fancybox-container')) {
+            var inst = window.$ && window.$.fancybox && window.$.fancybox.getInstance();
+            if (inst) { inst.close(e); }
+            return;
+          }
+          el = el.parentElement;
+        }
+      });
     </script>
     <script src="{{ 'about-overrides-v4.js' | asset_url }}" defer></script>
   </body>  
