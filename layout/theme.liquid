@@ -1469,21 +1469,21 @@
         waitForFB();
       });
 
-      /* Fallback: native click handler for fancybox close button.
-         Fancybox v3's delegated jQuery handler may not fire in some setups.
-         This fires during bubbling as a reliable fallback; close() is
-         idempotent so double-calling is harmless. */
+      /* Native capture-phase click handler for fancybox close button.
+         Uses capture (true) so it fires BEFORE Fancybox's own delegates.
+         Fancybox v3's Guestures module can set isClosing=true via clickSlide
+         before the click event fires, causing the close button's jQuery handler
+         to be a no-op. By running first in capture, we close the instance
+         before any downstream handler can interfere. */
       document.addEventListener('click', function(e) {
-        var el = e.target;
-        while (el) {
+        for (var el = e.target; el; el = el.parentElement) {
           if (el.classList && el.classList.contains('fancybox-close-small') && el.closest('.fancybox-container')) {
             var inst = window.$ && window.$.fancybox && window.$.fancybox.getInstance();
             if (inst) { inst.close(e); }
             return;
           }
-          el = el.parentElement;
         }
-      });
+      }, true);
     </script>
     <script src="{{ 'about-overrides-v4.js' | asset_url }}" defer></script>
   </body>  
