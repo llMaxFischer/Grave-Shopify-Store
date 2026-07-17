@@ -800,7 +800,17 @@
       flex: 1 0 auto;
     }
 
-    /* ── FANCYBOX LIGHTBOX: cursor fix, close button visible ── */
+    /* ── FANCYBOX LIGHTBOX ── */
+    /* The navigation wrapper covers the full height of the container, swallowing
+       clicks on the close button. Disable pointer-events on the wrapper and
+       restore them only on the visible arrow button inside it. */
+    .fancybox-navigation {
+      pointer-events: none !important;
+    }
+    .fancybox-navigation .fancybox-button {
+      pointer-events: auto !important;
+    }
+    /* Cursor: default arrow (not grab/pointer) over image */
     .fancybox-slide--image .fancybox-content,
     .fancybox-slide--image .fancybox-image {
       cursor: default !important;
@@ -809,6 +819,7 @@
       pointer-events: none !important;
       cursor: default !important;
     }
+    /* Close button always visible and on top */
     .fancybox-container .fancybox-close-small {
       z-index: 99999 !important;
     }
