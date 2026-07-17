@@ -1472,9 +1472,15 @@
           }
           var $ = window.$;
           $(document).on('afterShow.fb', function(ev, instance) {
-            if (instance && instance.current) {
-              instance.current.opts.clickSlide = false;
-              instance.current.opts.clickContent = false;
+            if (instance) {
+              instance.opts.clickSlide = false;
+              instance.opts.clickContent = false;
+              instance.opts.clickOutside = false;
+              if (instance.current) {
+                instance.current.opts.clickSlide = false;
+                instance.current.opts.clickContent = false;
+                instance.current.opts.clickOutside = false;
+              }
             }
             document.body.classList.add('lightbox-open');
             /* Inject custom close button at container level (outside slide area) */
@@ -1485,8 +1491,12 @@
                   '<svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="2" fill="none"/></svg>' +
                 '</button>'
               ).appendTo($container);
-              $btn.on('click', function(e) {
+              /* Use mousedown/touchstart (not click) so we intercept BEFORE
+                 Guestures can detect a swipe. stopPropagation prevents the
+                 event from reaching Guestures' handler on the container. */
+              $btn.on('mousedown touchstart', function(e) {
                 e.stopPropagation();
+                e.preventDefault();
                 instance.close(e);
               });
             }
