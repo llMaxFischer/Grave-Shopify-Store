@@ -801,18 +801,21 @@
     }
 
     /* ── FANCYBOX LIGHTBOX ── */
-    /* Arrow buttons have a huge transparent hit area by default — limit them
-       to their visible icon size so they cannot overlap the close button */
-    .fancybox-navigation .fancybox-button {
-      width: 44px !important;
-      height: 44px !important;
-      padding: 9px !important;
-    }
-    /* Close button must sit above everything */
+    /* The arrow buttons are 100×70px positioned at the right/left edges.
+       The close button has z-index:401 but is trapped in the .fancybox-content
+       stacking context (z-index:99995). Override by making the close button
+       position:fixed so it escapes to the viewport stacking context entirely,
+       and give it the highest possible z-index. */
     .fancybox-close-small {
-      position: absolute !important;
-      z-index: 100000 !important;
+      position: fixed !important;
+      top: 8px !important;
+      right: 8px !important;
+      z-index: 2147483647 !important;
       pointer-events: auto !important;
+      display: block !important;
+      opacity: 1 !important;
+    }
+    .fancybox-is-zoomable.fancybox-can-pan .fancybox-close-small {
       display: block !important;
     }
     .fancybox-slide--image .fancybox-content,
