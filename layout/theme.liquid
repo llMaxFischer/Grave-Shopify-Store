@@ -805,17 +805,24 @@
     .fancybox-infobar { display: none !important; }
     .fancybox-toolbar .fancybox-button:not([data-fancybox-close]) { display: none !important; }
     .fancybox-toolbar .fancybox-button--close {
+      display: block !important;
       z-index: 99999 !important;
       opacity: 1 !important;
       pointer-events: auto !important;
     }
     /* Ensure close button is always visible (Fancybox v3 hides it when zoomable) */
     .fancybox-is-zoomable.fancybox-can-pan .fancybox-toolbar .fancybox-button--close {
+      display: block !important;
       opacity: 1 !important;
     }
-    .fancybox-slide--image .fancybox-image,
+    /* Cursor: default arrow over image/content (not grab/pointer) */
+    .fancybox-slide--image .fancybox-content,
+    .fancybox-slide--image .fancybox-image {
+      cursor: default !important;
+    }
     .fancybox-slide--image .fancybox-spaceball {
       pointer-events: none !important;
+      cursor: default !important;
     }
     /* Announcement bar — desktop: static centered text */
     .promo-banner__text--static { display: block !important; }
