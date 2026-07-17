@@ -800,18 +800,22 @@
       flex: 1 0 auto;
     }
 
-    /* ── FANCYBOX LIGHTBOX: toolbar hidden, image/spaceball clicks blocked, close button always works ── */
-    .fancybox-toolbar { display: none !important; }
+    /* ── FANCYBOX LIGHTBOX: toolbar close button, image/spaceball clicks blocked ── */
+    .fancybox-toolbar { display: flex !important; }
+    .fancybox-infobar { display: none !important; }
+    .fancybox-toolbar .fancybox-button:not([data-fancybox-close]) { display: none !important; }
+    .fancybox-toolbar .fancybox-button--close {
+      z-index: 99999 !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+    /* Ensure close button is always visible (Fancybox v3 hides it when zoomable) */
+    .fancybox-is-zoomable.fancybox-can-pan .fancybox-toolbar .fancybox-button--close {
+      opacity: 1 !important;
+    }
     .fancybox-slide--image .fancybox-image,
     .fancybox-slide--image .fancybox-spaceball {
       pointer-events: none !important;
-    }
-    .fancybox-container .fancybox-close-small {
-      z-index: 99999 !important;
-    }
-    /* Fancybox v3 hides the close button when image is zoomable — override so it's always visible */
-    .fancybox-is-zoomable.fancybox-can-pan .fancybox-close-small {
-      display: block !important;
     }
     /* Announcement bar — desktop: static centered text */
     .promo-banner__text--static { display: block !important; }
@@ -1468,25 +1472,6 @@
         }
         waitForFB();
       });
-
-      /* Capture-phase mousedown+touchstart handler for fancybox close button.
-         Fires in capture phase (before Guestures' bubbling handlers on the
-         container) so Guestures never processes a gesture on the close button.
-         This prevents Guestures from misinterpreting a close-button tap as a
-         swipe (→ next image) or as a clickSlide-to-close race. We call close()
-         + stopPropagation to bypass Guestures entirely. */
-      function closeBtnCapture(e) {
-        for (var el = e.target; el; el = el.parentElement) {
-          if (el.classList && el.classList.contains('fancybox-close-small') && el.closest('.fancybox-container')) {
-            e.stopPropagation();
-            var inst = window.$ && window.$.fancybox && window.$.fancybox.getInstance();
-            if (inst) { inst.close(e); }
-            return;
-          }
-        }
-      }
-      document.addEventListener('mousedown', closeBtnCapture, true);
-      document.addEventListener('touchstart', closeBtnCapture, true);
     </script>
     <script src="{{ 'about-overrides-v4.js' | asset_url }}" defer></script>
   </body>  
