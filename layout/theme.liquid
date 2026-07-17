@@ -800,30 +800,7 @@
       flex: 1 0 auto;
     }
 
-    /* ── FANCYBOX LIGHTBOX: custom close button, cursor fix ── */
-    .custom-fb-close {
-      position: fixed !important;
-      top: 12px !important;
-      right: 12px !important;
-      z-index: 100001 !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      width: 44px !important;
-      height: 44px !important;
-      background: rgba(0,0,0,0.5) !important;
-      border: none !important;
-      border-radius: 50% !important;
-      cursor: pointer !important;
-      opacity: 1 !important;
-      pointer-events: auto !important;
-    }
-    .custom-fb-close svg {
-      width: 24px !important;
-      height: 24px !important;
-      fill: #fff !important;
-    }
-    /* Cursor: default arrow over image/content (not grab/pointer) */
+    /* ── FANCYBOX LIGHTBOX: cursor fix, close button visible ── */
     .fancybox-slide--image .fancybox-content,
     .fancybox-slide--image .fancybox-image {
       cursor: default !important;
@@ -831,6 +808,12 @@
     .fancybox-slide--image .fancybox-spaceball {
       pointer-events: none !important;
       cursor: default !important;
+    }
+    .fancybox-container .fancybox-close-small {
+      z-index: 99999 !important;
+    }
+    .fancybox-is-zoomable.fancybox-can-pan .fancybox-close-small {
+      display: block !important;
     }
     /* Announcement bar — desktop: static centered text */
     .promo-banner__text--static { display: block !important; }
@@ -890,13 +873,8 @@
     body.lightbox-open .promo-banner {
       display: none !important;
     }
-    /* ── MOBILE: fancybox image lightbox — hide nav arrows (swipe works), fix close z-index ── */
+    /* ── MOBILE: fancybox image lightbox — show nav arrows (swipe disabled), fix close z-index ── */
     @media (max-width: 767px) {
-      /* Nav arrows overlap the close button — hide them, user swipes to navigate */
-      .fancybox-navigation .fancybox-button--arrow_left,
-      .fancybox-navigation .fancybox-button--arrow_right {
-        display: none !important;
-      }
       .fancybox-button--close {
         z-index: 99999 !important;
         pointer-events: auto !important;
@@ -1472,34 +1450,11 @@
           }
           var $ = window.$;
           $(document).on('afterShow.fb', function(ev, instance) {
-            if (instance) {
-              instance.opts.clickSlide = false;
-              instance.opts.clickContent = false;
-              instance.opts.clickOutside = false;
-              if (instance.current) {
-                instance.current.opts.clickSlide = false;
-                instance.current.opts.clickContent = false;
-                instance.current.opts.clickOutside = false;
-              }
+            if (instance && instance.current) {
+              instance.current.opts.clickSlide = false;
+              instance.current.opts.clickContent = false;
             }
             document.body.classList.add('lightbox-open');
-            /* Inject custom close button at container level (outside slide area) */
-            var $container = instance.$refs && instance.$refs.container;
-            if ($container && !$container[0].querySelector('.custom-fb-close')) {
-              var $btn = $(
-                '<button class="custom-fb-close" aria-label="Close">' +
-                  '<svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="2" fill="none"/></svg>' +
-                '</button>'
-              ).appendTo($container);
-              /* Use mousedown/touchstart (not click) so we intercept BEFORE
-                 Guestures can detect a swipe. stopPropagation prevents the
-                 event from reaching Guestures' handler on the container. */
-              $btn.on('mousedown touchstart', function(e) {
-                e.stopPropagation();
-                e.preventDefault();
-                instance.close(e);
-              });
-            }
           });
           $(document).on('beforeClose.fb', function(ev, instance) {
             console.log('[fancybox] beforeClose', ev.type, instance.current && instance.current.type, ev.originalEvent && ev.originalEvent.type);
@@ -1510,35 +1465,6 @@
         }
         waitForFB();
       });
-      /* Capture-phase mousedown/touchstart – catches ANY close button before
-         Guestures can see the event. stopImmediatePropagation prevents ALL
-         downstream handlers (target + bubble phases) from ever running. */
-      document.addEventListener('mousedown', function(e) {
-        for (var el = e.target; el; el = el.parentElement) {
-          if (el.classList &&
-              (el.classList.contains('fancybox-close-small') ||
-               el.classList.contains('custom-fb-close')) &&
-              el.closest('.fancybox-container')) {
-            e.stopImmediatePropagation();
-            var inst = window.$ && window.$.fancybox && window.$.fancybox.getInstance();
-            if (inst) { inst.close(); }
-            return;
-          }
-        }
-      }, true);
-      document.addEventListener('touchstart', function(e) {
-        for (var el = e.target; el; el = el.parentElement) {
-          if (el.classList &&
-              (el.classList.contains('fancybox-close-small') ||
-               el.classList.contains('custom-fb-close')) &&
-              el.closest('.fancybox-container')) {
-            e.stopImmediatePropagation();
-            var inst = window.$ && window.$.fancybox && window.$.fancybox.getInstance();
-            if (inst) { inst.close(); }
-            return;
-          }
-        }
-      }, true);
     </script>
     <script src="{{ 'about-overrides-v4.js' | asset_url }}" defer></script>
   </body>  
