@@ -801,19 +801,15 @@
     }
 
     /* ── FANCYBOX LIGHTBOX ── */
-    /* Shrink the nav arrow hit area to just the visible chevron icon.
-       The default CSS gives each button 100×70px with large padding —
-       that covers most of the image and blocks the close button.
-       Set pointer-events:none on the button itself, auto only on the
-       inner <div> that holds the icon (44×44px visible circle). */
-    .fancybox-navigation .fancybox-button {
+    /* The theme injects legacy .fancybox-nav anchors with width:40% height:100%
+       — that is the actual oversized hit area covering the close button.
+       Kill pointer-events on the anchor, restore only on the visible span icon. */
+    .fancybox-nav {
       pointer-events: none !important;
-      width: 70px !important;
-      height: 100px !important;
     }
-    .fancybox-navigation .fancybox-button div {
+    .fancybox-nav span {
       pointer-events: auto !important;
-      cursor: pointer !important;
+      visibility: visible !important;
     }
     /* Close button: escape stacking context, always on top */
     .fancybox-close-small {
