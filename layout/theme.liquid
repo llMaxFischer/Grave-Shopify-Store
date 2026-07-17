@@ -1476,6 +1476,24 @@
               instance.current.opts.clickContent = false;
             }
             document.body.classList.add('lightbox-open');
+            /* jQuery delegation matches [data-fancybox-next/prev] anywhere in
+               the bubble path — pointer-events:none cannot stop it.
+               Fix: strip the data attributes from the button wrappers and
+               re-attach click handlers only on the inner <div> (the visible
+               icon), so the hit area is exactly the icon size. */
+            var $c = instance.$refs.container;
+            $c.find('.fancybox-button--arrow_right[data-fancybox-next]').each(function() {
+              var $btn = $(this).removeAttr('data-fancybox-next');
+              $btn.find('div').on('click.fb-nav touchstart.fb-nav', function(e) {
+                e.stopPropagation(); e.preventDefault(); instance.next();
+              });
+            });
+            $c.find('.fancybox-button--arrow_left[data-fancybox-prev]').each(function() {
+              var $btn = $(this).removeAttr('data-fancybox-prev');
+              $btn.find('div').on('click.fb-nav touchstart.fb-nav', function(e) {
+                e.stopPropagation(); e.preventDefault(); instance.prev();
+              });
+            });
           });
           $(document).on('afterClose.fb', function() {
             document.body.classList.remove('lightbox-open');
