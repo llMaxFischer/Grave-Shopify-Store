@@ -801,16 +801,31 @@
     }
 
     /* ── FANCYBOX LIGHTBOX ── */
-    /* The navigation wrapper covers the full height of the container, swallowing
-       clicks on the close button. Disable pointer-events on the wrapper and
-       restore them only on the visible arrow button inside it. */
-    .fancybox-navigation {
-      pointer-events: none !important;
-    }
-    .fancybox-navigation .fancybox-button {
+    .fb-body-close {
+      position: fixed !important;
+      top: 12px !important;
+      right: 12px !important;
+      z-index: 2147483647 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 44px !important;
+      height: 44px !important;
+      background: transparent !important;
+      border: none !important;
+      cursor: pointer !important;
+      opacity: 1 !important;
       pointer-events: auto !important;
     }
-    /* Cursor: default arrow (not grab/pointer) over image */
+    .fb-body-close svg {
+      width: 24px !important;
+      height: 24px !important;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)) !important;
+    }
+    .fb-body-close svg path {
+      stroke: #fff !important;
+      stroke-width: 2 !important;
+    }
     .fancybox-slide--image .fancybox-content,
     .fancybox-slide--image .fancybox-image {
       cursor: default !important;
@@ -818,13 +833,6 @@
     .fancybox-slide--image .fancybox-spaceball {
       pointer-events: none !important;
       cursor: default !important;
-    }
-    /* Close button always visible and on top */
-    .fancybox-container .fancybox-close-small {
-      z-index: 99999 !important;
-    }
-    .fancybox-is-zoomable.fancybox-can-pan .fancybox-close-small {
-      display: block !important;
     }
     /* Announcement bar — desktop: static centered text */
     .promo-banner__text--static { display: block !important; }
@@ -1460,18 +1468,34 @@
             return;
           }
           var $ = window.$;
+          function addBodyCloseBtn(instance) {
+            if (document.getElementById('fb-body-close')) return;
+            var btn = document.createElement('button');
+            btn.id = 'fb-body-close';
+            btn.className = 'fb-body-close';
+            btn.setAttribute('aria-label', 'Close');
+            btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" fill="none"/></svg>';
+            btn.addEventListener('click', function(e) {
+              e.stopPropagation();
+              if (instance) instance.close();
+            });
+            document.body.appendChild(btn);
+          }
           $(document).on('afterShow.fb', function(ev, instance) {
             if (instance && instance.current) {
               instance.current.opts.clickSlide = false;
               instance.current.opts.clickContent = false;
             }
             document.body.classList.add('lightbox-open');
+            addBodyCloseBtn(instance);
           });
           $(document).on('beforeClose.fb', function(ev, instance) {
             console.log('[fancybox] beforeClose', ev.type, instance.current && instance.current.type, ev.originalEvent && ev.originalEvent.type);
           });
           $(document).on('afterClose.fb', function() {
             document.body.classList.remove('lightbox-open');
+            var btn = document.getElementById('fb-body-close');
+            if (btn) btn.remove();
           });
         }
         waitForFB();
