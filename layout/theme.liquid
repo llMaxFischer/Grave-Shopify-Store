@@ -1481,16 +1481,7 @@
                Fix: strip the data attributes from the button wrappers and
                re-attach click handlers only on the inner <div> (the visible
                icon), so the hit area is exactly the icon size. */
-            /* Strip data-fancybox-next/prev so jQuery delegation stops firing
-               on the full 100×70px invisible button area. Re-bind on the
-               inner div only (the visible 44×44 icon). Use document-level
-               find to catch buttons regardless of container ref. */
-            $('[data-fancybox-next]').removeAttr('data-fancybox-next').find('div')
-              .off('click.fb-nav touchstart.fb-nav')
-              .on('click.fb-nav', function(e){ e.stopPropagation(); e.preventDefault(); instance.next(); });
-            $('[data-fancybox-prev]').removeAttr('data-fancybox-prev').find('div')
-              .off('click.fb-nav touchstart.fb-nav')
-              .on('click.fb-nav', function(e){ e.stopPropagation(); e.preventDefault(); instance.prev(); });
+
           });
           $(document).on('afterClose.fb', function() {
             document.body.classList.remove('lightbox-open');
