@@ -800,20 +800,28 @@
       flex: 1 0 auto;
     }
 
-    /* ── FANCYBOX LIGHTBOX: toolbar close button, image/spaceball clicks blocked ── */
-    .fancybox-toolbar { display: flex !important; }
-    .fancybox-infobar { display: none !important; }
-    .fancybox-toolbar .fancybox-button:not([data-fancybox-close]) { display: none !important; }
-    .fancybox-toolbar .fancybox-button--close {
-      display: block !important;
-      z-index: 99999 !important;
+    /* ── FANCYBOX LIGHTBOX: custom close button, cursor fix ── */
+    .custom-fb-close {
+      position: fixed !important;
+      top: 12px !important;
+      right: 12px !important;
+      z-index: 100001 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 44px !important;
+      height: 44px !important;
+      background: rgba(0,0,0,0.5) !important;
+      border: none !important;
+      border-radius: 50% !important;
+      cursor: pointer !important;
       opacity: 1 !important;
       pointer-events: auto !important;
     }
-    /* Ensure close button is always visible (Fancybox v3 hides it when zoomable) */
-    .fancybox-is-zoomable.fancybox-can-pan .fancybox-toolbar .fancybox-button--close {
-      display: block !important;
-      opacity: 1 !important;
+    .custom-fb-close svg {
+      width: 24px !important;
+      height: 24px !important;
+      fill: #fff !important;
     }
     /* Cursor: default arrow over image/content (not grab/pointer) */
     .fancybox-slide--image .fancybox-content,
@@ -1469,6 +1477,19 @@
               instance.current.opts.clickContent = false;
             }
             document.body.classList.add('lightbox-open');
+            /* Inject custom close button at container level (outside slide area) */
+            var $container = instance.$refs && instance.$refs.container;
+            if ($container && !$container[0].querySelector('.custom-fb-close')) {
+              var $btn = $(
+                '<button class="custom-fb-close" aria-label="Close">' +
+                  '<svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="2" fill="none"/></svg>' +
+                '</button>'
+              ).appendTo($container);
+              $btn.on('click', function(e) {
+                e.stopPropagation();
+                instance.close(e);
+              });
+            }
           });
           $(document).on('beforeClose.fb', function(ev, instance) {
             console.log('[fancybox] beforeClose', ev.type, instance.current && instance.current.type, ev.originalEvent && ev.originalEvent.type);
