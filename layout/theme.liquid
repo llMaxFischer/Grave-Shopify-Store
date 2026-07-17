@@ -1510,6 +1510,35 @@
         }
         waitForFB();
       });
+      /* Capture-phase mousedown/touchstart – catches ANY close button before
+         Guestures can see the event. stopImmediatePropagation prevents ALL
+         downstream handlers (target + bubble phases) from ever running. */
+      document.addEventListener('mousedown', function(e) {
+        for (var el = e.target; el; el = el.parentElement) {
+          if (el.classList &&
+              (el.classList.contains('fancybox-close-small') ||
+               el.classList.contains('custom-fb-close')) &&
+              el.closest('.fancybox-container')) {
+            e.stopImmediatePropagation();
+            var inst = window.$ && window.$.fancybox && window.$.fancybox.getInstance();
+            if (inst) { inst.close(); }
+            return;
+          }
+        }
+      }, true);
+      document.addEventListener('touchstart', function(e) {
+        for (var el = e.target; el; el = el.parentElement) {
+          if (el.classList &&
+              (el.classList.contains('fancybox-close-small') ||
+               el.classList.contains('custom-fb-close')) &&
+              el.closest('.fancybox-container')) {
+            e.stopImmediatePropagation();
+            var inst = window.$ && window.$.fancybox && window.$.fancybox.getInstance();
+            if (inst) { inst.close(); }
+            return;
+          }
+        }
+      }, true);
     </script>
     <script src="{{ 'about-overrides-v4.js' | asset_url }}" defer></script>
   </body>  
