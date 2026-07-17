@@ -801,11 +801,21 @@
     }
 
     /* ── FANCYBOX LIGHTBOX ── */
-    /* The arrow buttons are 100×70px positioned at the right/left edges.
-       The close button has z-index:401 but is trapped in the .fancybox-content
-       stacking context (z-index:99995). Override by making the close button
-       position:fixed so it escapes to the viewport stacking context entirely,
-       and give it the highest possible z-index. */
+    /* Shrink the nav arrow hit area to just the visible chevron icon.
+       The default CSS gives each button 100×70px with large padding —
+       that covers most of the image and blocks the close button.
+       Set pointer-events:none on the button itself, auto only on the
+       inner <div> that holds the icon (44×44px visible circle). */
+    .fancybox-navigation .fancybox-button {
+      pointer-events: none !important;
+      width: 70px !important;
+      height: 100px !important;
+    }
+    .fancybox-navigation .fancybox-button div {
+      pointer-events: auto !important;
+      cursor: pointer !important;
+    }
+    /* Close button: escape stacking context, always on top */
     .fancybox-close-small {
       position: fixed !important;
       top: 8px !important;
